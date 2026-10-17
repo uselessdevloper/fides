@@ -1,0 +1,18 @@
+# Virtual environment
+.venv/
+env/
+venv/
+__pycache__/
+*.pyc
+
+# Node & Frontend
+node_modules/
+frontend/node_modules/
+
+# Pytest & Cache
+.pytest_cache/
+*.log
+
+# Sensitive Keys
+.env
+.DS_Store

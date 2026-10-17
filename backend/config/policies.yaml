@@ -1,0 +1,43 @@
+version: "1.0"
+engine_name: "Fides-Deterministic-Policy-Engine"
+description: "Authoritative deterministic constraints for autonomous agent purchases"
+
+limits:
+  default_max_transaction_amount: 1000.00
+  currency: "INR"
+  daily_velocity_cap: 3500.00
+  max_items_per_transaction: 10
+
+merchants:
+  approved_merchants:
+    - id: "MERCHANT_ZEPTO_FRESH"
+      name: "Zepto Fresh"
+      allowed_categories: ["Groceries"]
+    - id: "MERCHANT_BLINK_MART"
+      name: "BlinkMart Quick Commerce"
+      allowed_categories: ["Groceries", "Office Supplies", "Electronics"]
+    - id: "MERCHANT_SWIGGY_INSTA"
+      name: "Swiggy Instamart"
+      allowed_categories: ["Groceries"]
+
+risk_scoring:
+  model_type: "scikit-learn-calibrated"
+  approve_threshold: 0.30
+  step_up_threshold: 0.70
+  high_risk_threshold: 0.70
+
+security:
+  enforce_ed25519_signatures: true
+  enforce_mandate_expiry: true
+  enforce_replay_protection: true
+  strict_catalogue_pricing: true
+  prohibit_prompt_overrides: true
+
+actions:
+  on_security_violation: "DENY"
+  on_amount_exceeded: "DENY"
+  on_unknown_merchant: "DENY"
+  on_unapproved_category: "DENY"
+  on_high_risk: "DENY"
+  on_moderate_risk: "STEP_UP"
+  on_all_passed: "APPROVE"

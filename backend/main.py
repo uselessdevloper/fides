@@ -1,0 +1,73 @@
+import os
+from dotenv import load_dotenv
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from backend.api import purchases, approvals, audit, demo
+from backend.services.nebius_client import nebius_client
+from backend.services.audit_ledger import audit_ledger
+
+load_dotenv()
+
+app = FastAPI(
+    title="Fides — Trust Infrastructure for Agentic Commerce",
+    description="Security gateway separating AI intent interpretation (NVIDIA Nemotron via Nebius Token Factory) from deterministic financial authorization.",
+    version="1.0.0"
+)
+
+# CORS configuration
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "*"  # Allow demo access
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Register routers
+app.include_router(purchases.router)
+app.include_router(approvals.router)
+app.include_router(audit.router)
+app.include_router(demo.router)
+
+@app.get("/api/health", tags=["Health"])
+def health_check():
+    """
+    Service health check returning Nebius Token Factory connection info,
+    active NVIDIA model, and audit ledger integrity status.
+    """
+    chain_valid, chain_msg = audit_ledger.verify_chain()
+    has_api_key = bool(nebius_client.api_key and not nebius_client.api_key.startswith("your_"))
+    
+    return {
+        "status": "HEALTHY",
+        "service": "Fides Agentic Commerce Gateway",
+        "nebius_integration": {
+            "model": nebius_client.model,
+            "base_url": nebius_client.base_url,
+            "api_key_configured": has_api_key,
+            "runtime_mode": "Live Nebius Token Factory" if has_api_key else "Simulated Nemotron Runtime / Fallback"
+        },
+        "audit_ledger": {
+            "total_blocks": len(audit_ledger.get_all_blocks()),
+            "cryptographic_integrity": chain_valid,
+            "status_message": chain_msg
+        }
+    }
+
+# Mount built frontend assets if present
+frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "dist"))
+if os.path.exists(frontend_dist):
+    from fastapi.staticfiles import StaticFiles
+    app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=True)
