@@ -61,12 +61,12 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
   };
 
   return (
-    <div className="wispr-card" style={{ padding: '20px 22px', marginBottom: 24, marginTop: 20 }}>
+    <div className="wispr-card" style={{ padding: '20px 22px', marginBottom: 20 }}>
       <div style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom: 14,
+        marginBottom: 8,
         flexWrap: 'wrap',
         gap: 12
       }}>
@@ -92,6 +92,10 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
           <span>Run Concurrency Race Test (10 Threads)</span>
         </button>
       </div>
+
+      <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: 14 }}>
+        Click any scenario below to trigger an automated live evaluation and view the resulting cryptographic trace and decision.
+      </p>
 
       <div style={{
         display: 'grid',

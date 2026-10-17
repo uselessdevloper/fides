@@ -12,17 +12,26 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-export default function DecisionInspector({ decision, onGoToAudit }) {
+export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScenario }) {
   if (!decision) {
     return (
-      <div className="wispr-card" style={{ padding: 56, textAlign: 'center' }}>
-        <ShieldCheck size={44} color="var(--accent-coral)" style={{ margin: '0 auto 16px', opacity: 0.8 }} />
-        <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: 8 }}>
+      <div className="wispr-card" style={{ padding: '52px 32px', textAlign: 'center', margin: '20px 0' }}>
+        <ShieldCheck size={44} color="var(--accent-coral)" style={{ margin: '0 auto 16px', opacity: 0.85 }} />
+        <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: 8 }}>
           No Purchase Decision Evaluated Yet
         </h3>
-        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', maxWidth: 520, margin: '0 auto', lineHeight: 1.6 }}>
-          Submit a purchase request from the <strong>Playground</strong> or select one of the <strong>6 Deterministic Scenarios</strong> above to inspect the complete cryptographic, model, and policy verification trace.
+        <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', maxWidth: 540, margin: '0 auto 22px', lineHeight: 1.6 }}>
+          Run an automated evaluation or submit a prompt from the Playground to see the cryptographic, model, and policy verification trace side-by-side.
         </p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 12 }}>
+          <button
+            onClick={onRunDemoScenario}
+            className="btn-coral"
+            style={{ padding: '10px 20px', fontSize: '0.85rem' }}
+          >
+            <span>Run Sample Scenario #1 (Instant Demo)</span>
+          </button>
+        </div>
       </div>
     );
   }

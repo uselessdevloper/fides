@@ -252,21 +252,21 @@ export default function App() {
       )}
 
       <main className="wispr-container" style={{ paddingBottom: 64, flex: 1 }}>
-        {/* About section always visible at top of About tab */}
+        {/* Tab Content */}
         {activeTab === 'about' && (
-          <AboutSection onExplorePlayground={() => setActiveTab('playground')} />
+          <AboutSection
+            onExplorePlayground={() => setActiveTab('playground')}
+            onRunScenario={(scenarioId) => handleRunScenario(scenarioId)}
+          />
         )}
 
-        {/* Quick Launch Scenario Bar */}
-        <ScenarioBar
-          onRunScenario={handleRunScenario}
-          onRunRaceTest={handleRunRaceTest}
-          isLoading={isLoading}
-        />
-
-        {/* Tab Content */}
-        {(activeTab === 'playground' || activeTab === 'about') && (
-          <div style={{ marginTop: activeTab === 'about' ? 12 : 0 }}>
+        {activeTab === 'playground' && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <ScenarioBar
+              onRunScenario={handleRunScenario}
+              onRunRaceTest={handleRunRaceTest}
+              isLoading={isLoading}
+            />
             <PurchasePlayground
               catalogue={catalogue}
               merchants={merchants}
@@ -281,6 +281,7 @@ export default function App() {
           <DecisionInspector
             decision={currentDecision}
             onGoToAudit={() => setActiveTab('audit')}
+            onRunDemoScenario={() => handleRunScenario(1)}
           />
         )}
 
