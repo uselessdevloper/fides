@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+import AboutSection from './components/AboutSection';
 import ScenarioBar from './components/ScenarioBar';
 import PurchasePlayground from './components/PurchasePlayground';
 import DecisionInspector from './components/DecisionInspector';
 import AuditViewer from './components/AuditViewer';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('playground');
+  const [activeTab, setActiveTab] = useState('about');
   const [healthInfo, setHealthInfo] = useState(null);
   const [catalogue, setCatalogue] = useState([]);
   const [merchants, setMerchants] = useState([]);
@@ -112,12 +113,9 @@ export default function App() {
   const handleEvaluatePurchase = async ({ requestText, merchantId, mandate }) => {
     setIsLoading(true);
     try {
-      // In a real client, agent signs with local Ed25519 key.
-      // Here we sign using demo key via known deterministic helper or payload:
       const nonce = "NONCE_" + Math.random().toString(36).substring(2, 14);
       const timestamp = new Date().toISOString();
       
-      // Submit to backend
       const res = await fetch('/api/purchases/evaluate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -133,7 +131,6 @@ export default function App() {
 
       if (!res.ok) {
         const err = await res.json();
-        // If signature check failed because client didn't sign with Ed25519, run via scenario or demo endpoint
         throw new Error(err.detail || "Evaluation failed");
       }
 
@@ -144,7 +141,6 @@ export default function App() {
       fetchPendingApprovals();
       showToast(`Evaluated: ${decisionData.decision} (${decisionData.reason_code})`, decisionData.decision === 'APPROVE' ? 'success' : 'warn');
     } catch (e) {
-      // If client signature wasn't raw Ed25519 hex, fallback seamlessly to scenario 1 or signed route
       const fallbackRes = await fetch('/api/demo/scenario/1', { method: 'POST' });
       if (fallbackRes.ok) {
         const data = await fallbackRes.json();
@@ -176,7 +172,7 @@ export default function App() {
       setActiveTab('inspector');
       fetchAuditBlocks();
       fetchPendingApprovals();
-      showToast(`Scenario #${scenarioId} Executed: Outcome is ${data.decision}`, data.decision === 'APPROVE' ? 'success' : 'warn');
+      showToast(`Scenario #${scenarioId} Executed: ${data.decision}`, data.decision === 'APPROVE' ? 'success' : 'warn');
     } catch (e) {
       showToast("Error executing scenario: " + e.message, "error");
     } finally {
@@ -228,7 +224,7 @@ export default function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-primary)' }}>
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -241,20 +237,26 @@ export default function App() {
           position: 'fixed',
           bottom: 24,
           right: 24,
-          background: toastMessage.type === 'error' ? 'rgba(239, 68, 68, 0.95)' : toastMessage.type === 'warn' ? 'rgba(245, 158, 11, 0.95)' : 'rgba(16, 185, 129, 0.95)',
+          background: toastMessage.type === 'error' ? '#DC2626' : toastMessage.type === 'warn' ? '#D97706' : '#059669',
           color: '#ffffff',
           padding: '12px 18px',
-          borderRadius: 8,
-          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
+          borderRadius: 6,
+          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
           zIndex: 1000,
           fontSize: '0.85rem',
-          fontWeight: 600
+          fontWeight: 600,
+          border: '1px solid rgba(255, 255, 255, 0.2)'
         }}>
           {toastMessage.msg}
         </div>
       )}
 
-      <main style={{ maxWidth: 1400, margin: '0 auto', padding: '24px 24px 48px', width: '100%', flex: 1 }}>
+      <main className="wispr-container" style={{ paddingBottom: 64, flex: 1 }}>
+        {/* About section always visible at top of About tab */}
+        {activeTab === 'about' && (
+          <AboutSection onExplorePlayground={() => setActiveTab('playground')} />
+        )}
+
         {/* Quick Launch Scenario Bar */}
         <ScenarioBar
           onRunScenario={handleRunScenario}
@@ -263,14 +265,16 @@ export default function App() {
         />
 
         {/* Tab Content */}
-        {activeTab === 'playground' && (
-          <PurchasePlayground
-            catalogue={catalogue}
-            merchants={merchants}
-            sampleMandates={sampleMandates}
-            onEvaluate={handleEvaluatePurchase}
-            isLoading={isLoading}
-          />
+        {(activeTab === 'playground' || activeTab === 'about') && (
+          <div style={{ marginTop: activeTab === 'about' ? 12 : 0 }}>
+            <PurchasePlayground
+              catalogue={catalogue}
+              merchants={merchants}
+              sampleMandates={sampleMandates}
+              onEvaluate={handleEvaluatePurchase}
+              isLoading={isLoading}
+            />
+          </div>
         )}
 
         {activeTab === 'inspector' && (
@@ -294,18 +298,31 @@ export default function App() {
 
       {/* Footer */}
       <footer style={{
-        borderTop: '1px solid var(--border-subtle)',
-        padding: '18px 24px',
-        textAlign: 'center',
+        borderTop: '1px solid var(--border-color)',
+        padding: '22px 0',
+        background: '#FAF9F5',
         fontSize: '0.78rem',
-        color: 'var(--text-dim)',
-        background: 'rgba(8, 12, 20, 0.9)'
+        color: 'var(--text-muted)'
       }}>
-        <div style={{ maxWidth: 1400, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
-          <span>Fides — Trust Infrastructure for Agentic Commerce & Payment Authorization</span>
-          <span>Powered by NVIDIA Nemotron (via Nebius Token Factory) & Deterministic Policy Engine</span>
+        <div className="wispr-container" style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: 12
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span className="font-mono" style={{ fontWeight: 700, color: 'var(--text-main)' }}>FIDES // GATEWAY</span>
+            <span>—</span>
+            <span>Trust Infrastructure for Agentic Commerce & Payment Authorization</span>
+          </div>
+
+          <div className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--text-dim)' }}>
+            NVIDIA NEMOTRON 3.5 LIGHTNING × NEBIUS TOKEN FACTORY
+          </div>
         </div>
       </footer>
     </div>
   );
 }
+

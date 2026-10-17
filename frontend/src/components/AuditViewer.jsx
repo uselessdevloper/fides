@@ -3,14 +3,11 @@ import {
   Layers,
   ShieldCheck,
   CheckCircle2,
-  XCircle,
   AlertTriangle,
   RefreshCw,
   UserCheck,
   UserX,
-  Hash,
-  Link,
-  Clock
+  Hash
 } from 'lucide-react';
 
 export default function AuditViewer({
@@ -19,8 +16,7 @@ export default function AuditViewer({
   auditVerification,
   onVerifyAudit,
   onResolveApproval,
-  isVerifying,
-  onSelectDecision
+  isVerifying
 }) {
   const [reviewerId, setReviewerId] = useState("SUPERVISOR_COMPLIANCE_01");
   const [reviewNotes, setReviewNotes] = useState("");
@@ -36,84 +32,81 @@ export default function AuditViewer({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {/* Top Banner: Cryptographic Integrity Status */}
-      <div className="glass-panel" style={{ padding: '20px 24px' }}>
+      <div className="wispr-card" style={{ padding: '22px 26px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{
               width: 38,
               height: 38,
-              borderRadius: 8,
-              background: 'rgba(16, 185, 129, 0.15)',
+              borderRadius: 6,
+              background: '#ECFDF5',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              border: '1px solid #A7F3D0'
             }}>
               <ShieldCheck size={22} color="var(--accent-emerald)" />
             </div>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>
-                  SHA-256 Hash-Chained Audit Ledger
-                </h2>
-                <span className="badge-approve" style={{ fontSize: '0.68rem', padding: '2px 8px' }}>
-                  {auditVerification?.is_valid ? "Integrity Cryptographically Verified" : "Verification Pending"}
+                <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--accent-emerald)', fontWeight: 700 }}>
+                  04 // IMMUTABLE LEDGER
+                </span>
+                <span className="badge-approve">
+                  {auditVerification?.is_valid ? "Cryptographically Verified" : "Verification Pending"}
                 </span>
               </div>
+              <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-main)', marginTop: 2 }}>
+                SHA-256 Hash-Chained Audit Ledger
+              </h2>
               <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                {auditVerification?.message || "Cryptographically linked immutable blocks recording all purchase requests, model traces, and policy decisions."}
+                {auditVerification?.message || "Cryptographically linked blocks proving all agent purchase requests, model traces, and policy decisions."}
               </p>
             </div>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span style={{ fontSize: '0.78rem', color: 'var(--text-dim)' }}>
-              Total Blocks: <strong style={{ color: '#ffffff' }}>{auditBlocks?.length || 0}</strong>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+              Total Blocks: <strong style={{ color: 'var(--text-main)' }}>{auditBlocks?.length || 0}</strong>
             </span>
             <button
               onClick={onVerifyAudit}
               disabled={isVerifying}
-              className="btn-secondary"
-              style={{ fontSize: '0.78rem', padding: '6px 12px' }}
+              className="btn-outline"
+              style={{ fontSize: '0.78rem' }}
             >
-              <RefreshCw size={14} className={isVerifying ? "pulse-glow" : ""} />
-              <span>Verify Cryptographic Chain</span>
+              <RefreshCw size={13} className={isVerifying ? "listening-pulse" : ""} />
+              <span>Verify Mathematical Chain</span>
             </button>
           </div>
         </div>
       </div>
 
       {/* Human Supervisory Escalations Queue (STEP_UP reviews) */}
-      <div className="glass-panel" style={{ padding: 20 }}>
+      <div className="wispr-card" style={{ padding: 24 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <AlertTriangle size={18} color="var(--accent-amber)" />
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-main)' }}>
               Protected Human Supervisory Escalation Queue
             </h3>
-            <span style={{
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              background: 'rgba(245, 158, 11, 0.2)',
-              color: '#fbbf24',
-              padding: '2px 7px',
-              borderRadius: 10
-            }}>
+            <span className="badge-step-up">
               {pendingApprovals?.length || 0} Pending
             </span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)' }}>Reviewer ID:</span>
+            <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--text-dim)' }}>SUPERVISOR ID:</span>
             <input
               type="text"
               value={reviewerId}
               onChange={(e) => setReviewerId(e.target.value)}
               style={{
-                background: 'rgba(0, 0, 0, 0.4)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: 6,
+                background: '#ffffff',
+                border: '1px solid var(--border-color)',
+                borderRadius: 4,
                 padding: '4px 8px',
-                color: '#ffffff',
+                color: 'var(--text-main)',
                 fontSize: '0.75rem',
                 fontFamily: 'var(--font-mono)'
               }}
@@ -127,9 +120,9 @@ export default function AuditViewer({
               <div
                 key={app.approval_id}
                 style={{
-                  background: 'rgba(245, 158, 11, 0.05)',
-                  border: '1px solid rgba(245, 158, 11, 0.3)',
-                  borderRadius: 8,
+                  background: '#FFFDF5',
+                  border: '1px solid #FDE68A',
+                  borderRadius: 6,
                   padding: '14px 16px',
                   display: 'flex',
                   alignItems: 'center',
@@ -140,20 +133,20 @@ export default function AuditViewer({
               >
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                    <span className="badge-step-up" style={{ fontSize: '0.7rem', padding: '2px 6px' }}>
+                    <span className="badge-step-up" style={{ fontSize: '0.68rem' }}>
                       STEP_UP ESCALATION
                     </span>
-                    <span className="font-mono" style={{ fontSize: '0.78rem', color: '#ffffff', fontWeight: 600 }}>
+                    <span className="font-mono" style={{ fontSize: '0.8rem', color: 'var(--text-main)', fontWeight: 700 }}>
                       {app.approval_id}
                     </span>
                     <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--text-dim)' }}>
                       Trace: {app.trace_id}
                     </span>
                   </div>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                    Merchant: <strong>{app.merchant_id}</strong> | Amount: <strong style={{ color: '#ffffff' }}>₹{app.total_amount?.toFixed(2)}</strong> | Risk Score: <strong style={{ color: '#fbbf24' }}>{app.risk_score?.toFixed(2)}</strong>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-main)' }}>
+                    Merchant: <strong>{app.merchant_id}</strong> | Amount: <strong className="font-mono" style={{ color: 'var(--accent-coral)' }}>₹{app.total_amount?.toFixed(2)}</strong> | Risk Score: <strong className="font-mono">{app.risk_score?.toFixed(2)}</strong>
                   </p>
-                  <p style={{ fontSize: '0.72rem', color: 'var(--text-dim)', marginTop: 2 }}>
+                  <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: 2 }}>
                     Trigger Reason: {app.reason}
                   </p>
                 </div>
@@ -161,24 +154,23 @@ export default function AuditViewer({
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <input
                     type="text"
-                    placeholder="Supervisory notes (optional)"
+                    placeholder="Supervisory notes"
                     value={reviewNotes}
                     onChange={(e) => setReviewNotes(e.target.value)}
                     style={{
-                      background: 'rgba(0, 0, 0, 0.4)',
-                      border: '1px solid var(--border-subtle)',
-                      borderRadius: 6,
+                      background: '#ffffff',
+                      border: '1px solid var(--border-color)',
+                      borderRadius: 4,
                       padding: '7px 10px',
-                      color: '#ffffff',
+                      color: 'var(--text-main)',
                       fontSize: '0.75rem',
-                      width: 200
+                      width: 190
                     }}
                   />
                   <button
                     onClick={() => handleResolve(app.approval_id, 'APPROVE')}
                     disabled={resolvingId === app.approval_id}
                     className="btn-approve"
-                    style={{ fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: 4 }}
                   >
                     <UserCheck size={14} />
                     <span>Authorize</span>
@@ -187,7 +179,6 @@ export default function AuditViewer({
                     onClick={() => handleResolve(app.approval_id, 'REJECT')}
                     disabled={resolvingId === app.approval_id}
                     className="btn-reject"
-                    style={{ fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: 4 }}
                   >
                     <UserX size={14} />
                     <span>Reject</span>
@@ -198,16 +189,16 @@ export default function AuditViewer({
           </div>
         ) : (
           <div style={{ padding: '16px 0', textAlign: 'center', color: 'var(--text-dim)', fontSize: '0.82rem' }}>
-            No pending human escalations. All nominal transactions evaluated automatically.
+            No pending escalations. All nominal transactions evaluated automatically.
           </div>
         )}
       </div>
 
       {/* Hash-Chained Audit Ledger Blocks List */}
-      <div className="glass-panel" style={{ padding: 20 }}>
+      <div className="wispr-card" style={{ padding: 24 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-          <Hash size={18} color="var(--accent-cyan)" />
-          <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
+          <Hash size={18} color="var(--accent-coral)" />
+          <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-main)' }}>
             Verifiable Block Chain (Chronological)
           </h3>
         </div>
@@ -223,30 +214,22 @@ export default function AuditViewer({
               <div
                 key={block.index}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  border: '1px solid var(--border-subtle)',
-                  borderRadius: 10,
+                  background: '#ffffff',
+                  border: '1px solid var(--border-color)',
+                  borderRadius: 6,
                   padding: '12px 16px',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 8,
-                  transition: 'all 0.2s ease'
+                  gap: 8
                 }}
               >
                 {/* Block Header */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{
-                      fontSize: '0.72rem',
-                      fontWeight: 700,
-                      background: 'rgba(99, 102, 241, 0.2)',
-                      color: '#a5b4fc',
-                      padding: '2px 8px',
-                      borderRadius: 4
-                    }}>
+                    <span className="badge-mono" style={{ fontWeight: 700 }}>
                       BLOCK #{block.index}
                     </span>
-                    <span className="font-mono" style={{ fontSize: '0.78rem', color: '#ffffff' }}>
+                    <span className="font-mono" style={{ fontSize: '0.78rem', color: 'var(--text-main)', fontWeight: 600 }}>
                       {block.trace_id}
                     </span>
                     <span style={{ fontSize: '0.68rem', color: 'var(--text-dim)' }}>
@@ -256,15 +239,15 @@ export default function AuditViewer({
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     {isGenesis ? (
-                      <span style={{ fontSize: '0.7rem', color: 'var(--accent-cyan)', fontWeight: 700 }}>
+                      <span className="badge-mono" style={{ color: 'var(--accent-indigo)' }}>
                         GENESIS ROOT
                       </span>
                     ) : (
                       <>
-                        <span className="font-mono" style={{ fontSize: '0.85rem', fontWeight: 700, color: '#ffffff' }}>
+                        <span className="font-mono" style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)' }}>
                           ₹{block.amount?.toFixed(2)}
                         </span>
-                        <span className={isApprove ? 'badge-approve' : isStepUp ? 'badge-step-up' : 'badge-deny'} style={{ fontSize: '0.68rem', padding: '2px 6px' }}>
+                        <span className={isApprove ? 'badge-approve' : isStepUp ? 'badge-step-up' : 'badge-deny'}>
                           {block.decision}
                         </span>
                       </>
@@ -277,10 +260,11 @@ export default function AuditViewer({
                   display: 'grid',
                   gridTemplateColumns: '1fr 1fr',
                   gap: 10,
-                  background: 'rgba(0, 0, 0, 0.3)',
-                  padding: '8px 10px',
-                  borderRadius: 6,
-                  fontSize: '0.68rem'
+                  background: 'var(--bg-subtle)',
+                  padding: '7px 10px',
+                  borderRadius: 4,
+                  fontSize: '0.68rem',
+                  border: '1px solid var(--border-color)'
                 }}>
                   <div>
                     <span style={{ color: 'var(--text-dim)', display: 'block' }}>Previous Block Hash (prev_hash):</span>
@@ -290,15 +274,15 @@ export default function AuditViewer({
                   </div>
                   <div>
                     <span style={{ color: 'var(--text-dim)', display: 'block' }}>Current Block Hash (block_hash):</span>
-                    <span className="font-mono" style={{ color: 'var(--accent-cyan)' }}>
+                    <span className="font-mono" style={{ color: 'var(--accent-coral)', fontWeight: 600 }}>
                       {block.block_hash?.slice(0, 24)}...{block.block_hash?.slice(-8)}
                     </span>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: 'var(--text-dim)' }}>
-                  <span>Agent: <strong style={{ color: 'var(--text-muted)' }}>{block.agent_id}</strong></span>
-                  <span>Merchant: <strong style={{ color: 'var(--text-muted)' }}>{block.merchant_id}</strong></span>
+                  <span>Agent: <strong style={{ color: 'var(--text-main)' }}>{block.agent_id}</strong></span>
+                  <span>Merchant: <strong style={{ color: 'var(--text-main)' }}>{block.merchant_id}</strong></span>
                   <span>Reason: <strong style={{ color: 'var(--text-muted)' }}>{block.reason_code}</strong></span>
                 </div>
               </div>

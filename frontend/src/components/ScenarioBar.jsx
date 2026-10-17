@@ -4,51 +4,51 @@ import { Play, Zap, ShieldAlert, Clock, RefreshCw, AlertOctagon, Flame } from 'l
 const SCENARIOS = [
   {
     id: 1,
-    title: "1. Nominal Purchase",
+    num: "01",
+    title: "Nominal Purchase",
     tag: "APPROVE",
     tagClass: "badge-approve",
-    icon: Zap,
-    desc: "Valid mandate, approved merchant, < ₹700"
+    desc: "Valid mandate, approved merchant, under ₹700"
   },
   {
     id: 2,
-    title: "2. Limit Exceeded",
+    num: "02",
+    title: "Limit Exceeded",
     tag: "DENY",
     tagClass: "badge-deny",
-    icon: AlertOctagon,
-    desc: "Total ₹2,200 exceeds ₹700 spending cap"
+    desc: "Total ₹2,200 exceeds authorized spending cap"
   },
   {
     id: 3,
-    title: "3. Prompt Injection",
+    num: "03",
+    title: "Prompt Injection",
     tag: "DENY",
     tagClass: "badge-deny",
-    icon: ShieldAlert,
-    desc: "Adversarial override & unapproved items"
+    desc: "Adversarial override & unapproved categories"
   },
   {
     id: 4,
-    title: "4. Expired Mandate",
+    num: "04",
+    title: "Expired Mandate",
     tag: "DENY",
     tagClass: "badge-deny",
-    icon: Clock,
-    desc: "Temporal check fails before payment"
+    desc: "Temporal check fails before payment processing"
   },
   {
     id: 5,
-    title: "5. Replay Attack",
+    num: "05",
+    title: "Replay Attack",
     tag: "DENY",
     tagClass: "badge-deny",
-    icon: RefreshCw,
-    desc: "Reused nonce & signature rejected"
+    desc: "Reused nonce & signature rejected atomically"
   },
   {
     id: 6,
-    title: "6. Behavioral Risk",
+    num: "06",
+    title: "Behavioral Risk",
     tag: "STEP_UP",
     tagClass: "badge-step-up",
-    icon: Flame,
-    desc: "ML risk engine triggers human review"
+    desc: "ML risk engine triggers human review queue"
   }
 ];
 
@@ -61,36 +61,34 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
   };
 
   return (
-    <div className="glass-panel" style={{ padding: '16px 20px', marginBottom: 24 }}>
+    <div className="wispr-card" style={{ padding: '20px 22px', marginBottom: 24, marginTop: 20 }}>
       <div style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom: 12,
+        marginBottom: 14,
         flexWrap: 'wrap',
-        gap: 10
+        gap: 12
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Play size={18} color="var(--accent-indigo)" />
-          <h2 style={{ fontSize: '0.95rem', fontWeight: 700, letterSpacing: '0.02em', color: '#ffffff' }}>
-            HACKATHON JUDGE DEMO SUITE — 6 Deterministic Scenarios
-          </h2>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--accent-coral)', fontWeight: 700 }}>
+            02 // DETERMINISTIC EVALUATION SUITE
+          </span>
+          <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>|</span>
+          <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-main)' }}>
+            6 Repeatable Hackathon Judge Scenarios
+          </span>
         </div>
         
         {/* Race test button */}
         <button
           onClick={onRunRaceTest}
           disabled={isLoading}
-          className="btn-secondary"
-          style={{
-            fontSize: '0.78rem',
-            padding: '6px 12px',
-            borderColor: 'rgba(239, 68, 68, 0.4)',
-            color: '#fca5a5'
-          }}
-          title="Fires 10 concurrent requests with the identical nonce to prove atomic race condition prevention"
+          className="btn-dark"
+          style={{ fontSize: '0.78rem' }}
+          title="Submits 10 simultaneous threads with the same nonce to demonstrate atomic lock replay protection"
         >
-          <RefreshCw size={14} className={isLoading ? "pulse-glow" : ""} />
+          <RefreshCw size={13} className={isLoading ? "listening-pulse" : ""} />
           <span>Run Concurrency Race Test (10 Threads)</span>
         </button>
       </div>
@@ -101,7 +99,6 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
         gap: 10
       }}>
         {SCENARIOS.map((s) => {
-          const Icon = s.icon;
           const isSelected = activeScenarioId === s.id;
           return (
             <button
@@ -110,32 +107,35 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
               disabled={isLoading}
               style={{
                 textAlign: 'left',
-                background: isSelected ? 'rgba(99, 102, 241, 0.2)' : 'rgba(255, 255, 255, 0.03)',
-                border: isSelected ? '1px solid rgba(99, 102, 241, 0.6)' : '1px solid var(--border-subtle)',
-                borderRadius: 10,
-                padding: '10px 12px',
+                background: isSelected ? 'var(--bg-subtle)' : '#ffffff',
+                border: isSelected ? '1px solid var(--accent-coral)' : '1px solid var(--border-color)',
+                borderRadius: 6,
+                padding: '12px 14px',
                 cursor: 'pointer',
-                transition: 'all 0.2s ease',
+                transition: 'all 0.15s ease',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 6
               }}
               onMouseEnter={(e) => {
-                if (!isSelected) e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                if (!isSelected) e.currentTarget.style.borderColor = '#B8B6AB';
               }}
               onMouseLeave={(e) => {
-                if (!isSelected) e.currentTarget.style.borderColor = 'var(--border-subtle)';
+                if (!isSelected) e.currentTarget.style.borderColor = 'var(--border-color)';
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#ffffff' }}>
-                  {s.title}
+                <span className="font-mono" style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--accent-coral)' }}>
+                  {s.num}
                 </span>
-                <span className={s.tagClass} style={{ fontSize: '0.65rem', padding: '2px 6px' }}>
+                <span className={s.tagClass}>
                   {s.tag}
                 </span>
               </div>
-              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.3 }}>
+              <span style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-main)' }}>
+                {s.title}
+              </span>
+              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.35 }}>
                 {s.desc}
               </p>
             </button>

@@ -1,173 +1,169 @@
 import React from 'react';
-import { Shield, Cpu, Lock, CheckCircle2, AlertTriangle, Layers } from 'lucide-react';
+import { Shield, Cpu, Lock, CheckCircle2 } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
   const isNebiusConfigured = healthInfo?.nebius_integration?.api_key_configured;
 
   return (
     <header style={{
-      borderBottom: '1px solid var(--border-subtle)',
-      background: 'rgba(8, 12, 20, 0.85)',
-      backdropFilter: 'blur(16px)',
+      borderBottom: '1px solid var(--border-color)',
+      background: 'rgba(250, 249, 245, 0.95)',
+      backdropFilter: 'blur(12px)',
       position: 'sticky',
       top: 0,
-      zIndex: 100,
-      padding: '12px 24px'
+      zIndex: 100
     }}>
-      <div style={{
-        maxWidth: 1400,
-        margin: '0 auto',
+      <div className="wispr-container" style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        height: 64,
         flexWrap: 'wrap',
-        gap: 16
+        gap: 12
       }}>
         {/* Brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{
-            width: 42,
-            height: 42,
-            borderRadius: 10,
-            background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
+            width: 34,
+            height: 34,
+            borderRadius: 6,
+            background: 'var(--text-main)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 4px 16px rgba(99, 102, 241, 0.4)'
+            color: '#FAF9F5'
           }}>
-            <Shield size={24} color="#ffffff" />
+            <Shield size={18} />
           </div>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontSize: '1.25rem', fontWeight: 800, letterSpacing: '0.04em', color: '#ffffff' }}>
-                FIDES
-              </span>
-              <span style={{
-                fontSize: '0.68rem',
-                fontWeight: 700,
-                background: 'rgba(99, 102, 241, 0.2)',
-                color: '#a5b4fc',
-                padding: '2px 7px',
-                borderRadius: 4,
-                border: '1px solid rgba(99, 102, 241, 0.4)'
-              }}>
-                GATEWAY v1.0
-              </span>
-            </div>
-            <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-              Trust Infrastructure for Agentic Commerce
-            </p>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ fontSize: '1.1rem', fontWeight: 800, letterSpacing: '0.04em', color: 'var(--text-main)' }}>
+              FIDES
+            </span>
+            <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>×</span>
+            <span className="font-mono" style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--accent-coral)' }}>
+              NEMOTRON 3.5
+            </span>
           </div>
         </div>
 
-        {/* Navigation Tabs */}
+        {/* Navigation Tabs (Wispr-style uppercase monospace links) */}
         <nav style={{
           display: 'flex',
-          gap: 6,
-          background: 'rgba(255, 255, 255, 0.04)',
-          padding: 4,
-          borderRadius: 10,
-          border: '1px solid var(--border-subtle)'
+          alignItems: 'center',
+          gap: 4
         }}>
+          <button
+            onClick={() => setActiveTab('about')}
+            style={{
+              background: activeTab === 'about' ? 'var(--bg-subtle)' : 'transparent',
+              color: activeTab === 'about' ? 'var(--text-main)' : 'var(--text-muted)',
+              border: activeTab === 'about' ? '1px solid var(--border-color)' : '1px solid transparent',
+              padding: '6px 12px',
+              borderRadius: 6,
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              letterSpacing: '0.04em',
+              transition: 'all 0.15s ease'
+            }}
+            className="font-mono"
+          >
+            01 / ABOUT
+          </button>
+
           <button
             onClick={() => setActiveTab('playground')}
             style={{
-              background: activeTab === 'playground' ? 'rgba(99, 102, 241, 0.25)' : 'transparent',
-              color: activeTab === 'playground' ? '#ffffff' : 'var(--text-muted)',
-              border: activeTab === 'playground' ? '1px solid rgba(99, 102, 241, 0.4)' : '1px solid transparent',
-              padding: '8px 16px',
-              borderRadius: 8,
-              fontSize: '0.85rem',
+              background: activeTab === 'playground' ? 'var(--bg-subtle)' : 'transparent',
+              color: activeTab === 'playground' ? 'var(--text-main)' : 'var(--text-muted)',
+              border: activeTab === 'playground' ? '1px solid var(--border-color)' : '1px solid transparent',
+              padding: '6px 12px',
+              borderRadius: 6,
+              fontSize: '0.78rem',
               fontWeight: 600,
               cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              transition: 'all 0.2s ease'
+              letterSpacing: '0.04em',
+              transition: 'all 0.15s ease'
             }}
+            className="font-mono"
           >
-            <span>🛒</span> Purchase Playground
+            02 / PLAYGROUND
           </button>
 
           <button
             onClick={() => setActiveTab('inspector')}
             style={{
-              background: activeTab === 'inspector' ? 'rgba(99, 102, 241, 0.25)' : 'transparent',
-              color: activeTab === 'inspector' ? '#ffffff' : 'var(--text-muted)',
-              border: activeTab === 'inspector' ? '1px solid rgba(99, 102, 241, 0.4)' : '1px solid transparent',
-              padding: '8px 16px',
-              borderRadius: 8,
-              fontSize: '0.85rem',
+              background: activeTab === 'inspector' ? 'var(--bg-subtle)' : 'transparent',
+              color: activeTab === 'inspector' ? 'var(--text-main)' : 'var(--text-muted)',
+              border: activeTab === 'inspector' ? '1px solid var(--border-color)' : '1px solid transparent',
+              padding: '6px 12px',
+              borderRadius: 6,
+              fontSize: '0.78rem',
               fontWeight: 600,
               cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              transition: 'all 0.2s ease'
+              letterSpacing: '0.04em',
+              transition: 'all 0.15s ease'
             }}
+            className="font-mono"
           >
-            <span>🔍</span> Decision Inspector
+            03 / INSPECTOR
           </button>
 
           <button
             onClick={() => setActiveTab('audit')}
             style={{
-              background: activeTab === 'audit' ? 'rgba(99, 102, 241, 0.25)' : 'transparent',
-              color: activeTab === 'audit' ? '#ffffff' : 'var(--text-muted)',
-              border: activeTab === 'audit' ? '1px solid rgba(99, 102, 241, 0.4)' : '1px solid transparent',
-              padding: '8px 16px',
-              borderRadius: 8,
-              fontSize: '0.85rem',
+              background: activeTab === 'audit' ? 'var(--bg-subtle)' : 'transparent',
+              color: activeTab === 'audit' ? 'var(--text-main)' : 'var(--text-muted)',
+              border: activeTab === 'audit' ? '1px solid var(--border-color)' : '1px solid transparent',
+              padding: '6px 12px',
+              borderRadius: 6,
+              fontSize: '0.78rem',
               fontWeight: 600,
               cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              transition: 'all 0.2s ease'
+              letterSpacing: '0.04em',
+              transition: 'all 0.15s ease'
             }}
+            className="font-mono"
           >
-            <span>⛓️</span> Audit & Review
+            04 / AUDIT LEDGER
           </button>
         </nav>
 
-        {/* Runtime Badges */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+        {/* Live Listening & Engine Status */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 6,
-            background: 'rgba(6, 182, 212, 0.1)',
-            border: '1px solid rgba(6, 182, 212, 0.25)',
-            padding: '5px 10px',
+            gap: 7,
+            background: '#ffffff',
+            border: '1px solid var(--border-color)',
+            padding: '5px 12px',
             borderRadius: 20,
-            fontSize: '0.72rem',
-            color: '#67e8f9'
+            fontSize: '0.72rem'
           }}>
-            <Cpu size={14} color="#06b6d4" />
-            <span>NVIDIA Nemotron 3.5</span>
-            <span style={{
-              width: 7,
-              height: 7,
-              borderRadius: '50%',
-              backgroundColor: '#10b981',
-              display: 'inline-block',
-              boxShadow: '0 0 8px #10b981'
-            }} />
-          </div>
-
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
-            background: 'rgba(16, 185, 129, 0.1)',
-            border: '1px solid rgba(16, 185, 129, 0.25)',
-            padding: '5px 10px',
-            borderRadius: 20,
-            fontSize: '0.72rem',
-            color: '#6ee7b7'
-          }}>
-            <Lock size={13} color="#10b981" />
-            <span>Ed25519 & Policy Engine</span>
+            <span style={{ position: 'relative', display: 'flex', width: 7, height: 7 }}>
+              <span className="listening-pulse" style={{
+                position: 'absolute',
+                display: 'inline-flex',
+                height: '100%',
+                width: '100%',
+                borderRadius: '50%',
+                backgroundColor: 'var(--accent-coral)',
+                opacity: 0.75
+              }}></span>
+              <span style={{
+                position: 'relative',
+                display: 'inline-flex',
+                borderRadius: '50%',
+                height: 7,
+                width: 7,
+                backgroundColor: 'var(--accent-coral)'
+              }}></span>
+            </span>
+            <span className="font-mono" style={{ fontWeight: 600, color: 'var(--text-main)' }}>
+              LISTENING // NEBIUS RUNTIME
+            </span>
           </div>
         </div>
       </div>
