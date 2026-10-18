@@ -2,7 +2,7 @@
   "total_benchmark_cases": 5,
   "extraction_accuracy_pct": 80.0,
   "policy_accuracy_pct": 100.0,
-  "avg_pipeline_latency_ms": 0.55,
+  "avg_pipeline_latency_ms": 0.56,
   "deterministic_scenarios_passed": 6,
   "deterministic_scenarios_total": 6,
   "model_separation_verified": true

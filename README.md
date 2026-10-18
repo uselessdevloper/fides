@@ -1,5 +1,5 @@
-# Fides — Trust Infrastructure for Agentic Commerce
-
+[![NVIDIA x Nebius Hackathon](https://img.shields.io/badge/Hackathon-NVIDIA_x_Nebius_Global_AI-76B900?logo=nvidia&logoColor=white)](https://nebiusglobalaihackathon.devpost.com/)
+[![Track: Best Apps & Agents](https://img.shields.io/badge/Track-Best_Apps_%26_Agents-purple)](https://nebiusglobalaihackathon.devpost.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python: 3.11+](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -10,7 +10,9 @@
 
 > **Fides** is a trust infrastructure and security gateway for agentic commerce that strictly **separates AI reasoning from payment authorization**.
 >
-> While **NVIDIA Nemotron** (via Nebius Token Factory) interprets unstructured buyer intent into candidate product SKUs, **Fides's deterministic policy engine** controls financial authorization, cryptographic signatures, replay protection, and spend limits.
+> Built for the **NVIDIA x Nebius Global AI Hackathon (Best Apps and Agents Track)**. While **NVIDIA Nemotron** (via Nebius Token Factory) interprets unstructured buyer intent into candidate product SKUs, **Fides's deterministic policy engine** controls financial authorization, cryptographic signatures, replay protection, and spend limits.
+>
+> 📋 **See [SUBMISSION.md](SUBMISSION.md) for the complete Devpost submission package, video script, and Nebius/NVIDIA feedback.**
 
 ---
 
@@ -184,10 +186,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 # 2. Install dependencies
-pip install -r <(cat << 'EOF'
-fastapi uvicorn pydantic pyyaml cryptography scikit-learn numpy openai pytest pytest-asyncio httpx python-dotenv
-EOF
-)
+pip install -r requirements.txt
 
 # 3. Configure environment
 cp .env.example .env
@@ -259,6 +258,27 @@ For the 3-minute hackathon video, demonstrate the workflow in this exact sequenc
 
 ---
 
-## 8. License
+---
+
+## 8. Feedback for Nebius & NVIDIA
+
+### Nebius Token Factory
+* **OpenAI SDK Drop-In Compatibility:** Switching base URL to `https://api.tokenfactory.nebius.com/v1/` and passing the API key worked instantly with zero friction.
+* **Inference Speed:** Time-to-first-token and throughput for `nvidia/Nemotron-3_5-Lightning` was remarkably fast, making it ideal for interactive agent gateways.
+* **Feature Request:** Native support for `response_format: {"type": "json_object"}` or schema constraints in Token Factory would eliminate the need for manual regex stripping in agent runtimes.
+
+### NVIDIA Nemotron
+* **Instruction Following:** Nemotron strictly respected negative security constraints ("do not set prices", "output only SKUs") with high fidelity, correctly extracting complex quantities without hallucinating bogus products.
+* **Cost & Efficiency:** Fast execution-to-size ratio allows agents to make rapid intermediate extraction calls without burning excessive compute budget.
+
+---
+
+## 9. Prior Existence Disclosure
+
+Fides was designed and implemented specifically for the **NVIDIA x Nebius Global AI Hackathon**. All backend services (Nebius Token Factory client, Nemotron intent parser, Ed25519 verification, atomic replay protection, scikit-learn risk scorer, SHA-256 audit ledger), the evaluation benchmark suite, and the editorial light theme React frontend were constructed during the hackathon submission window.
+
+---
+
+## 10. License
 
 This project is licensed under the [MIT License](LICENSE).
