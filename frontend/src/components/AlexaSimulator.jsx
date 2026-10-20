@@ -91,7 +91,32 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
       {/* Main Grid: Voice Interaction vs Live MCP Execution Trace */}
       <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: 24, alignItems: 'start' }}>
         {/* Left: Conversational Voice Prompt Bench */}
-        <div className="ghost-card" style={{ padding: 26, background: '#ffffff' }}>
+        <div className="ghost-card" style={{ padding: 26, background: '#ffffff', overflow: 'hidden' }}>
+          <div style={{
+            borderRadius: 4,
+            overflow: 'hidden',
+            marginBottom: 16,
+            height: 140,
+            border: '1px solid var(--border-hairline)',
+            position: 'relative'
+          }}>
+            <img src="/alexa_plus_device.jpg" alt="Alexa+ Terminal" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <div style={{
+              position: 'absolute',
+              bottom: 8,
+              left: 8,
+              background: 'rgba(0,0,0,0.75)',
+              padding: '3px 8px',
+              borderRadius: 2,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6
+            }}>
+              <Volume2 size={12} color="var(--ghost-blue)" />
+              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>ALEXA+ // PREVIEW RUNTIME (STREAMABLE HTTP)</span>
+            </div>
+          </div>
+
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Mic size={18} color="var(--ghost-blue)" />

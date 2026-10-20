@@ -19,6 +19,7 @@ import {
   Sliders,
   Watch
 } from 'lucide-react';
+import ContinuousCommerceLoop from './ContinuousCommerceLoop';
 
 export default function AboutSection({ onExplorePlayground, onRunScenario }) {
   const [activeCategory, setActiveCategory] = useState('HOME');
@@ -175,7 +176,13 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
         </div>
       </div>
 
-      {/* 2. DIORAMA LIVING ROOM SHOWCASE (Exact Match to Screenshot 2 & 3) */}
+      {/* 2. CONTINUOUS COMMERCE LOOP: END-TO-END AUTONOMOUS PURCHASING WALKTHROUGH */}
+      <ContinuousCommerceLoop
+        onOpenPlayground={onExplorePlayground}
+        onRunScenario={onRunScenario}
+      />
+
+      {/* 3. DIORAMA LIVING ROOM SHOWCASE (Exact Match to Screenshot 2 & 3) */}
       <div style={{
         background: '#ebebe6',
         border: '1px solid var(--border-color)',
@@ -375,92 +382,126 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
           <div style={{
             background: '#ffffff',
             border: '1px solid var(--border-hairline)',
-            padding: '16px 12px',
-            borderRadius: 2,
+            borderRadius: 4,
+            overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            gap: 10
+            boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
           }}>
-            <Bell size={28} color="var(--ghost-blue)" />
-            <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-ink)' }}>
-              RING PRO 2 (RADAR)
-            </span>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Physical Presence</span>
+            <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
+              <img src="/ring_doorbell_radar.jpg" alt="Ring Pro 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 2, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Bell size={11} color="var(--ghost-blue)" />
+                <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>RADAR</span>
+              </div>
+            </div>
+            <div style={{ padding: '10px 8px', textAlign: 'center' }}>
+              <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--text-ink)', display: 'block' }}>
+                RING PRO 2
+              </span>
+              <span style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>3D Radar Presence</span>
+            </div>
           </div>
 
           {/* Node 2: Alexa+ Voice */}
           <div style={{
             background: '#ffffff',
             border: '1px solid var(--border-hairline)',
-            padding: '16px 12px',
-            borderRadius: 2,
+            borderRadius: 4,
+            overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            gap: 10
+            boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
           }}>
-            <Radio size={28} color="var(--ghost-orange)" />
-            <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-ink)' }}>
-              ALEXA+ (MCP)
-            </span>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Voice Protocol</span>
+            <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
+              <img src="/alexa_plus_device.jpg" alt="Alexa+ Terminal" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 2, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Radio size={11} color="var(--ghost-orange)" />
+                <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>MCP</span>
+              </div>
+            </div>
+            <div style={{ padding: '10px 8px', textAlign: 'center' }}>
+              <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--text-ink)', display: 'block' }}>
+                ALEXA+ (MCP)
+              </span>
+              <span style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Spec 2025-11-25</span>
+            </div>
           </div>
 
           {/* Center Monolith Node: Fides Sovereign Core */}
           <div style={{
             background: '#111317',
             border: '2px solid var(--ghost-blue)',
-            padding: '20px 14px',
-            borderRadius: 2,
+            borderRadius: 4,
+            overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            gap: 10,
             color: '#ffffff',
-            boxShadow: '0 8px 24px rgba(22, 104, 232, 0.15)'
+            boxShadow: '0 8px 24px rgba(22, 104, 232, 0.2)'
           }}>
-            <ShieldCheck size={32} color="#ffffff" />
-            <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--ghost-blue)' }}>
-              FIDES CORE
-            </span>
-            <span style={{ fontSize: '0.65rem', color: '#888e98' }}>Air-Gapped Gateway</span>
+            <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
+              <img src="/fides_core_monolith.jpg" alt="Fides Sovereign Core" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div style={{ position: 'absolute', top: 6, left: 6, background: 'var(--ghost-blue)', borderRadius: 2, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <ShieldCheck size={11} color="#fff" />
+                <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff', fontWeight: 800 }}>CORE</span>
+              </div>
+            </div>
+            <div style={{ padding: '10px 8px', textAlign: 'center', background: '#111317' }}>
+              <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--ghost-blue)', display: 'block' }}>
+                FIDES CORE
+              </span>
+              <span style={{ fontSize: '0.62rem', color: '#888e98' }}>Air-Gapped Gateway</span>
+            </div>
           </div>
 
           {/* Node 4: Fire TV */}
           <div style={{
             background: '#ffffff',
             border: '1px solid var(--border-hairline)',
-            padding: '16px 12px',
-            borderRadius: 2,
+            borderRadius: 4,
+            overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            gap: 10
+            boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
           }}>
-            <Tv size={28} color="var(--accent-amber)" />
-            <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-ink)' }}>
-              FIRE TV (VEGA OS)
-            </span>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>10-Foot Display</span>
+            <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
+              <img src="/firetv_living_room.jpg" alt="Fire TV Vega OS" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 2, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Tv size={11} color="var(--accent-amber)" />
+                <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>10-FOOT</span>
+              </div>
+            </div>
+            <div style={{ padding: '10px 8px', textAlign: 'center' }}>
+              <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--text-ink)', display: 'block' }}>
+                FIRE TV (VEGA)
+              </span>
+              <span style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Living Room Display</span>
+            </div>
           </div>
 
           {/* Node 5: Bee Wearable AI */}
           <div style={{
             background: '#ffffff',
             border: '1px solid var(--border-hairline)',
-            padding: '16px 12px',
-            borderRadius: 2,
+            borderRadius: 4,
+            overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            gap: 10
+            boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
           }}>
-            <Watch size={28} color="var(--accent-purple)" />
-            <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-ink)' }}>
-              BEE WEARABLE AI
-            </span>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>On-Wrist Haptic HUD</span>
+            <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
+              <img src="/bee_wearable_wrist.jpg" alt="Bee Wearable AI" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 2, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Watch size={11} color="var(--accent-purple)" />
+                <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>HAPTIC</span>
+              </div>
+            </div>
+            <div style={{ padding: '10px 8px', textAlign: 'center' }}>
+              <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--text-ink)', display: 'block' }}>
+                BEE WEARABLE
+              </span>
+              <span style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>On-Wrist Haptic HUD</span>
+            </div>
           </div>
         </div>
 

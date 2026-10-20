@@ -211,7 +211,32 @@ export default function LivingRoomDashboard() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 20, alignItems: 'start' }}>
         
         {/* Card 1: Fire TV 10-Foot Living Room Display */}
-        <div className="ghost-card" style={{ padding: 22, background: '#ffffff' }}>
+        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden' }}>
+          <div style={{
+            borderRadius: 4,
+            overflow: 'hidden',
+            marginBottom: 14,
+            height: 120,
+            border: '1px solid var(--border-hairline)',
+            position: 'relative'
+          }}>
+            <img src="/firetv_living_room.jpg" alt="Fire TV Living Room" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <div style={{
+              position: 'absolute',
+              bottom: 8,
+              left: 8,
+              background: 'rgba(0,0,0,0.75)',
+              padding: '3px 8px',
+              borderRadius: 2,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6
+            }}>
+              <Tv size={12} color="var(--ghost-orange)" />
+              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>LIVING ROOM // VEGA OS</span>
+            </div>
+          </div>
+
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Tv size={18} color="var(--ghost-orange)" />
@@ -296,7 +321,32 @@ export default function LivingRoomDashboard() {
         </div>
 
         {/* Card 2: Ring Video Doorbell & Radar Access */}
-        <div className="ghost-card" style={{ padding: 22, background: '#ffffff' }}>
+        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden' }}>
+          <div style={{
+            borderRadius: 4,
+            overflow: 'hidden',
+            marginBottom: 14,
+            height: 120,
+            border: '1px solid var(--border-hairline)',
+            position: 'relative'
+          }}>
+            <img src="/ring_doorbell_radar.jpg" alt="Ring Doorbell Porch" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <div style={{
+              position: 'absolute',
+              bottom: 8,
+              left: 8,
+              background: 'rgba(0,0,0,0.75)',
+              padding: '3px 8px',
+              borderRadius: 2,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6
+            }}>
+              <Bell size={12} color="var(--ghost-blue)" />
+              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>FRONT DOOR // 3D RADAR</span>
+            </div>
+          </div>
+
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Bell size={18} color="var(--ghost-blue)" />
@@ -342,7 +392,32 @@ export default function LivingRoomDashboard() {
         </div>
 
         {/* Card 3: Bee Wearable AI Wristband */}
-        <div className="ghost-card" style={{ padding: 22, background: '#ffffff' }}>
+        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden' }}>
+          <div style={{
+            borderRadius: 4,
+            overflow: 'hidden',
+            marginBottom: 14,
+            height: 120,
+            border: '1px solid var(--border-hairline)',
+            position: 'relative'
+          }}>
+            <img src="/bee_wearable_wrist.jpg" alt="Bee Wearable Band" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <div style={{
+              position: 'absolute',
+              bottom: 8,
+              left: 8,
+              background: 'rgba(0,0,0,0.75)',
+              padding: '3px 8px',
+              borderRadius: 2,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6
+            }}>
+              <Watch size={12} color="var(--accent-purple)" />
+              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>ON-WRIST // LRA HAPTICS</span>
+            </div>
+          </div>
+
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Watch size={18} color="var(--ghost-blue)" />
