@@ -7,6 +7,7 @@ import DecisionInspector from './components/DecisionInspector';
 import AuditViewer from './components/AuditViewer';
 import AlexaSimulator from './components/AlexaSimulator';
 import LivingRoomDashboard from './components/LivingRoomDashboard';
+import HackathonSubmission from './components/HackathonSubmission';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('about');
@@ -319,6 +320,13 @@ export default function App() {
             isVerifying={isVerifying}
           />
         )}
+
+        {activeTab === 'hackathon' && (
+          <HackathonSubmission
+            healthInfo={healthInfo}
+            onRunScenario={handleRunScenario}
+          />
+        )}
       </main>
 
       {/* Ghost Core Retro Minimal Footer */}
@@ -339,11 +347,11 @@ export default function App() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span className="font-mono" style={{ fontWeight: 800, color: 'var(--text-ink)', letterSpacing: '0.06em' }}>FIDES // CORE</span>
             <span style={{ color: 'var(--text-dim)' }}>—</span>
-            <span>Trust Infrastructure for Ambient & Agentic Commerce</span>
+            <span>Trust Infrastructure for Fire TV, Alexa+, Ring & Bee Wearable AI</span>
           </div>
 
           <div className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', letterSpacing: '0.06em' }}>
-            ALEXA+ STREAMABLE MCP (2025-11-25) × RING RADAR × FIRE TV × NEMOTRON
+            ALEXA+ MCP (2025-11-25) × RING RADAR × FIRE TV × BEE WEARABLE × AWS BEDROCK
           </div>
         </div>
       </footer>

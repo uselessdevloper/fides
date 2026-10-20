@@ -11,6 +11,7 @@ from backend.services.demo_scenarios import create_demo_mandate, create_signed_r
 from backend.services.ring_service import ring_service
 from backend.services.aws_bedrock import bedrock_client
 from backend.services.catalogue_service import catalogue_service
+from backend.services.bee_service import bee_service
 
 MCP_SPEC_VERSION = "2025-11-25"
 SERVER_NAME = "fides-alexa-mcp-server"
@@ -19,7 +20,7 @@ SERVER_VERSION = "1.0.0"
 class AlexaMCPServer:
     """
     Official Model Context Protocol (MCP) Server implementing Spec 2025-11-25
-    over Streamable HTTP for Alexa+ Voice Agent integration.
+    over Streamable HTTP for Alexa+, Ring, Fire TV, and Bee Wearable AI.
     """
     def __init__(self):
         self.tools = [
@@ -86,6 +87,30 @@ class AlexaMCPServer:
                         "total_amount": {"type": "number", "description": "Amount in INR to confirm"}
                     },
                     "required": ["trace_id", "summary", "total_amount"]
+                }
+            },
+            {
+                "name": "bee_wrist_haptic_confirm",
+                "description": "Sends a double-pulse haptic vibration to the user's Bee Wearable AI band or Apple Watch, requesting physical tap step-up authorization.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "trace_id": {"type": "string", "description": "Fides transaction trace ID"},
+                        "summary": {"type": "string", "description": "Short purchase description"},
+                        "amount": {"type": "number", "description": "Purchase total in INR"}
+                    },
+                    "required": ["trace_id", "summary", "amount"]
+                }
+            },
+            {
+                "name": "bee_capture_intent",
+                "description": "Processes voice notes, ambient memos, and purchase intentions captured through the Bee Wearable microphone.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "memo_text": {"type": "string", "description": "Transcript of the ambient voice memo from Bee wearable"}
+                    },
+                    "required": ["memo_text"]
                 }
             }
         ]
@@ -248,6 +273,52 @@ class AlexaMCPServer:
                                     "notification_id": notification["notification_id"],
                                     "display_target": "Living Room Fire TV Stick 4K Max",
                                     "message": f"Approval card displayed on TV screen for {summary} (₹{amount})."
+                                }, indent=2)
+                            }
+                        ]
+                    }
+                }
+
+            elif tool_name == "bee_wrist_haptic_confirm":
+                trace_id = args.get("trace_id")
+                summary = args.get("summary")
+                amount = float(args.get("amount", 0.0))
+                prompt = bee_service.push_wrist_haptic_confirmation(trace_id, summary, amount)
+                return {
+                    "jsonrpc": "2.0",
+                    "id": msg_id,
+                    "result": {
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": json.dumps({
+                                    "pushed_to_bee_wearable": True,
+                                    "prompt_id": prompt["prompt_id"],
+                                    "haptic_pattern": prompt["pattern"],
+                                    "device": bee_service.device_model,
+                                    "message": f"Double-pulse haptic sent to wrist for {summary} (₹{amount}). Awaiting physical tap."
+                                }, indent=2)
+                            }
+                        ]
+                    }
+                }
+
+            elif tool_name == "bee_capture_intent":
+                memo_text = args.get("memo_text", "")
+                memo = bee_service.record_voice_memo(memo_text, "commerce_authorization")
+                return {
+                    "jsonrpc": "2.0",
+                    "id": msg_id,
+                    "result": {
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": json.dumps({
+                                    "captured": True,
+                                    "memo_id": memo["memo_id"],
+                                    "transcript": memo["transcript"],
+                                    "intent": memo["intent_detected"],
+                                    "processed_by": memo["processed_by"]
                                 }, indent=2)
                             }
                         ]

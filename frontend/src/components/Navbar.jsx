@@ -7,10 +7,11 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
   const navItems = [
     { id: 'about', label: '01 / OVERVIEW' },
     { id: 'alexa', label: '02 / ALEXA+ MCP' },
-    { id: 'livingroom', label: '03 / LIVING ROOM & RING' },
+    { id: 'livingroom', label: '03 / LIVING ROOM, RING & BEE' },
     { id: 'playground', label: '04 / PLAYGROUND' },
     { id: 'inspector', label: '05 / INSPECTOR' },
-    { id: 'audit', label: '06 / AUDIT' }
+    { id: 'audit', label: '06 / AUDIT' },
+    { id: 'hackathon', label: '07 / HACKATHON BRIEF' }
   ];
 
   return (
@@ -38,7 +39,7 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
           fontFamily: 'var(--font-heading)'
         }}>
           <span>
-            FIDES LAUNCHES AMBIENT TRUST CORE FOR ALEXA+, RING & FIRE TV — EVALUATION READY
+            FIDES LAUNCHES AMBIENT TRUST CORE FOR FIRE TV, ALEXA+, RING & BEE WEARABLE AI — SPEC 2025-11-25 READY
           </span>
           <button
             onClick={() => setShowBanner(false)}

@@ -16,7 +16,8 @@ import {
   ExternalLink,
   Wifi,
   Eye,
-  Sliders
+  Sliders,
+  Watch
 } from 'lucide-react';
 
 export default function AboutSection({ onExplorePlayground, onRunScenario }) {
@@ -444,7 +445,7 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>10-Foot Display</span>
           </div>
 
-          {/* Node 5: Nebius / Nemotron */}
+          {/* Node 5: Bee Wearable AI */}
           <div style={{
             background: '#ffffff',
             border: '1px solid var(--border-hairline)',
@@ -455,11 +456,11 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             alignItems: 'center',
             gap: 10
           }}>
-            <Cpu size={28} color="var(--accent-emerald)" />
+            <Watch size={28} color="var(--accent-purple)" />
             <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-ink)' }}>
-              NVIDIA NEMOTRON
+              BEE WEARABLE AI
             </span>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Nebius Token Factory</span>
+            <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>On-Wrist Haptic HUD</span>
           </div>
         </div>
 

@@ -2,18 +2,19 @@ import os
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.api import purchases, approvals, audit, demo, alexa, ring, firetv
+from backend.api import purchases, approvals, audit, demo, alexa, ring, firetv, bee
 from backend.services.nebius_client import nebius_client
 from backend.services.audit_ledger import audit_ledger
 from backend.services.aws_bedrock import bedrock_client
 from backend.services.ring_service import ring_service
+from backend.services.bee_service import bee_service
 from backend.api.firetv import firetv_state
 
 load_dotenv()
 
 app = FastAPI(
-    title="Fides — Ambient Commerce for Alexa+, Ring & Fire TV",
-    description="Security gateway separating AI intent reasoning (Alexa+ via MCP & AWS Bedrock) from deterministic payment authorization.",
+    title="Fides — Ambient Trust Gateway for Alexa+, Ring, Fire TV & Bee",
+    description="Security gateway separating AI intent reasoning (Alexa+, Bee, Nemotron via MCP & Bedrock) from deterministic payment authorization.",
     version="2.0.0"
 )
 
@@ -38,6 +39,7 @@ app.add_middleware(
 app.include_router(alexa.router)
 app.include_router(ring.router)
 app.include_router(firetv.router)
+app.include_router(bee.router)
 app.include_router(purchases.router)
 app.include_router(approvals.router)
 app.include_router(audit.router)
@@ -47,7 +49,7 @@ app.include_router(demo.router)
 def health_check():
     """
     Service health check returning Alexa+ MCP, AWS Bedrock, Ring IoT,
-    and audit ledger integrity status.
+    Fire TV, Bee Wearable AI, and audit ledger integrity status.
     """
     chain_valid, chain_msg = audit_ledger.verify_chain()
     has_nebius_key = bool(nebius_client.api_key and not nebius_client.api_key.startswith("your_"))
@@ -60,7 +62,7 @@ def health_check():
             "spec_version": "2025-11-25",
             "endpoint": "/mcp",
             "transport": "Streamable HTTP & SSE (/mcp/events)",
-            "tools_count": 4
+            "tools_count": 6
         },
         "aws_bedrock": {
             "region": bedrock_client.region_name,
@@ -76,6 +78,12 @@ def health_check():
         "fire_tv": {
             "status": "ACTIVE_10_FOOT_MODE",
             "target": "Living Room Fire TV (Vega / Fire OS)"
+        },
+        "bee_wearable": {
+            "status": "CONNECTED_BLE_MESH",
+            "device": bee_service.device_model,
+            "battery": f"{bee_service.battery_level}%",
+            "haptic_engine": "ACTIVE_LRA_HAPTIC"
         },
         "nebius_integration": {
             "model": nebius_client.model,

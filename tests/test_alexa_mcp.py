@@ -27,6 +27,8 @@ def test_mcp_tools_list():
     assert "fides_check_mandate" in tool_names
     assert "ring_verify_presence" in tool_names
     assert "firetv_push_approval" in tool_names
+    assert "bee_wrist_haptic_confirm" in tool_names
+    assert "bee_capture_intent" in tool_names
 
 def test_mcp_ring_presence_tool_call():
     res = mcp_server.handle_json_rpc({

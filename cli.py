@@ -279,6 +279,45 @@ def cmd_ring():
     print(f"Radar:    {status['presence_mode']}")
     print(f"Events:   {len(ring_service.get_recent_events())} logged")
 
+def cmd_bee_status():
+    """Check Bee Wearable AI device status and biometric telemetry."""
+    print_banner()
+    from backend.services.bee_service import bee_service
+    status = bee_service.get_status()
+    print(f"Device:     {BOLD}{status['device_model']}{RESET}")
+    print(f"Status:     {GREEN}{status['connection_status']}{RESET}")
+    print(f"Battery:    {status['battery_level']}%")
+    print(f"Haptic LRA: {status['haptic_engine']}")
+    print(f"Mic State:  {status['microphone_state']}")
+    print(f"Memos Logged: {status['total_memos_recorded']}")
+
+def cmd_bee_record(text: str):
+    """Simulate ambient voice memo / purchase intent recorded on Bee Wearable."""
+    print_banner()
+    from backend.services.bee_service import bee_service
+    memo = bee_service.record_voice_memo(text)
+    print(f"{GREEN}✓ Bee Wearable Voice Memo Recorded!{RESET}")
+    print(f"Memo ID:    {BOLD}{memo['memo_id']}{RESET}")
+    print(f"Transcript: \"{memo['transcript']}\"")
+    print(f"Duration:   {memo['audio_duration_sec']}s")
+    print(f"Intent:     {CYAN}{memo['intent_detected']}{RESET}")
+    print(f"Engine:     {memo['processed_by']}")
+
+def cmd_bee_haptic():
+    """Trigger wearable double-pulse haptic confirmation on wristband."""
+    print_banner()
+    from backend.services.bee_service import bee_service
+    prompt = bee_service.push_wrist_haptic_confirmation(
+        trace_id=f"TRC_{int(time.time())}",
+        summary="Organic Whole Milk & Coffee Beans",
+        amount=640.0
+    )
+    print(f"{GREEN}✓ Haptic Step-Up Authorization Sent to Wrist!{RESET}")
+    print(f"Prompt ID: {BOLD}{prompt['prompt_id']}{RESET}")
+    print(f"Pattern:   {YELLOW}{prompt['pattern']}{RESET}")
+    print(f"Status:    {prompt['status']}")
+    print(f"Summary:   {prompt['summary']} (₹{prompt['amount']})")
+
 def main():
     parser = argparse.ArgumentParser(description="Fides CLI — Trust Infrastructure for Agentic Commerce")
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
@@ -289,6 +328,12 @@ def main():
     
     # ring
     subparsers.add_parser("ring", help="Check Ring Doorbell & radar presence telemetry")
+
+    # bee
+    subparsers.add_parser("bee-status", help="Check Bee Wearable AI device status")
+    p_bee_rec = subparsers.add_parser("bee-record", help="Record ambient voice intent via Bee Wearable")
+    p_bee_rec.add_argument("text", help="Voice memo text captured on Bee")
+    subparsers.add_parser("bee-haptic", help="Push wearable haptic step-up authorization to wrist")
     
     # set-key
     p_key = subparsers.add_parser("set-key", help="Save Nebius Token Factory API key to .env")
@@ -319,6 +364,12 @@ def main():
         cmd_alexa(args.prompt)
     elif args.command == "ring":
         cmd_ring()
+    elif args.command == "bee-status":
+        cmd_bee_status()
+    elif args.command == "bee-record":
+        cmd_bee_record(args.text)
+    elif args.command == "bee-haptic":
+        cmd_bee_haptic()
     elif args.command == "set-key":
         cmd_set_key(args.api_key)
     elif args.command == "test-connection":
