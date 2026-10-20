@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mic, Send, Volume2, ShieldCheck, Cpu, ArrowRight, Sparkles, RefreshCw, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { Mic, Send, Volume2, ShieldCheck, Cpu, ArrowRight, Sparkles, RefreshCw, AlertTriangle, CheckCircle2, Terminal } from 'lucide-react';
 
 const ALEXA_PRESET_PROMPTS = [
   "Alexa, order two cartons of organic whole milk under ₹700.",
@@ -52,37 +52,38 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {/* Top Banner: Alexa+ MCP Architecture */}
-      <div className="wispr-card" style={{ padding: '24px 26px' }}>
+      <div className="ghost-card" style={{ padding: '24px 26px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-              <span className="font-mono" style={{ fontSize: '0.72rem', color: '#00A8E8', fontWeight: 700 }}>
+              <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-cyan)', fontWeight: 700, letterSpacing: '0.08em' }}>
                 ALEXA+ // STREAMABLE HTTP MCP (SPEC 2025-11-25)
               </span>
-              <span className="badge-mono" style={{ color: '#059669', borderColor: '#BBF7D0' }}>
+              <span className="badge-mono" style={{ color: 'var(--ghost-emerald)', borderColor: 'rgba(0, 245, 155, 0.3)' }}>
                 ENDPOINT: /mcp
               </span>
             </div>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-main)' }}>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.02em' }}>
               Alexa+ Ambient Voice Gateway Simulator
             </h2>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', maxWidth: 760, marginTop: 4 }}>
-              Experience how brands in Preview integrate with <strong>Alexa+</strong> using the official <strong>Model Context Protocol (MCP)</strong>. Alexa+ calls self-hosted MCP tools to verify Ring physical presence, evaluate spending limits, and route step-ups to Fire TV.
+            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', maxWidth: 780, marginTop: 4 }}>
+              Demonstrating the official Amazon Developer Preview integration for <strong>Alexa+</strong> using the <strong>Model Context Protocol (MCP)</strong>. Alexa+ calls our self-hosted MCP tools to verify Ring physical presence, evaluate spending limits, and route step-ups to Fire TV.
             </p>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{
-              width: 44,
-              height: 44,
+              width: 48,
+              height: 48,
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, #00A8E8 0%, #007EA7 100%)',
+              background: 'radial-gradient(circle, rgba(158, 240, 255, 0.25) 0%, rgba(0, 141, 238, 0.1) 70%)',
+              border: '1px solid rgba(158, 240, 255, 0.35)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 0 16px rgba(0, 168, 232, 0.45)'
+              boxShadow: '0 0 24px rgba(0, 141, 238, 0.4)'
             }}>
-              <Volume2 size={22} color="#ffffff" />
+              <Volume2 size={22} color="var(--ghost-cyan)" />
             </div>
           </div>
         </div>
@@ -91,58 +92,65 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
       {/* Main Grid: Voice Interaction vs Live MCP Execution Trace */}
       <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: 24, alignItems: 'start' }}>
         {/* Left: Conversational Voice Prompt Bench */}
-        <div className="wispr-card" style={{ padding: 26 }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+        <div className="ghost-card" style={{ padding: 26 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Mic size={17} color="#00A8E8" />
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)' }}>
+              <Mic size={18} color="var(--ghost-cyan)" />
+              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#ffffff' }}>
                 Speak to Alexa+
               </h3>
             </div>
-            <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)' }}>
-              AWS BEDROCK REASONING
-            </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <span className="wave-bar"></span>
+              <span className="wave-bar"></span>
+              <span className="wave-bar"></span>
+              <span className="wave-bar"></span>
+            </div>
           </div>
 
           {/* Quick Presets */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 18 }}>
-            <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)' }}>
-              PRELOADED HACKATHON TEST CASES:
+            <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', letterSpacing: '0.06em' }}>
+              HACKATHON BENCHMARK CASES:
             </span>
-            {ALEXA_PRESET_PROMPTS.map((p, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => handlePresetSelect(idx, p)}
-                disabled={isLoading}
-                style={{
-                  textAlign: 'left',
-                  background: activePresetIndex === idx ? '#F0F9FF' : '#ffffff',
-                  border: activePresetIndex === idx ? '1px solid #00A8E8' : '1px solid var(--border-color)',
-                  borderRadius: 6,
-                  padding: '10px 12px',
-                  fontSize: '0.8rem',
-                  color: 'var(--text-main)',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: 8,
-                  transition: 'all 0.15s ease'
-                }}
-              >
-                <span>"{p}"</span>
-                <span className="font-mono" style={{ fontSize: '0.65rem', color: '#00A8E8', fontWeight: 700, flexShrink: 0 }}>
-                  Case #{idx + 1}
-                </span>
-              </button>
-            ))}
+            {ALEXA_PRESET_PROMPTS.map((p, idx) => {
+              const isSelected = activePresetIndex === idx;
+              return (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => handlePresetSelect(idx, p)}
+                  disabled={isLoading}
+                  style={{
+                    textAlign: 'left',
+                    background: isSelected ? 'rgba(0, 141, 238, 0.12)' : 'rgba(4, 8, 14, 0.75)',
+                    border: isSelected ? '1px solid var(--ghost-cyan)' : '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: 4,
+                    padding: '10px 14px',
+                    fontSize: '0.8rem',
+                    color: isSelected ? '#ffffff' : 'var(--text-muted)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: 8,
+                    transition: 'all 0.18s ease',
+                    boxShadow: isSelected ? '0 0 16px rgba(0, 141, 238, 0.18)' : 'none'
+                  }}
+                >
+                  <span style={{ fontFamily: 'var(--font-sans)' }}>"{p}"</span>
+                  <span className="font-mono" style={{ fontSize: '0.65rem', color: 'var(--ghost-cyan)', fontWeight: 700, flexShrink: 0 }}>
+                    Case #{idx + 1}
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Custom Prompt Box */}
           <div style={{ marginBottom: 16 }}>
-            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: 6 }}>
-              Custom Voice Prompt
+            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#ffffff', marginBottom: 6 }}>
+              Custom Voice Dialogue Prompt
             </label>
             <textarea
               value={prompt}
@@ -151,18 +159,16 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
               placeholder="e.g. Alexa, order two cartons of organic whole milk under ₹700"
               style={{
                 width: '100%',
-                background: '#ffffff',
-                border: '1px solid var(--border-color)',
-                borderRadius: 6,
+                background: 'rgba(3, 7, 13, 0.95)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                borderRadius: 4,
                 padding: '12px 14px',
                 fontSize: '0.88rem',
                 fontFamily: 'var(--font-sans)',
-                color: 'var(--text-main)',
+                color: '#ffffff',
                 resize: 'vertical',
                 outline: 'none'
               }}
-              onFocus={(e) => e.target.style.borderColor = '#00A8E8'}
-              onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
             />
           </div>
 
@@ -170,8 +176,8 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
             <button
               onClick={() => handleSimulate()}
               disabled={isLoading || !prompt.trim()}
-              className="btn-coral"
-              style={{ flex: 1, justifyContent: 'center', padding: '12px 20px', background: '#00A8E8' }}
+              className="btn-ghost-primary"
+              style={{ flex: 1, justifyContent: 'center', padding: '12px 20px' }}
             >
               {isLoading ? (
                 <>
@@ -191,25 +197,25 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
           {alexaResult && (
             <div style={{
               marginTop: 20,
-              background: '#F8FAFC',
-              border: '1px solid #E2E8F0',
-              borderRadius: 8,
+              background: 'rgba(0, 141, 238, 0.08)',
+              border: '1px solid rgba(0, 141, 238, 0.3)',
+              borderRadius: 6,
               padding: '16px 18px',
-              borderLeft: '4px solid #00A8E8'
+              borderLeft: '4px solid var(--ghost-cyan)'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                 <div style={{
-                  width: 10,
-                  height: 10,
+                  width: 8,
+                  height: 8,
                   borderRadius: '50%',
-                  background: '#00A8E8',
-                  boxShadow: '0 0 8px #00A8E8'
+                  background: 'var(--ghost-cyan)',
+                  boxShadow: '0 0 10px var(--ghost-cyan)'
                 }} />
-                <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, color: '#007EA7' }}>
+                <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--ghost-cyan)', letterSpacing: '0.06em' }}>
                   ALEXA+ SPOKEN AUDIO RESPONSE
                 </span>
               </div>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-main)', lineHeight: 1.55 }}>
+              <p style={{ fontSize: '0.9rem', color: '#ffffff', lineHeight: 1.55 }}>
                 "{alexaResult.alexa_response_text}"
               </p>
             </div>
@@ -217,16 +223,16 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
         </div>
 
         {/* Right: Live MCP Tool Execution Trace */}
-        <div className="wispr-card" style={{ padding: 26 }}>
+        <div className="ghost-card" style={{ padding: 26 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Cpu size={17} color="var(--accent-coral)" />
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)' }}>
+              <Terminal size={17} color="var(--ghost-cyan)" />
+              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#ffffff' }}>
                 MCP Protocol Execution Trace
               </h3>
             </div>
-            <span className="badge-mono" style={{ fontSize: '0.68rem' }}>
-              JSON-RPC 2.0
+            <span className="badge-mono" style={{ fontSize: '0.68rem', color: 'var(--ghost-ice-blue)' }}>
+              JSON-RPC 2.0 // STREAM
             </span>
           </div>
 
@@ -236,29 +242,29 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {/* Step 1: Ring Presence */}
-            <div className="wispr-inset" style={{ padding: '12px 14px' }}>
+            <div className="ghost-inset" style={{ padding: '14px 16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
-                <span className="font-mono" style={{ fontSize: '0.7rem', fontWeight: 700, color: '#00A8E8' }}>
+                <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--ghost-cyan)' }}>
                   01 // ring_verify_presence
                 </span>
                 <span className="badge-approve" style={{ fontSize: '0.62rem' }}>
-                  VERIFIED
+                  RADAR VERIFIED
                 </span>
               </div>
-              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                 Checks Ring Doorbell 3D radar & Z-Wave RSSI home boundary.
               </p>
               {alexaResult?.ring_presence && (
-                <code className="font-mono" style={{ display: 'block', fontSize: '0.65rem', color: '#059669', marginTop: 4 }}>
+                <code className="font-mono" style={{ display: 'block', fontSize: '0.68rem', color: 'var(--ghost-emerald)', marginTop: 6 }}>
                   Token: {alexaResult.ring_presence.token_id} (Confidence: 98%)
                 </code>
               )}
             </div>
 
             {/* Step 2: Fides Evaluate */}
-            <div className="wispr-inset" style={{ padding: '12px 14px' }}>
+            <div className="ghost-inset" style={{ padding: '14px 16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
-                <span className="font-mono" style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--accent-coral)' }}>
+                <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--ghost-ember-orange)' }}>
                   02 // fides_evaluate_purchase
                 </span>
                 {alexaResult ? (
@@ -269,20 +275,20 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
                   <span className="badge-mono" style={{ fontSize: '0.62rem' }}>READY</span>
                 )}
               </div>
-              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                 AWS Bedrock parses items; Fides deterministically enforces spending caps and Ed25519 signatures.
               </p>
               {alexaResult?.fides_evaluation && (
-                <div style={{ marginTop: 4, fontSize: '0.68rem', color: 'var(--text-main)' }}>
-                  Total: <strong>₹{alexaResult.fides_evaluation.calculated_total.toFixed(2)}</strong> / Cap: ₹{alexaResult.fides_evaluation.spending_cap.toFixed(2)}
+                <div style={{ marginTop: 6, fontSize: '0.72rem', color: '#ffffff' }}>
+                  Total: <strong style={{ color: 'var(--ghost-cyan)' }}>₹{alexaResult.fides_evaluation.calculated_total.toFixed(2)}</strong> / Cap: ₹{alexaResult.fides_evaluation.spending_cap.toFixed(2)}
                 </div>
               )}
             </div>
 
             {/* Step 3: Fire TV Push (If Step-Up) */}
-            <div className="wispr-inset" style={{ padding: '12px 14px' }}>
+            <div className="ghost-inset" style={{ padding: '14px 16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
-                <span className="font-mono" style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--accent-indigo)' }}>
+                <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--ghost-electric-blue)' }}>
                   03 // firetv_push_approval
                 </span>
                 {alexaResult?.decision === 'STEP_UP' ? (
@@ -291,7 +297,7 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
                   <span className="badge-mono" style={{ fontSize: '0.62rem' }}>AUTO-SETTLED</span>
                 )}
               </div>
-              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                 Living room visual step-up confirmation on Fire TV (Vega / Fire OS).
               </p>
             </div>

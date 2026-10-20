@@ -226,28 +226,35 @@ export default function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-primary)' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-void)' }}>
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         healthInfo={healthInfo}
       />
 
-      {/* Toast notification */}
+      {/* Toast notification with Ghost dark glass styling */}
       {toastMessage && (
         <div style={{
           position: 'fixed',
           bottom: 24,
           right: 24,
-          background: toastMessage.type === 'error' ? '#DC2626' : toastMessage.type === 'warn' ? '#D97706' : '#059669',
+          background: 'rgba(10, 16, 26, 0.95)',
           color: '#ffffff',
           padding: '12px 18px',
-          borderRadius: 6,
-          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
+          borderRadius: 4,
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.7)',
           zIndex: 1000,
           fontSize: '0.85rem',
           fontWeight: 600,
-          border: '1px solid rgba(255, 255, 255, 0.2)'
+          border: `1px solid ${
+            toastMessage.type === 'error'
+              ? 'var(--ghost-crimson)'
+              : toastMessage.type === 'warn'
+                ? 'var(--ghost-amber)'
+                : 'var(--ghost-emerald)'
+          }`,
+          backdropFilter: 'blur(16px)'
         }}>
           {toastMessage.msg}
         </div>
@@ -314,11 +321,11 @@ export default function App() {
         )}
       </main>
 
-      {/* Footer */}
+      {/* Ghost.ai Minimalist Void Footer */}
       <footer style={{
-        borderTop: '1px solid var(--border-color)',
-        padding: '22px 0',
-        background: '#FAF9F5',
+        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+        padding: '24px 0',
+        background: 'rgba(0, 5, 10, 0.95)',
         fontSize: '0.78rem',
         color: 'var(--text-muted)'
       }}>
@@ -330,17 +337,16 @@ export default function App() {
           gap: 12
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span className="font-mono" style={{ fontWeight: 700, color: 'var(--text-main)' }}>FIDES // GATEWAY</span>
-            <span>—</span>
-            <span>Trust Infrastructure for Agentic Commerce & Payment Authorization</span>
+            <span className="font-mono" style={{ fontWeight: 800, color: '#ffffff', letterSpacing: '0.06em' }}>FIDES // GATEWAY</span>
+            <span style={{ color: 'rgba(255, 255, 255, 0.2)' }}>—</span>
+            <span>Trust Infrastructure for Agentic & Ambient Commerce</span>
           </div>
 
-          <div className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--text-dim)' }}>
-            NVIDIA NEMOTRON 3.5 LIGHTNING × NEBIUS TOKEN FACTORY
+          <div className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-cyan)', letterSpacing: '0.06em' }}>
+            ALEXA+ MCP (2025-11-25) × RING RADAR × FIRE TV × NEMOTRON
           </div>
         </div>
       </footer>
     </div>
   );
 }
-

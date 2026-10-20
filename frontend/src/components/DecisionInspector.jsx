@@ -15,21 +15,21 @@ import {
 export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScenario }) {
   if (!decision) {
     return (
-      <div className="wispr-card" style={{ padding: '52px 32px', textAlign: 'center', margin: '20px 0' }}>
-        <ShieldCheck size={44} color="var(--accent-coral)" style={{ margin: '0 auto 16px', opacity: 0.85 }} />
-        <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: 8 }}>
+      <div className="ghost-card" style={{ padding: '52px 32px', textAlign: 'center', margin: '20px 0' }}>
+        <ShieldCheck size={44} color="var(--ghost-cyan)" style={{ margin: '0 auto 16px', opacity: 0.9 }} />
+        <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#ffffff', marginBottom: 8 }}>
           No Purchase Decision Evaluated Yet
         </h3>
-        <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', maxWidth: 540, margin: '0 auto 22px', lineHeight: 1.6 }}>
+        <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', maxWidth: 540, margin: '0 auto 24px', lineHeight: 1.6 }}>
           Run an automated evaluation or submit a prompt from the Playground to see the cryptographic, model, and policy verification trace side-by-side.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 12 }}>
           <button
             onClick={onRunDemoScenario}
-            className="btn-coral"
-            style={{ padding: '10px 20px', fontSize: '0.85rem' }}
+            className="btn-ghost-primary"
+            style={{ padding: '10px 22px', fontSize: '0.82rem' }}
           >
-            <span>Run Sample Scenario #1 (Instant Demo)</span>
+            <span>Run Benchmark Scenario #1 (Instant Demo)</span>
           </button>
         </div>
       </div>
@@ -100,26 +100,35 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      {/* Top Banner: Decision Outcome */}
+      {/* Top Banner: Decision Outcome with Ghost glow */}
       <div
-        className="wispr-card"
+        className="ghost-card"
         style={{
-          padding: '22px 26px',
-          borderLeft: `5px solid ${isApproved ? 'var(--accent-emerald)' : isStepUp ? 'var(--accent-amber)' : 'var(--accent-rose)'}`,
-          background: isApproved ? '#F0FDF4' : isStepUp ? '#FFFBEB' : '#FEF2F2'
+          padding: '24px 28px',
+          borderLeft: `5px solid ${isApproved ? 'var(--ghost-emerald)' : isStepUp ? 'var(--ghost-amber)' : 'var(--ghost-crimson)'}`,
+          background: isApproved
+            ? 'linear-gradient(135deg, rgba(0, 245, 155, 0.08) 0%, rgba(10, 16, 26, 0.95) 100%)'
+            : isStepUp
+              ? 'linear-gradient(135deg, rgba(255, 170, 51, 0.08) 0%, rgba(10, 16, 26, 0.95) 100%)'
+              : 'linear-gradient(135deg, rgba(255, 51, 85, 0.08) 0%, rgba(10, 16, 26, 0.95) 100%)',
+          boxShadow: isApproved
+            ? '0 8px 32px rgba(0, 245, 155, 0.12)'
+            : isStepUp
+              ? '0 8px 32px rgba(255, 170, 51, 0.12)'
+              : '0 8px 32px rgba(255, 51, 85, 0.12)'
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-              <span className={isApproved ? 'badge-approve' : isStepUp ? 'badge-step-up' : 'badge-deny'} style={{ fontSize: '0.85rem', padding: '4px 10px' }}>
+              <span className={isApproved ? 'badge-approve' : isStepUp ? 'badge-step-up' : 'badge-deny'} style={{ fontSize: '0.82rem', padding: '4px 10px' }}>
                 {outcome}
               </span>
-              <span className="font-mono" style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+              <span className="font-mono" style={{ fontSize: '0.74rem', color: 'var(--ghost-cyan)' }}>
                 TRACE: {trace_id}
               </span>
             </div>
-            <h2 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-main)' }}>
+            <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#ffffff' }}>
               {reason_code}
             </h2>
           </div>
@@ -130,9 +139,9 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
             </span>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, justifyContent: 'flex-end' }}>
               <span className="font-mono" style={{
-                fontSize: '1.4rem',
+                fontSize: '1.45rem',
                 fontWeight: 800,
-                color: server_calculated_total > mandate_limit ? 'var(--accent-rose)' : 'var(--text-main)'
+                color: server_calculated_total > mandate_limit ? 'var(--ghost-crimson)' : 'var(--ghost-emerald)'
               }}>
                 ₹{server_calculated_total?.toFixed(2)}
               </span>
@@ -141,7 +150,7 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
               </span>
             </div>
             {human_approval_id && (
-              <span style={{ fontSize: '0.72rem', color: 'var(--accent-amber)', fontWeight: 700 }}>
+              <span style={{ fontSize: '0.72rem', color: 'var(--ghost-amber)', fontWeight: 700 }}>
                 Escalated to Human Review: {human_approval_id}
               </span>
             )}
@@ -152,60 +161,60 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
       {/* Heart of Fides: Model Proposal VS Deterministic Policy Engine */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
         {/* Left: NVIDIA Nemotron Model Proposal */}
-        <div className="wispr-card" style={{ padding: 22 }}>
+        <div className="ghost-card" style={{ padding: 22 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Cpu size={18} color="var(--accent-indigo)" />
-              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-main)' }}>
+              <Cpu size={18} color="var(--ghost-cyan)" />
+              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
                 1. Nemotron Intent Proposal (Untrusted)
               </h3>
             </div>
-            <span className="badge-mono" style={{ color: 'var(--accent-indigo)' }}>
+            <span className="badge-mono" style={{ color: 'var(--ghost-cyan)' }}>
               {nemotron_inference_latency_ms}ms runtime
             </span>
           </div>
 
           <p style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginBottom: 14 }}>
-            Model: <strong>{model_used}</strong>. Interprets dialogue into candidate SKUs. Strictly excluded from setting prices or issuing financial authorizations.
+            Model: <strong style={{ color: '#ffffff' }}>{model_used}</strong>. Interprets dialogue into candidate SKUs. Strictly excluded from setting prices or issuing financial authorizations.
           </p>
 
-          <div className="wispr-inset" style={{ padding: 14, marginBottom: 12 }}>
-            <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', display: 'block', marginBottom: 8 }}>
+          <div className="ghost-inset" style={{ padding: 14, marginBottom: 12 }}>
+            <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', display: 'block', marginBottom: 8, letterSpacing: '0.06em' }}>
               CANDIDATE SKUS EXTRACTED BY LLM:
             </span>
             {candidate_intent?.line_items?.length > 0 ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 {candidate_intent.line_items.map((li, idx) => (
                   <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem' }}>
-                    <span className="font-mono" style={{ color: 'var(--accent-coral)', fontWeight: 600 }}>{li.sku}</span>
-                    <span style={{ color: 'var(--text-muted)' }}>Quantity: <strong>{li.qty}</strong></span>
+                    <span className="font-mono" style={{ color: 'var(--ghost-cyan)', fontWeight: 600 }}>{li.sku}</span>
+                    <span style={{ color: 'var(--text-muted)' }}>Quantity: <strong style={{ color: '#ffffff' }}>{li.qty}</strong></span>
                   </div>
                 ))}
               </div>
             ) : (
-              <p style={{ fontSize: '0.78rem', color: 'var(--accent-rose)' }}>
+              <p style={{ fontSize: '0.78rem', color: 'var(--ghost-crimson)' }}>
                 No valid candidate SKUs extracted.
               </p>
             )}
           </div>
 
           {candidate_intent?.raw_reasoning && (
-            <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
+            <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontStyle: 'italic', margin: 0 }}>
               "{candidate_intent.raw_reasoning}"
             </p>
           )}
         </div>
 
         {/* Right: Fides Authoritative Resolution */}
-        <div className="wispr-card" style={{ padding: 22 }}>
+        <div className="ghost-card" style={{ padding: 22 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <ShieldCheck size={18} color="var(--accent-emerald)" />
-              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-main)' }}>
+              <ShieldCheck size={18} color="var(--ghost-emerald)" />
+              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
                 2. Fides Policy Engine (Authoritative)
               </h3>
             </div>
-            <span className="badge-mono" style={{ color: 'var(--accent-emerald)' }}>
+            <span className="badge-mono" style={{ color: 'var(--ghost-emerald)' }}>
               Deterministic Server
             </span>
           </div>
@@ -214,18 +223,18 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
             Prices and totals calculated authoritatively from the verified merchant catalogue.
           </p>
 
-          <div className="wispr-inset" style={{ padding: 14, marginBottom: 12 }}>
-            <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', display: 'block', marginBottom: 8 }}>
+          <div className="ghost-inset" style={{ padding: 14, marginBottom: 12 }}>
+            <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', display: 'block', marginBottom: 8, letterSpacing: '0.06em' }}>
               VERIFIED SERVER LINE TOTALS:
             </span>
             {resolved_items?.length > 0 ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 {resolved_items.map((item, idx) => (
                   <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem' }}>
-                    <span style={{ color: 'var(--text-main)' }}>
+                    <span style={{ color: '#ffffff' }}>
                       {item.name} <span style={{ color: 'var(--text-dim)' }}>({item.qty}x @ ₹{item.unit_price})</span>
                     </span>
-                    <span className="font-mono" style={{ color: 'var(--accent-emerald)', fontWeight: 700 }}>
+                    <span className="font-mono" style={{ color: 'var(--ghost-emerald)', fontWeight: 700 }}>
                       ₹{item.line_total.toFixed(2)}
                     </span>
                   </div>
@@ -238,9 +247,9 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
             )}
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 8, borderTop: '1px solid var(--border-color)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 8, borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
             <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Effective Total:</span>
-            <span className="font-mono" style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-main)' }}>
+            <span className="font-mono" style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--ghost-emerald)' }}>
               ₹{server_calculated_total?.toFixed(2)}
             </span>
           </div>
@@ -248,12 +257,12 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
       </div>
 
       {/* Cryptographic & Policy Verification Matrix */}
-      <div className="wispr-card" style={{ padding: 22 }}>
+      <div className="ghost-card" style={{ padding: 22 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-          <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--accent-coral)', fontWeight: 700 }}>
+          <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-cyan)', fontWeight: 700, letterSpacing: '0.08em' }}>
             CHECKS //
           </span>
-          <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-main)' }}>
+          <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
             Cryptographic & Policy Verification Matrix
           </h3>
         </div>
@@ -267,25 +276,25 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
             <div
               key={i}
               style={{
-                background: c.passed ? '#F0FDF4' : '#FEF2F2',
-                border: c.passed ? '1px solid #BBF7D0' : '1px solid #FECACA',
-                borderRadius: 6,
-                padding: '11px 13px',
+                background: c.passed ? 'rgba(0, 245, 155, 0.05)' : 'rgba(255, 51, 85, 0.05)',
+                border: c.passed ? '1px solid rgba(0, 245, 155, 0.25)' : '1px solid rgba(255, 51, 85, 0.25)',
+                borderRadius: 4,
+                padding: '12px 14px',
                 display: 'flex',
                 alignItems: 'flex-start',
                 gap: 10
               }}
             >
               {c.passed ? (
-                <CheckCircle2 size={17} color="#059669" style={{ flexShrink: 0, marginTop: 2 }} />
+                <CheckCircle2 size={17} color="var(--ghost-emerald)" style={{ flexShrink: 0, marginTop: 2 }} />
               ) : (
-                <XCircle size={17} color="#DC2626" style={{ flexShrink: 0, marginTop: 2 }} />
+                <XCircle size={17} color="var(--ghost-crimson)" style={{ flexShrink: 0, marginTop: 2 }} />
               )}
               <div>
-                <span style={{ fontSize: '0.82rem', fontWeight: 700, color: c.passed ? '#065F46' : '#991B1B' }}>
+                <span style={{ fontSize: '0.82rem', fontWeight: 700, color: c.passed ? 'var(--ghost-emerald)' : 'var(--ghost-crimson)' }}>
                   {c.name}
                 </span>
-                <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.35, marginTop: 2 }}>
+                <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.35, marginTop: 2, margin: 0 }}>
                   {c.detail}
                 </p>
               </div>
@@ -297,18 +306,18 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
       {/* Risk Engine & Audit Record Footer */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
         {/* Scikit-Learn Behavioral Risk Scorer */}
-        <div className="wispr-card" style={{ padding: 22 }}>
+        <div className="ghost-card" style={{ padding: 22 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Activity size={18} color="var(--accent-amber)" />
-              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-main)' }}>
+              <Activity size={18} color="var(--ghost-amber)" />
+              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
                 Scikit-Learn Risk Scorer
               </h3>
             </div>
             <span className="font-mono" style={{
               fontSize: '0.8rem',
               fontWeight: 700,
-              color: risk_score >= 0.7 ? 'var(--accent-rose)' : risk_score >= 0.3 ? 'var(--accent-amber)' : 'var(--accent-emerald)'
+              color: risk_score >= 0.7 ? 'var(--ghost-crimson)' : risk_score >= 0.3 ? 'var(--ghost-amber)' : 'var(--ghost-emerald)'
             }}>
               Score: {risk_score?.toFixed(3)}
             </span>
@@ -317,21 +326,21 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
           {/* Risk Gauge Bar */}
           <div style={{
             height: 8,
-            background: 'var(--bg-subtle)',
+            background: 'rgba(255, 255, 255, 0.05)',
             borderRadius: 4,
             overflow: 'hidden',
             marginBottom: 10,
-            border: '1px solid var(--border-color)'
+            border: '1px solid rgba(255, 255, 255, 0.1)'
           }}>
             <div
               style={{
                 height: '100%',
                 width: `${Math.min(100, Math.max(0, risk_score * 100))}%`,
                 background: risk_score >= 0.7
-                  ? 'var(--accent-rose)'
+                  ? 'var(--ghost-crimson)'
                   : risk_score >= 0.3
-                    ? 'var(--accent-amber)'
-                    : 'var(--accent-emerald)',
+                    ? 'var(--ghost-amber)'
+                    : 'var(--ghost-emerald)',
                 borderRadius: 4,
                 transition: 'width 0.4s ease'
               }}
@@ -346,7 +355,7 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)' }}>TELEMETRY FACTORS:</span>
+            <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', letterSpacing: '0.04em' }}>TELEMETRY FACTORS:</span>
             {risk_factors?.map((rf, idx) => (
               <span key={idx} style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                 • {rf}
@@ -356,42 +365,42 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
         </div>
 
         {/* Cryptographic Audit Proof */}
-        <div className="wispr-card" style={{ padding: 22 }}>
+        <div className="ghost-card" style={{ padding: 22 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Layers size={18} color="var(--accent-coral)" />
-              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-main)' }}>
+              <Layers size={18} color="var(--ghost-cyan)" />
+              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
                 Cryptographic Audit Proof
               </h3>
             </div>
             <button
               onClick={onGoToAudit}
-              className="btn-outline"
+              className="btn-ghost-outline"
               style={{ padding: '4px 10px', fontSize: '0.72rem' }}
             >
               <span>View In Ledger</span>
-              <ExternalLink size={12} />
+              <ExternalLink size={12} color="var(--ghost-cyan)" />
             </button>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: '0.78rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ color: 'var(--text-dim)' }}>Block Index:</span>
-              <span className="font-mono" style={{ color: 'var(--text-main)', fontWeight: 700 }}>#{audit_block_index}</span>
+              <span className="font-mono" style={{ color: 'var(--ghost-cyan)', fontWeight: 700 }}>#{audit_block_index}</span>
             </div>
 
             <div>
-              <span style={{ color: 'var(--text-dim)', display: 'block', marginBottom: 2 }}>
+              <span style={{ color: 'var(--text-dim)', display: 'block', marginBottom: 4 }}>
                 SHA-256 Block Hash:
               </span>
               <code className="font-mono" style={{
                 display: 'block',
-                background: 'var(--bg-subtle)',
-                border: '1px solid var(--border-color)',
+                background: 'rgba(3, 7, 13, 0.95)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
                 padding: '6px 8px',
                 borderRadius: 4,
                 fontSize: '0.68rem',
-                color: 'var(--text-main)',
+                color: 'var(--ghost-ice-blue)',
                 wordBreak: 'break-all'
               }}>
                 {audit_block_hash}
@@ -399,8 +408,8 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>
-              <CheckCircle2 size={14} color="#059669" />
-              <span style={{ fontSize: '0.72rem', color: '#065F46', fontWeight: 600 }}>
+              <CheckCircle2 size={14} color="var(--ghost-emerald)" />
+              <span style={{ fontSize: '0.72rem', color: 'var(--ghost-emerald)', fontWeight: 600 }}>
                 Committed to tamper-evident SHA-256 hash chain
               </span>
             </div>

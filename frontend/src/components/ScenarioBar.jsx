@@ -61,7 +61,7 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
   };
 
   return (
-    <div className="wispr-card" style={{ padding: '20px 22px', marginBottom: 20 }}>
+    <div className="ghost-card" style={{ padding: '20px 22px', marginBottom: 20 }}>
       <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -71,11 +71,11 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
         gap: 12
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--accent-coral)', fontWeight: 700 }}>
-            02 // DETERMINISTIC EVALUATION SUITE
+          <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-cyan)', fontWeight: 700, letterSpacing: '0.08em' }}>
+            02 // DETERMINISTIC BENCHMARK SUITE
           </span>
-          <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>|</span>
-          <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-main)' }}>
+          <span style={{ fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.2)' }}>|</span>
+          <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#ffffff' }}>
             6 Repeatable Hackathon Judge Scenarios
           </span>
         </div>
@@ -84,11 +84,11 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
         <button
           onClick={onRunRaceTest}
           disabled={isLoading}
-          className="btn-dark"
-          style={{ fontSize: '0.78rem' }}
+          className="btn-ghost-outline"
+          style={{ fontSize: '0.75rem' }}
           title="Submits 10 simultaneous threads with the same nonce to demonstrate atomic lock replay protection"
         >
-          <RefreshCw size={13} className={isLoading ? "listening-pulse" : ""} />
+          <RefreshCw size={13} className={isLoading ? "listening-pulse" : ""} color="var(--ghost-cyan)" />
           <span>Run Concurrency Race Test (10 Threads)</span>
         </button>
       </div>
@@ -111,35 +111,36 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
               disabled={isLoading}
               style={{
                 textAlign: 'left',
-                background: isSelected ? 'var(--bg-subtle)' : '#ffffff',
-                border: isSelected ? '1px solid var(--accent-coral)' : '1px solid var(--border-color)',
-                borderRadius: 6,
+                background: isSelected ? 'rgba(0, 141, 238, 0.15)' : 'rgba(3, 7, 13, 0.85)',
+                border: isSelected ? '1px solid var(--ghost-cyan)' : '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: 4,
                 padding: '12px 14px',
                 cursor: 'pointer',
-                transition: 'all 0.15s ease',
+                transition: 'all 0.18s ease',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 6
+                gap: 6,
+                boxShadow: isSelected ? '0 0 16px rgba(0, 141, 238, 0.25)' : 'none'
               }}
               onMouseEnter={(e) => {
-                if (!isSelected) e.currentTarget.style.borderColor = '#B8B6AB';
+                if (!isSelected) e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
               }}
               onMouseLeave={(e) => {
-                if (!isSelected) e.currentTarget.style.borderColor = 'var(--border-color)';
+                if (!isSelected) e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span className="font-mono" style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--accent-coral)' }}>
+                <span className="font-mono" style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--ghost-cyan)' }}>
                   {s.num}
                 </span>
                 <span className={s.tagClass}>
                   {s.tag}
                 </span>
               </div>
-              <span style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-main)' }}>
+              <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#ffffff' }}>
                 {s.title}
               </span>
-              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.35 }}>
+              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.35, margin: 0 }}>
                 {s.desc}
               </p>
             </button>
