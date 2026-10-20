@@ -20,6 +20,7 @@ import {
   Watch
 } from 'lucide-react';
 import ContinuousCommerceLoop from './ContinuousCommerceLoop';
+import AnimatedEditorialHero from './illustrations/AnimatedEditorialHero';
 
 export default function AboutSection({ onExplorePlayground, onRunScenario }) {
   const [activeCategory, setActiveCategory] = useState('HOME');
@@ -32,165 +33,11 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
       flexDirection: 'column',
       gap: 36
     }}>
-      {/* 1. GHOST CORE PANORAMIC ECOSYSTEM HERO */}
-      <div style={{
-        background: '#ffffff',
-        borderRadius: 8,
-        overflow: 'hidden',
-        border: '1px solid var(--border-color)',
-        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.06)'
-      }}>
-        {/* Top Technical Metadata Header */}
-        <div style={{
-          background: '#0e1117',
-          color: '#ffffff',
-          padding: '12px 24px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: 12,
-          borderBottom: '1px solid #1e2633'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', fontWeight: 800, letterSpacing: '0.08em' }}>
-              FIDES // SOVEREIGN AMBIENT GATEWAY
-            </span>
-            <span style={{ color: '#4a5568' }}>•</span>
-            <span style={{ fontSize: '0.7rem', color: '#a0aec0', fontFamily: 'var(--font-mono)' }}>
-              AMAZON ECOSYSTEM INTEGRATION
-            </span>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
-              <span className="font-mono" style={{ fontSize: '0.68rem', color: '#10b981', fontWeight: 700 }}>
-                4 DEVICES CONNECTED
-              </span>
-            </div>
-            <span className="font-mono" style={{ fontSize: '0.68rem', color: '#8892b0' }}>
-              MCP SPEC 2025-11-25
-            </span>
-          </div>
-        </div>
-
-        {/* Panoramic Full-Width Visual Hardware Showcase */}
-        <div style={{
-          position: 'relative',
-          background: '#141820',
-          overflow: 'hidden',
-          aspectRatio: '16/9',
-          maxHeight: 520
-        }}>
-          <img
-            src="/fides_ecosystem_hero.jpg"
-            alt="Fides Connected Amazon Ecosystem: Ring, Gateway, Bee Wearable, Alexa+, and Fire TV"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block'
-            }}
-          />
-
-          {/* Interactive Spatial Hotspot Pills Overlaid on Devices */}
-          <div style={{
-            position: 'absolute',
-            bottom: 16,
-            left: 16,
-            right: 16,
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 8,
-            zIndex: 10
-          }}>
-            <div style={{
-              background: 'rgba(9, 11, 14, 0.85)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: 9999,
-              padding: '6px 14px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              color: '#ffffff',
-              fontSize: '0.72rem',
-              fontFamily: 'var(--font-mono)'
-            }}>
-              <Bell size={12} color="var(--ghost-blue)" />
-              <span>RING 3D RADAR</span>
-            </div>
-
-            <div style={{
-              background: 'rgba(9, 11, 14, 0.85)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: 9999,
-              padding: '6px 14px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              color: '#ffffff',
-              fontSize: '0.72rem',
-              fontFamily: 'var(--font-mono)'
-            }}>
-              <ShieldCheck size={12} color="var(--ghost-blue)" />
-              <span style={{ fontWeight: 800, color: 'var(--ghost-blue)' }}>FIDES GATEWAY</span>
-            </div>
-
-            <div style={{
-              background: 'rgba(9, 11, 14, 0.85)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: 9999,
-              padding: '6px 14px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              color: '#ffffff',
-              fontSize: '0.72rem',
-              fontFamily: 'var(--font-mono)'
-            }}>
-              <Watch size={12} color="var(--accent-purple)" />
-              <span>BEE WEARABLE DOCK</span>
-            </div>
-
-            <div style={{
-              background: 'rgba(9, 11, 14, 0.85)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: 9999,
-              padding: '6px 14px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              color: '#ffffff',
-              fontSize: '0.72rem',
-              fontFamily: 'var(--font-mono)'
-            }}>
-              <Radio size={12} color="var(--ghost-orange)" />
-              <span>ALEXA+ TERMINAL</span>
-            </div>
-
-            <div style={{
-              background: 'rgba(9, 11, 14, 0.85)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: 9999,
-              padding: '6px 14px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              color: '#ffffff',
-              fontSize: '0.72rem',
-              fontFamily: 'var(--font-mono)'
-            }}>
-              <Tv size={12} color="var(--accent-amber)" />
-              <span>FIRE TV 10-FOOT</span>
-            </div>
-          </div>
-        </div>
+      {/* 1. ANIMATED VECTOR EDITORIAL HERO */}
+      <AnimatedEditorialHero
+        onExploreDevices={onExplorePlayground}
+        onOpenSimulator={onExplorePlayground}
+      />
 
         {/* Lower Banner Strip in Warm Retro Sand */}
         <div style={{
@@ -278,7 +125,6 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             </div>
           </div>
         </div>
-      </div>
 
       {/* 2. THE CORE MANIFESTO: TRUST INFRASTRUCTURE FOR AGENTIC COMMERCE */}
       <div style={{
@@ -474,7 +320,7 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
           gap: 28,
           alignItems: 'center'
         }}>
-          {/* Left: Floating Diorama Box with Blue Sky & Clouds */}
+          {/* Left: Floating Diorama Box with Vector Living Room Illustration */}
           <div style={{
             borderRadius: 8,
             overflow: 'hidden',
@@ -483,8 +329,8 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             position: 'relative'
           }}>
             <img
-              src="/fides_diorama_room.jpg"
-              alt="Connected Living Room Diorama"
+              src="/fides_vector_livingroom.jpg"
+              alt="Connected Living Room Vector Illustration"
               style={{ width: '100%', height: 'auto', display: 'block' }}
             />
           </div>
@@ -669,7 +515,7 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             boxShadow: '0 4px 12px rgba(0,0,0,0.04)'
           }}>
             <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
-              <img src="/ring_doorbell_radar.jpg" alt="Ring Pro 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src="/fides_vector_radar.jpg" alt="Ring Pro 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 9999, padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Bell size={11} color="var(--ghost-blue)" />
                 <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>RADAR</span>
@@ -694,7 +540,7 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             boxShadow: '0 4px 12px rgba(0,0,0,0.04)'
           }}>
             <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
-              <img src="/alexa_plus_device.jpg" alt="Alexa+ Terminal" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src="/fides_vector_hero.jpg" alt="Alexa+ Terminal" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 9999, padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Radio size={11} color="var(--ghost-orange)" />
                 <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>MCP</span>
@@ -720,7 +566,7 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             boxShadow: '0 8px 24px rgba(12, 152, 212, 0.25)'
           }}>
             <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
-              <img src="/fides_core_monolith.jpg" alt="Fides Sovereign Core" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src="/fides_vector_workers.png" alt="Fides Sovereign Core" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{ position: 'absolute', top: 6, left: 6, background: 'var(--nuvei-cyan)', borderRadius: 9999, padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <ShieldCheck size={11} color="#fff" />
                 <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff', fontWeight: 800 }}>CORE</span>
@@ -745,7 +591,7 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             boxShadow: '0 4px 12px rgba(0,0,0,0.04)'
           }}>
             <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
-              <img src="/firetv_living_room.jpg" alt="Fire TV Vega OS" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src="/fides_vector_livingroom.jpg" alt="Fire TV Vega OS" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 9999, padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Tv size={11} color="var(--accent-amber)" />
                 <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>10-FOOT</span>
@@ -770,7 +616,7 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             boxShadow: '0 4px 12px rgba(0,0,0,0.04)'
           }}>
             <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
-              <img src="/bee_wearable_wrist.jpg" alt="Bee Wearable AI" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src="/fides_vector_livingroom.jpg" alt="Bee Wearable AI" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 9999, padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Watch size={11} color="var(--accent-purple)" />
                 <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>HAPTIC</span>

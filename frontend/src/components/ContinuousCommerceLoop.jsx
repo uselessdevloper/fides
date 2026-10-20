@@ -79,7 +79,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
       title: '01 / Ambient Voice Intent Capture',
       device: 'Alexa+ & Bee Wearable AI',
       deviceIcon: Radio,
-      image: '/alexa_plus_device.jpg',
+      image: '/fides_vector_hero.jpg',
       badge: 'VOICE PROTOCOL',
       subtitle: 'Capturing Candidate Intent via Streamable HTTP (MCP Spec 2025-11-25)',
       description: 'The user speaks naturally in the room or into the wrist wearable. AWS Bedrock Runtime extracts candidate SKUs without granting financial authorization to the model.',
@@ -94,7 +94,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
       title: '02 / In-Home 3D Radar Presence Scan',
       device: 'Ring Video Doorbell Pro 2',
       deviceIcon: Bell,
-      image: '/ring_doorbell_radar.jpg',
+      image: '/fides_vector_radar.jpg',
       badge: 'PHYSICAL RADAR PROOF',
       subtitle: 'Aerial Radar Waves & Z-Wave RSSI Boundary Check',
       description: 'Ring 3D radar scans the foyer entry zone, measuring target distance and physical motion inside the home boundary. Issues an ephemeral signed cryptographic presence token.',
@@ -109,7 +109,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
       title: '03 / Deterministic Policy Evaluation',
       device: 'Fides Sovereign Core Monolith',
       deviceIcon: ShieldCheck,
-      image: '/fides_core_monolith.jpg',
+      image: '/fides_vector_workers.png',
       badge: 'AIR-GAPPED POLICY',
       subtitle: 'Catalogue Price Verification & Replay Protection Lock',
       description: 'Fides ignores any AI-suggested prices. It resolves authoritative prices from the trusted catalogue, checks Ed25519 signatures, verifies the daily spending cap, and locks the nonce.',
@@ -125,7 +125,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
       title: '04 / Living Room & Wrist Step-Up Broadcast',
       device: 'Fire TV (Vega OS) & Bee Wearable AI',
       deviceIcon: Tv,
-      image: '/firetv_living_room.jpg',
+      image: '/fides_vector_livingroom.jpg',
       badge: '10-FOOT & HAPTIC HUD',
       subtitle: 'Picture-in-Picture TV Card & Double-Pulse LRA Wrist Alert',
       description: 'If purchase is moderate risk or requires family oversight, an interactive card renders on the living room Fire TV. Simultaneously, the Bee wearable pulses the wrist with an LRA haptic pattern.',
@@ -140,7 +140,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
       title: '05 / 1-Tap Physical Human Authorization',
       device: 'Bee Wrist Band / Fire TV Remote',
       deviceIcon: Watch,
-      image: '/bee_wearable_wrist.jpg',
+      image: '/fides_vector_livingroom.jpg',
       badge: 'PHYSICAL CONFIRMATION',
       subtitle: 'Physical Wrist Tap or Remote Control [Select / OK]',
       description: 'The authorized user taps their wrist band or presses [Select] on the Fire TV remote control. This creates an unforgeable human affirmation signal.',
@@ -155,7 +155,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
       title: '06 / Cryptographic SHA-256 Ledger Minting',
       device: 'SHA-256 Hash Chain Ledger',
       deviceIcon: Lock,
-      image: '/fides_diorama_room.jpg',
+      image: '/fides_vector_workers.png',
       badge: 'IMMUTABLE AUDIT BLOCK',
       subtitle: 'Tamper-Evident Hash Chain Appended',
       description: 'The transaction is cryptographically sealed into the SHA-256 blockchain ledger. Any future attempt to modify prices, timestamps, or approvals immediately breaks the mathematical chain.',
@@ -451,6 +451,61 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
             }}
           />
 
+          {/* Dynamic Vector Animation Overlays */}
+          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+            {/* Step 0: Animated Sound Ripple Waves */}
+            {currentStep === 0 && (
+              <svg style={{ position: 'absolute', bottom: '28%', left: '46%', width: 140, height: 70, overflow: 'visible' }}>
+                <path d="M 0 35 Q 20 20 40 35 T 80 35 T 120 35" fill="none" stroke="#e05626" strokeWidth="2.5" strokeLinecap="round" className="anim-sound-wave" />
+                <path d="M 10 35 Q 30 15 50 35 T 90 35 T 130 35" fill="none" stroke="#2a7b68" strokeWidth="1.8" strokeLinecap="round" className="anim-sound-wave" style={{ animationDelay: '0.4s' }} />
+                <path d="M 20 35 Q 40 10 60 35 T 100 35 T 140 35" fill="none" stroke="#e05626" strokeWidth="1.2" strokeLinecap="round" className="anim-sound-wave" style={{ animationDelay: '0.8s' }} />
+              </svg>
+            )}
+
+            {/* Step 1: Animated 3D Radar Concentric Arcs */}
+            {currentStep === 1 && (
+              <svg style={{ position: 'absolute', top: '22%', right: '16%', width: 180, height: 180, overflow: 'visible' }}>
+                <circle cx="90" cy="90" r="28" fill="none" stroke="#0c98d4" strokeWidth="2.5" className="anim-radar-wave-1" />
+                <circle cx="90" cy="90" r="54" fill="none" stroke="#0c98d4" strokeWidth="2" strokeDasharray="4 3" className="anim-radar-wave-2" />
+                <circle cx="90" cy="90" r="82" fill="none" stroke="#0c98d4" strokeWidth="1.5" className="anim-radar-wave-3" />
+              </svg>
+            )}
+
+            {/* Step 2 & 5: Terracotta Breathing Sun */}
+            {(currentStep === 2 || currentStep === 5) && (
+              <div
+                className="anim-sun"
+                style={{
+                  position: 'absolute',
+                  top: '12%',
+                  right: '18%',
+                  width: 90,
+                  height: 90,
+                  borderRadius: '50%',
+                  background: 'radial-gradient(circle, rgba(224, 86, 38, 0.45) 0%, rgba(224, 86, 38, 0) 70%)',
+                  pointerEvents: 'none'
+                }}
+              />
+            )}
+
+            {/* Step 3 & 4: Haptic Pulse Rings */}
+            {(currentStep === 3 || currentStep === 4) && (
+              <div
+                className="anim-haptic"
+                style={{
+                  position: 'absolute',
+                  bottom: '30%',
+                  right: '35%',
+                  width: 48,
+                  height: 48,
+                  borderRadius: '50%',
+                  border: '2px solid #8b5cf6',
+                  pointerEvents: 'none'
+                }}
+              />
+            )}
+          </div>
+
           {/* Overlay Pill on Image */}
           <div style={{
             position: 'absolute',
@@ -464,7 +519,8 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
             display: 'flex',
             alignItems: 'center',
             gap: 8,
-            border: '1px solid rgba(255, 255, 255, 0.2)'
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            zIndex: 2
           }}>
             <StepIcon size={14} color="var(--nuvei-cyan)" />
             <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.06em' }}>
@@ -475,7 +531,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
           {/* Active Step Indicator Pill */}
           <div style={{
             position: 'absolute',
-            bottom: 14,
+            top: 14,
             right: 14,
             background: 'var(--nuvei-cyan)',
             color: '#ffffff',
@@ -483,9 +539,68 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
             borderRadius: 9999,
             fontSize: '0.7rem',
             fontWeight: 800,
-            fontFamily: 'var(--font-mono)'
+            fontFamily: 'var(--font-mono)',
+            zIndex: 2
           }}>
             STEP {currentStep + 1} OF 6
+          </div>
+
+          {/* Signature Bottom Status Ledger Blocks Strip */}
+          <div style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            background: 'rgba(235, 235, 230, 0.95)',
+            borderTop: '1px solid #dcdcd5',
+            padding: '8px 12px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 6,
+            zIndex: 2
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 5, overflowX: 'auto', flex: 1 }}>
+              {[
+                { status: 'G', label: 'APPROVE' },
+                { status: 'G', label: 'APPROVE' },
+                { status: 'O', label: 'STEP_UP' },
+                { status: 'R', label: 'DENY (Striped)' },
+                { status: 'R', label: 'DENY (Striped)' },
+                { status: 'R', label: 'DENY (Striped)' },
+                { status: 'R', label: 'DENY (Striped)' },
+                { status: 'R', label: 'DENY (Striped)' },
+                { status: 'O', label: 'STEP_UP' },
+                { status: 'O', label: 'STEP_UP' },
+                { status: 'G', label: 'APPROVE' },
+                { status: 'G', label: 'APPROVE' }
+              ].map((blk, bi) => {
+                const isActive = bi === (currentStep * 2) % 12;
+                return (
+                  <div
+                    key={bi}
+                    className={isActive ? 'anim-block-pulse' : ''}
+                    title={`Block #${bi + 1} [${blk.label}] SHA-256`}
+                    style={{
+                      flex: '1 0 16px',
+                      height: 14,
+                      borderRadius: 3,
+                      background: blk.status === 'G'
+                        ? '#2a7b68'
+                        : blk.status === 'O'
+                        ? '#e05626'
+                        : 'repeating-linear-gradient(45deg, #8a241c, #8a241c 4px, #5c1813 4px, #5c1813 8px)',
+                      border: isActive ? '1px solid #ffffff' : '1px solid rgba(0,0,0,0.15)',
+                      boxShadow: isActive ? '0 0 8px #e05626' : 'none',
+                      transition: 'all 0.2s ease'
+                    }}
+                  />
+                );
+              })}
+            </div>
+            <span className="font-mono" style={{ fontSize: '0.62rem', fontWeight: 800, color: '#144b41', letterSpacing: '0.04em', whiteSpace: 'nowrap', marginLeft: 8 }}>
+              IMMUTABLE LEDGER
+            </span>
           </div>
         </div>
 

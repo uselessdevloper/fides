@@ -98,14 +98,37 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
             marginBottom: 16,
             height: 140,
             border: '1px solid var(--border-hairline)',
-            position: 'relative'
+            position: 'relative',
+            background: '#ebebe6'
           }}>
-            <img src="/alexa_plus_device.jpg" alt="Alexa+ Terminal" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src="/fides_vector_hero.jpg" alt="Alexa+ Terminal" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+
+            {/* Animated Sound Ripple Vector Overlay */}
+            <svg style={{ position: 'absolute', bottom: 25, left: '38%', width: 120, height: 40, pointerEvents: 'none', overflow: 'visible' }}>
+              <path d="M 0 20 Q 15 10 30 20 T 60 20 T 90 20" fill="none" stroke="#e05626" strokeWidth="2.2" strokeLinecap="round" className="anim-sound-wave" />
+              <path d="M 10 20 Q 25 5 40 20 T 70 20 T 100 20" fill="none" stroke="#2a7b68" strokeWidth="1.5" strokeLinecap="round" className="anim-sound-wave" style={{ animationDelay: '0.4s' }} />
+            </svg>
+
+            {/* Glowing Terracotta Sun */}
+            <div
+              className="anim-sun"
+              style={{
+                position: 'absolute',
+                top: 15,
+                right: '25%',
+                width: 48,
+                height: 48,
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(224, 86, 38, 0.45) 0%, rgba(224, 86, 38, 0) 70%)',
+                pointerEvents: 'none'
+              }}
+            />
+
             <div style={{
               position: 'absolute',
               bottom: 8,
               left: 8,
-              background: 'rgba(0,0,0,0.75)',
+              background: 'rgba(0,0,0,0.78)',
               padding: '4px 10px',
               borderRadius: 9999,
               display: 'flex',
@@ -114,6 +137,24 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
             }}>
               <Volume2 size={12} color="var(--ghost-blue)" />
               <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>ALEXA+ // PREVIEW RUNTIME (STREAMABLE HTTP)</span>
+            </div>
+
+            {/* Mini ledger block indicator */}
+            <div style={{
+              position: 'absolute',
+              bottom: 8,
+              right: 8,
+              background: 'rgba(235, 235, 230, 0.92)',
+              borderRadius: 9999,
+              padding: '3px 8px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 3
+            }}>
+              <div style={{ width: 8, height: 8, borderRadius: 2, background: '#2a7b68' }} />
+              <div style={{ width: 8, height: 8, borderRadius: 2, background: '#2a7b68' }} />
+              <div style={{ width: 8, height: 8, borderRadius: 2, background: '#e05626' }} />
+              <div style={{ width: 8, height: 8, borderRadius: 2, background: '#8a241c' }} />
             </div>
           </div>
 

@@ -218,14 +218,31 @@ export default function LivingRoomDashboard() {
             marginBottom: 14,
             height: 120,
             border: '1px solid var(--border-hairline)',
-            position: 'relative'
+            position: 'relative',
+            background: '#ebebe6'
           }}>
-            <img src="/firetv_living_room.jpg" alt="Fire TV Living Room" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src="/fides_vector_livingroom.jpg" alt="Fire TV Living Room" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            
+            {/* Ambient Terracotta Sun */}
+            <div
+              className="anim-sun"
+              style={{
+                position: 'absolute',
+                top: 8,
+                right: '30%',
+                width: 44,
+                height: 44,
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(224, 86, 38, 0.45) 0%, rgba(224, 86, 38, 0) 70%)',
+                pointerEvents: 'none'
+              }}
+            />
+
             <div style={{
               position: 'absolute',
               bottom: 8,
               left: 8,
-              background: 'rgba(0,0,0,0.75)',
+              background: 'rgba(0,0,0,0.78)',
               padding: '4px 10px',
               borderRadius: 9999,
               display: 'flex',
@@ -234,6 +251,23 @@ export default function LivingRoomDashboard() {
             }}>
               <Tv size={12} color="var(--ghost-orange)" />
               <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>LIVING ROOM // VEGA OS</span>
+            </div>
+
+            {/* Status Ledger Indicator */}
+            <div style={{
+              position: 'absolute',
+              bottom: 8,
+              right: 8,
+              background: 'rgba(235, 235, 230, 0.92)',
+              borderRadius: 9999,
+              padding: '3px 8px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 3
+            }}>
+              <div style={{ width: 7, height: 7, borderRadius: 2, background: '#2a7b68' }} />
+              <div style={{ width: 7, height: 7, borderRadius: 2, background: '#e05626' }} />
+              <div style={{ width: 7, height: 7, borderRadius: 2, background: '#2a7b68' }} />
             </div>
           </div>
 
@@ -328,14 +362,23 @@ export default function LivingRoomDashboard() {
             marginBottom: 14,
             height: 120,
             border: '1px solid var(--border-hairline)',
-            position: 'relative'
+            position: 'relative',
+            background: '#ebebe6'
           }}>
-            <img src="/ring_doorbell_radar.jpg" alt="Ring Doorbell Porch" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src="/fides_vector_radar.jpg" alt="Ring Doorbell Porch" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+
+            {/* Concentric Animated Radar Arcs */}
+            <svg style={{ position: 'absolute', top: 12, right: 30, width: 80, height: 80, pointerEvents: 'none', overflow: 'visible' }}>
+              <circle cx="40" cy="40" r="16" fill="none" stroke="#0c98d4" strokeWidth="2" className="anim-radar-wave-1" />
+              <circle cx="40" cy="40" r="28" fill="none" stroke="#0c98d4" strokeWidth="1.5" strokeDasharray="3 2" className="anim-radar-wave-2" />
+              <circle cx="40" cy="40" r="40" fill="none" stroke="#0c98d4" strokeWidth="1" className="anim-radar-wave-3" />
+            </svg>
+
             <div style={{
               position: 'absolute',
               bottom: 8,
               left: 8,
-              background: 'rgba(0,0,0,0.75)',
+              background: 'rgba(0,0,0,0.78)',
               padding: '4px 10px',
               borderRadius: 9999,
               display: 'flex',
@@ -344,6 +387,23 @@ export default function LivingRoomDashboard() {
             }}>
               <Bell size={12} color="var(--ghost-blue)" />
               <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>FRONT DOOR // 3D RADAR</span>
+            </div>
+
+            {/* Status Ledger Indicator */}
+            <div style={{
+              position: 'absolute',
+              bottom: 8,
+              right: 8,
+              background: 'rgba(235, 235, 230, 0.92)',
+              borderRadius: 9999,
+              padding: '3px 8px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 3
+            }}>
+              <div style={{ width: 7, height: 7, borderRadius: 2, background: '#2a7b68' }} />
+              <div style={{ width: 7, height: 7, borderRadius: 2, background: '#2a7b68' }} />
+              <div style={{ width: 7, height: 7, borderRadius: 2, background: '#2a7b68' }} />
             </div>
           </div>
 
@@ -399,14 +459,31 @@ export default function LivingRoomDashboard() {
             marginBottom: 14,
             height: 120,
             border: '1px solid var(--border-hairline)',
-            position: 'relative'
+            position: 'relative',
+            background: '#ebebe6'
           }}>
-            <img src="/bee_wearable_wrist.jpg" alt="Bee Wearable Band" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src="/fides_vector_livingroom.jpg" alt="Bee Wearable Band" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+
+            {/* Animated Haptic Pulse Circle */}
+            <div
+              className="anim-haptic"
+              style={{
+                position: 'absolute',
+                bottom: 24,
+                right: '40%',
+                width: 34,
+                height: 34,
+                borderRadius: '50%',
+                border: '2px solid #8b5cf6',
+                pointerEvents: 'none'
+              }}
+            />
+
             <div style={{
               position: 'absolute',
               bottom: 8,
               left: 8,
-              background: 'rgba(0,0,0,0.75)',
+              background: 'rgba(0,0,0,0.78)',
               padding: '4px 10px',
               borderRadius: 9999,
               display: 'flex',
@@ -415,6 +492,23 @@ export default function LivingRoomDashboard() {
             }}>
               <Watch size={12} color="var(--accent-purple)" />
               <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>ON-WRIST // LRA HAPTICS</span>
+            </div>
+
+            {/* Status Ledger Indicator */}
+            <div style={{
+              position: 'absolute',
+              bottom: 8,
+              right: 8,
+              background: 'rgba(235, 235, 230, 0.92)',
+              borderRadius: 9999,
+              padding: '3px 8px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 3
+            }}>
+              <div style={{ width: 7, height: 7, borderRadius: 2, background: '#2a7b68' }} />
+              <div style={{ width: 7, height: 7, borderRadius: 2, background: '#e05626' }} />
+              <div style={{ width: 7, height: 7, borderRadius: 2, background: '#8a241c' }} />
             </div>
           </div>
 
