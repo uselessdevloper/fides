@@ -142,18 +142,21 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
           <button
             onClick={() => setActiveTab('playground')}
             style={{
-              background: 'transparent',
+              background: 'var(--ghost-orange)',
+              color: '#ffffff',
               border: 'none',
-              fontSize: '0.76rem',
-              fontWeight: 700,
-              color: 'var(--ghost-orange)',
+              fontSize: '0.78rem',
+              fontWeight: 600,
               cursor: 'pointer',
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-              fontFamily: 'var(--font-heading)'
+              letterSpacing: '-0.01em',
+              fontFamily: 'var(--font-heading)',
+              padding: '7px 18px',
+              borderRadius: 9999,
+              boxShadow: '0 2px 8px rgba(255, 85, 0, 0.25)',
+              transition: 'all 0.18s ease'
             }}
           >
-            DISPATCH PURCHASE
+            Dispatch Purchase
           </button>
 
           <button
@@ -195,18 +198,18 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
                   style={{
-                    background: isActive ? 'var(--ghost-blue)' : 'transparent',
+                    background: isActive ? 'var(--nuvei-cyan)' : 'transparent',
                     color: isActive ? '#ffffff' : 'var(--text-muted)',
-                    border: isActive ? '1px solid var(--ghost-blue)' : '1px solid transparent',
-                    padding: '5px 12px',
-                    borderRadius: 2,
-                    fontSize: '0.7rem',
-                    fontWeight: 700,
+                    border: isActive ? '1px solid var(--nuvei-cyan)' : '1px solid transparent',
+                    padding: '6px 16px',
+                    borderRadius: 9999,
+                    fontSize: '0.74rem',
+                    fontWeight: 600,
                     cursor: 'pointer',
-                    letterSpacing: '0.05em',
-                    transition: 'all 0.15s ease'
+                    letterSpacing: '-0.01em',
+                    transition: 'all 0.18s ease',
+                    boxShadow: isActive ? '0 2px 8px rgba(12, 152, 212, 0.3)' : 'none'
                   }}
-                  className="font-mono"
                 >
                   {item.label}
                 </button>

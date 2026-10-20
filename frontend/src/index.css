@@ -1,45 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Ghost Core Light Retro Laboratory Palette */
-  --bg-canvas: #ebebe6;
-  --bg-primary: #ebebe6;
+  /* Nuvei & Ghost Core Laboratory Palette */
+  --bg-canvas: #faf9f8;
+  --bg-primary: #faf9f8;
   --bg-surface: #ffffff;
-  --bg-card: #f5f5f1;
+  --bg-card: #ffffff;
   --bg-card-hover: #ffffff;
-  --bg-subtle: #e2e2dc;
-  --bg-inset: #e8e8e2;
+  --bg-subtle: #f2f0eb;
+  --bg-inset: #f5f4ef;
+
+  /* Nuvei Electric Cyan & Deep Midnight Navy */
+  --nuvei-cyan: #0c98d4;
+  --nuvei-cyan-hover: #087ea7;
+  --nuvei-navy: #0b0e1e;
+  --nuvei-navy-hover: #160850;
 
   /* Ghost Retro Blue & Orange */
-  --ghost-blue: #1668e8;
-  --ghost-blue-hover: #0e52bf;
-  --ghost-blue-bg: rgba(22, 104, 232, 0.06);
-  --ghost-blue-border: #1668e8;
+  --ghost-blue: #0c98d4;
+  --ghost-blue-hover: #087ea7;
+  --ghost-blue-bg: rgba(12, 152, 212, 0.08);
+  --ghost-blue-border: #0c98d4;
 
   --ghost-orange: #ff5500;
   --ghost-orange-hover: #e04a00;
   --ghost-orange-bg: rgba(255, 85, 0, 0.06);
 
   /* Hairlines and Borders */
-  --border-color: #d6d6ce;
-  --border-hairline: #dcdcd5;
-  --border-hover: #b0b0a6;
-  --border-dashed: #cccccc;
+  --border-color: #e5e2dc;
+  --border-hairline: #eae7e1;
+  --border-hover: #cfc9c2;
+  --border-dashed: #dcd7ce;
 
   /* Typography */
-  --text-main: #111317;
-  --text-ink: #111317;
-  --text-muted: #565c66;
-  --text-dim: #848b96;
+  --text-main: #0b0e1e;
+  --text-ink: #0b0e1e;
+  --text-muted: #535965;
+  --text-dim: #7f8694;
 
   /* Status Accents */
   --accent-emerald: #059669;
   --accent-rose: #dc2626;
   --accent-amber: #d97706;
+  --accent-purple: #7c3aed;
 
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Archivo', 'Inter', -apple-system, sans-serif;
+  --font-sans: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  /* Nuvei Signature Button Geometry */
+  --nuvei-pill: 9999px;
+  --nuvei-card-radius: 8px;
 }
 
 * {
@@ -72,7 +83,7 @@ body {
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1360px;
+  max-width: 1240px;
   width: 100%;
   padding-left: 28px;
   padding-right: 28px;
@@ -111,99 +122,110 @@ body {
   border-radius: 2px;
 }
 
-/* Ghost Signature Blue Button */
-.btn-ghost-primary, .btn-coral {
-  background: var(--ghost-blue) !important;
+/* ======================================================== */
+/* NUVEI SIGNATURE BUTTONS (INTER TIGHT + ROUNDED PILLS)     */
+/* ======================================================== */
+
+.btn-ghost-primary, .btn-coral, .btn-primary, .btn-action {
+  background: var(--nuvei-cyan) !important;
   color: #ffffff !important;
-  border: 1px solid var(--ghost-blue);
+  border: 1px solid var(--nuvei-cyan) !important;
   font-family: var(--font-heading);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-radius: 2px;
-  padding: 10px 22px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  border-radius: var(--nuvei-pill) !important;
+  padding: 10px 24px;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  font-size: 0.82rem;
-  box-shadow: 0 2px 8px rgba(22, 104, 232, 0.25);
+  font-size: 0.88rem;
+  box-shadow: 0 4px 14px rgba(12, 152, 212, 0.28);
 }
 
-.btn-ghost-primary:hover:not(:disabled), .btn-coral:hover:not(:disabled) {
-  background: var(--ghost-blue-hover) !important;
-  border-color: var(--ghost-blue-hover);
-  box-shadow: 0 4px 14px rgba(22, 104, 232, 0.35);
-  transform: translateY(-1px);
+.btn-ghost-primary:hover:not(:disabled), .btn-coral:hover:not(:disabled), .btn-primary:hover:not(:disabled) {
+  background: var(--nuvei-cyan-hover) !important;
+  border-color: var(--nuvei-cyan-hover) !important;
+  box-shadow: 0 6px 18px rgba(12, 152, 212, 0.4);
+  transform: translateY(-1.5px);
 }
 
 .btn-ghost-primary:disabled, .btn-coral:disabled {
-  opacity: 0.45;
+  opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
-/* Ghost Retro Outline Button */
+/* Nuvei Clean Outline Button */
 .btn-ghost-outline, .btn-outline {
   background: #ffffff !important;
   color: var(--text-ink) !important;
-  border: 1px solid var(--border-color) !important;
-  font-family: var(--font-mono);
+  border: 1.5px solid var(--border-hover) !important;
+  font-family: var(--font-heading);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  border-radius: 2px;
-  padding: 8px 16px;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  border-radius: var(--nuvei-pill) !important;
+  padding: 10px 22px;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  font-size: 0.78rem;
+  font-size: 0.86rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
 }
 
 .btn-ghost-outline:hover:not(:disabled), .btn-outline:hover:not(:disabled) {
-  background: #f0f0eb !important;
-  border-color: #a8a89e !important;
-  transform: translateY(-1px);
+  background: #fbfaf8 !important;
+  border-color: var(--text-ink) !important;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .btn-dark {
-  background: #111317 !important;
+  background: var(--nuvei-navy) !important;
   color: #ffffff !important;
-  border: 1px solid #111317 !important;
-  font-family: var(--font-mono);
+  border: 1px solid var(--nuvei-navy) !important;
+  font-family: var(--font-heading);
   font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border-radius: 2px;
-  padding: 9px 18px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  border-radius: var(--nuvei-pill) !important;
+  padding: 11px 24px;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
+  box-shadow: 0 4px 14px rgba(11, 14, 30, 0.15);
 }
 
 .btn-dark:hover:not(:disabled) {
-  background: #282a30 !important;
-  transform: translateY(-1px);
+  background: var(--nuvei-navy-hover) !important;
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 18px rgba(11, 14, 30, 0.25);
 }
 
-/* Ghost Wireframe Tags (Blue Box) */
+/* Nuvei Capsule Pills */
 .ghost-wire-pill {
-  border: 1px solid var(--ghost-blue);
-  color: var(--ghost-blue);
-  background: rgba(22, 104, 232, 0.03);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  border: 1px solid rgba(12, 152, 212, 0.3);
+  color: var(--nuvei-cyan);
+  background: rgba(12, 152, 212, 0.05);
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 5px 12px;
-  border-radius: 2px;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 6px 16px;
+  border-radius: var(--nuvei-pill);
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -211,69 +233,101 @@ body {
 }
 
 .ghost-wire-pill:hover {
-  background: rgba(22, 104, 232, 0.08);
+  background: rgba(12, 152, 212, 0.12);
+  border-color: var(--nuvei-cyan);
+  transform: translateY(-1px);
 }
 
-/* Orange Batch Box */
+/* Orange Batch Capsule */
 .badge-ghost-orange {
-  border: 1px solid var(--ghost-orange);
+  border: 1px solid rgba(255, 85, 0, 0.3);
   color: var(--ghost-orange);
-  background: rgba(255, 85, 0, 0.04);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 4px 10px;
-  border-radius: 2px;
+  background: rgba(255, 85, 0, 0.06);
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 5px 14px;
+  border-radius: var(--nuvei-pill);
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-/* Approval & Denial Badges */
+.badge-ghost-blue {
+  border: 1px solid rgba(12, 152, 212, 0.3);
+  color: var(--nuvei-cyan);
+  background: rgba(12, 152, 212, 0.06);
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 5px 14px;
+  border-radius: var(--nuvei-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-ghost-emerald {
+  border: 1px solid rgba(5, 150, 105, 0.3);
+  color: var(--accent-emerald);
+  background: rgba(5, 150, 105, 0.06);
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 5px 14px;
+  border-radius: var(--nuvei-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Approval & Denial Nuvei Action Buttons */
 .btn-approve {
   background: #059669 !important;
   color: #ffffff !important;
   border: none;
-  padding: 8px 16px;
-  border-radius: 2px;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  padding: 8px 18px;
+  border-radius: var(--nuvei-pill);
+  font-weight: 600;
+  font-family: var(--font-heading);
   cursor: pointer;
   transition: all 0.15s ease;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
 }
 .btn-approve:hover {
   background: #047857 !important;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
 }
 
 .btn-reject {
   background: #dc2626 !important;
   color: #ffffff !important;
   border: none;
-  padding: 8px 16px;
-  border-radius: 2px;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  padding: 8px 18px;
+  border-radius: var(--nuvei-pill);
+  font-weight: 600;
+  font-family: var(--font-heading);
   cursor: pointer;
   transition: all 0.15s ease;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
 }
 .btn-reject:hover {
   background: #b91c1c !important;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
 }
 
 .badge-approve {

@@ -223,23 +223,23 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               <span className="ghost-wire-pill">
                 <span>⊘</span>
-                <span>ZERO WALLET LEAK</span>
+                <span>Zero Wallet Leak</span>
               </span>
               <span className="ghost-wire-pill">
                 <span>✢</span>
-                <span>ENTIRELY ON-DEVICE</span>
+                <span>Entirely On-Device</span>
               </span>
               <span className="ghost-wire-pill">
                 <span>∞</span>
-                <span>CONTINUOUS CONTEXT</span>
+                <span>Continuous Context</span>
               </span>
               <span className="ghost-wire-pill">
                 <span>⟲</span>
-                <span>RING 3D RADAR</span>
+                <span>Ring 3D Radar</span>
               </span>
               <span className="ghost-wire-pill">
                 <span>⚡</span>
-                <span>BEE WRIST HAPTIC</span>
+                <span>Bee Wrist Haptics</span>
               </span>
             </div>
           </div>
@@ -259,9 +259,9 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
               <button
                 onClick={onExplorePlayground}
                 className="btn-ghost-primary"
-                style={{ padding: '12px 22px', fontSize: '0.84rem' }}
+                style={{ padding: '12px 26px', fontSize: '0.88rem' }}
               >
-                <span>OPEN ALEXA+ MCP CONSOLE</span>
+                <span>Open Alexa+ MCP Console</span>
                 <ArrowRight size={15} />
               </button>
 
@@ -270,10 +270,10 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
                   if (onRunScenario) onRunScenario(1);
                 }}
                 className="btn-ghost-outline"
-                style={{ padding: '12px 18px', fontSize: '0.8rem' }}
+                style={{ padding: '12px 22px', fontSize: '0.86rem' }}
               >
-                <Play size={14} color="var(--ghost-blue)" />
-                <span>RUN BENCHMARK #1</span>
+                <Play size={14} color="var(--nuvei-cyan)" />
+                <span>Run Benchmark #1</span>
               </button>
             </div>
           </div>
