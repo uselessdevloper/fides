@@ -41,14 +41,14 @@ export default function PurchasePlayground({
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 24, alignItems: 'start' }}>
       {/* Left Column: Purchase Submission Form */}
-      <div className="ghost-card" style={{ padding: 26 }}>
+      <div className="ghost-card" style={{ padding: 26, background: '#ffffff' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-cyan)', fontWeight: 700, letterSpacing: '0.08em' }}>
+            <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', fontWeight: 700, letterSpacing: '0.08em' }}>
               03 // INTENT DISPATCHER
             </span>
-            <span style={{ fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.2)' }}>|</span>
-            <h2 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff' }}>
+            <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>|</span>
+            <h2 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-ink)' }}>
               Agent Purchase Playground
             </h2>
           </div>
@@ -57,14 +57,14 @@ export default function PurchasePlayground({
             display: 'flex',
             alignItems: 'center',
             gap: 6,
-            background: 'rgba(4, 8, 14, 0.95)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            background: 'var(--ghost-blue-bg)',
+            border: '1px solid var(--ghost-blue)',
             padding: '4px 10px',
-            borderRadius: 20,
+            borderRadius: 2,
             fontSize: '0.7rem'
           }}>
-            <Mic size={13} color="var(--ghost-cyan)" />
-            <span className="font-mono" style={{ color: 'var(--ghost-ice-blue)' }}>VOICE / NATURAL TEXT</span>
+            <Mic size={13} color="var(--ghost-blue)" />
+            <span className="font-mono" style={{ color: 'var(--ghost-blue)', fontWeight: 600 }}>VOICE / TEXT</span>
           </div>
         </div>
 
@@ -76,11 +76,11 @@ export default function PurchasePlayground({
           {/* Natural language request input */}
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-              <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#ffffff' }}>
+              <label style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-ink)' }}>
                 Natural Language Buyer Prompt
               </label>
-              <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--ghost-crimson)' }}>
-                STRICTLY UNTRUSTED INPUT
+              <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--accent-rose)' }}>
+                UNTRUSTED INPUT
               </span>
             </div>
 
@@ -91,11 +91,11 @@ export default function PurchasePlayground({
               placeholder="e.g. Order two packs of groceries from my approved merchant, keeping the total under ₹700."
               style={{
                 width: '100%',
-                background: 'rgba(3, 7, 13, 0.95)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                borderRadius: 4,
+                background: '#ffffff',
+                border: '1px solid var(--border-color)',
+                borderRadius: 2,
                 padding: '12px 14px',
-                color: '#ffffff',
+                color: 'var(--text-ink)',
                 fontSize: '0.9rem',
                 fontFamily: 'var(--font-sans)',
                 resize: 'vertical',
@@ -131,19 +131,19 @@ export default function PurchasePlayground({
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
             {/* Merchant */}
             <div>
-              <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.8rem', fontWeight: 600, color: '#ffffff', marginBottom: 6 }}>
-                <Store size={14} color="var(--ghost-cyan)" /> Target Merchant
+              <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-ink)', marginBottom: 6 }}>
+                <Store size={14} color="var(--ghost-blue)" /> Target Merchant
               </label>
               <select
                 value={selectedMerchant}
                 onChange={(e) => setSelectedMerchant(e.target.value)}
                 style={{
                   width: '100%',
-                  background: 'rgba(3, 7, 13, 0.95)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  borderRadius: 4,
+                  background: '#ffffff',
+                  border: '1px solid var(--border-color)',
+                  borderRadius: 2,
                   padding: '9px 12px',
-                  color: '#ffffff',
+                  color: 'var(--text-ink)',
                   fontSize: '0.82rem',
                   outline: 'none'
                 }}
@@ -158,19 +158,19 @@ export default function PurchasePlayground({
 
             {/* Spending Mandate */}
             <div>
-              <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.8rem', fontWeight: 600, color: '#ffffff', marginBottom: 6 }}>
-                <CreditCard size={14} color="var(--ghost-emerald)" /> Spending Mandate
+              <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-ink)', marginBottom: 6 }}>
+                <CreditCard size={14} color="var(--accent-emerald)" /> Spending Mandate
               </label>
               <select
                 value={selectedMandateKey}
                 onChange={(e) => setSelectedMandateKey(e.target.value)}
                 style={{
                   width: '100%',
-                  background: 'rgba(3, 7, 13, 0.95)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  borderRadius: 4,
+                  background: '#ffffff',
+                  border: '1px solid var(--border-color)',
+                  borderRadius: 2,
                   padding: '9px 12px',
-                  color: '#ffffff',
+                  color: 'var(--text-ink)',
                   fontSize: '0.82rem',
                   outline: 'none'
                 }}
@@ -215,26 +215,27 @@ export default function PurchasePlayground({
             padding: '12px 14px',
             display: 'flex',
             alignItems: 'flex-start',
-            gap: 10
+            gap: 10,
+            background: '#f8f8f5'
           }}>
-            <Info size={16} color="var(--ghost-cyan)" style={{ flexShrink: 0, marginTop: 2 }} />
+            <Info size={16} color="var(--ghost-blue)" style={{ flexShrink: 0, marginTop: 2 }} />
             <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>
-              <strong style={{ color: '#ffffff' }}>Separation of Powers:</strong> NVIDIA Nemotron interprets products from the dialogue. Fides signs the payload with Ed25519, verifies replay nonces, enforces merchant limits, and authorizes payment.
+              <strong style={{ color: 'var(--text-ink)' }}>Separation of Powers:</strong> NVIDIA Nemotron interprets products from the dialogue. Fides signs the payload with Ed25519, verifies replay nonces, enforces merchant limits, and authorizes payment.
             </p>
           </div>
         </form>
       </div>
 
       {/* Right Column: Trusted Merchant Catalogue */}
-      <div className="ghost-card" style={{ padding: 26 }}>
+      <div className="ghost-card" style={{ padding: 26, background: '#ffffff' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
-              <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--ghost-emerald)', fontWeight: 700, letterSpacing: '0.06em' }}>
+              <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--accent-emerald)', fontWeight: 700, letterSpacing: '0.06em' }}>
                 VERIFIED PRICING
               </span>
             </div>
-            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>
+            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-ink)' }}>
               Trusted Merchant Catalogue
             </h3>
           </div>
@@ -249,10 +250,10 @@ export default function PurchasePlayground({
                   type="button"
                   onClick={() => setSelectedCategoryFilter(cat)}
                   style={{
-                    background: isSelected ? 'rgba(0, 141, 238, 0.2)' : 'rgba(255, 255, 255, 0.04)',
-                    color: isSelected ? 'var(--ghost-cyan)' : 'var(--text-muted)',
-                    border: isSelected ? '1px solid var(--ghost-cyan)' : '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: 4,
+                    background: isSelected ? 'var(--ghost-blue)' : '#ffffff',
+                    color: isSelected ? '#ffffff' : 'var(--text-muted)',
+                    border: isSelected ? '1px solid var(--ghost-blue)' : '1px solid var(--border-color)',
+                    borderRadius: 2,
                     padding: '3px 8px',
                     fontSize: '0.7rem',
                     fontWeight: 600,
@@ -283,9 +284,9 @@ export default function PurchasePlayground({
               <div
                 key={item.sku}
                 style={{
-                  background: isMalicious ? 'rgba(255, 51, 85, 0.08)' : isLuxury ? 'rgba(255, 170, 51, 0.08)' : 'rgba(3, 7, 13, 0.85)',
-                  border: isMalicious ? '1px solid rgba(255, 51, 85, 0.35)' : '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: 4,
+                  background: isMalicious ? '#fff5f5' : isLuxury ? '#fffdf5' : '#f8f8f5',
+                  border: isMalicious ? '1px solid #feb2b2' : '1px solid var(--border-color)',
+                  borderRadius: 2,
                   padding: '10px 14px',
                   display: 'flex',
                   alignItems: 'center',
@@ -296,7 +297,7 @@ export default function PurchasePlayground({
               >
                 <div style={{ minWidth: 0 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-                    <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--ghost-cyan)' }}>
+                    <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--ghost-blue)' }}>
                       {item.sku}
                     </span>
                     <span className="badge-mono" style={{ fontSize: '0.62rem', padding: '1px 5px' }}>
@@ -306,7 +307,7 @@ export default function PurchasePlayground({
                   <h4 style={{
                     fontSize: '0.82rem',
                     fontWeight: 600,
-                    color: isMalicious ? 'var(--ghost-crimson)' : '#ffffff',
+                    color: isMalicious ? 'var(--accent-rose)' : 'var(--text-ink)',
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis'
@@ -319,7 +320,7 @@ export default function PurchasePlayground({
                   <span className="font-mono" style={{
                     fontSize: '0.95rem',
                     fontWeight: 700,
-                    color: isLuxury ? 'var(--ghost-amber)' : 'var(--ghost-emerald)'
+                    color: isLuxury ? 'var(--accent-amber)' : 'var(--accent-emerald)'
                   }}>
                     ₹{item.price.toFixed(2)}
                   </span>

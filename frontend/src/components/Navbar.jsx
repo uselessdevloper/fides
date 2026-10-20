@@ -1,13 +1,13 @@
-import React from 'react';
-import { Shield, Radio, Activity, Terminal } from 'lucide-react';
+import React, { useState } from 'react';
+import { Shield, ShoppingBag, Terminal, Radio, Activity, X } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
-  const isNebiusConfigured = healthInfo?.nebius_integration?.api_key_configured;
+  const [showBanner, setShowBanner] = useState(true);
 
   const navItems = [
-    { id: 'about', label: '01 / ARCHITECTURE' },
-    { id: 'alexa', label: '02 / ALEXA+ MCP', highlight: 'cyan' },
-    { id: 'livingroom', label: '03 / LIVING ROOM (TV & RING)', highlight: 'ember' },
+    { id: 'about', label: '01 / OVERVIEW' },
+    { id: 'alexa', label: '02 / ALEXA+ MCP' },
+    { id: 'livingroom', label: '03 / LIVING ROOM & RING' },
     { id: 'playground', label: '04 / PLAYGROUND' },
     { id: 'inspector', label: '05 / INSPECTOR' },
     { id: 'audit', label: '06 / AUDIT' }
@@ -15,159 +15,227 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
 
   return (
     <header style={{
-      borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-      background: 'rgba(0, 5, 10, 0.82)',
-      backdropFilter: 'blur(20px)',
-      WebkitBackdropFilter: 'blur(20px)',
       position: 'sticky',
       top: 0,
       zIndex: 100,
-      boxShadow: '0 4px 24px rgba(0, 0, 0, 0.6)'
+      background: '#ebebe6',
+      borderBottom: '1px solid #d4d4cb'
     }}>
-      {/* Ghost subtle top aura accent line */}
-      <div style={{
-        height: 1,
-        width: '100%',
-        background: 'linear-gradient(90deg, transparent 0%, rgba(158, 240, 255, 0.6) 35%, rgba(255, 83, 0, 0.6) 65%, transparent 100%)'
-      }} />
+      {/* Ghost Core Safety Orange Announcement Banner */}
+      {showBanner && (
+        <div style={{
+          background: 'var(--ghost-orange)',
+          color: '#ffffff',
+          padding: '7px 20px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+          fontSize: '0.74rem',
+          fontWeight: 700,
+          letterSpacing: '0.06em',
+          textTransform: 'uppercase',
+          fontFamily: 'var(--font-heading)'
+        }}>
+          <span>
+            FIDES LAUNCHES AMBIENT TRUST CORE FOR ALEXA+, RING & FIRE TV — EVALUATION READY
+          </span>
+          <button
+            onClick={() => setShowBanner(false)}
+            style={{
+              position: 'absolute',
+              right: 18,
+              background: 'transparent',
+              border: 'none',
+              color: '#ffffff',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            <X size={15} />
+          </button>
+        </div>
+      )}
 
+      {/* Main Ghost Header */}
       <div className="wispr-container" style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: 64,
-        flexWrap: 'wrap',
-        gap: 12
+        height: 60,
+        borderBottom: '1px solid #dfdfe7'
       }}>
-        {/* Brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{
-            width: 32,
-            height: 32,
-            borderRadius: 4,
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.18)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#ffffff',
-            boxShadow: '0 0 12px rgba(158, 240, 255, 0.15)'
-          }}>
-            <Shield size={16} color="#d6eaff" />
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{
-              fontSize: '1.05rem',
-              fontWeight: 800,
-              letterSpacing: '0.08em',
-              color: '#FFFFFF',
-              fontFamily: 'var(--font-heading)'
-            }}>
-              FIDES
-            </span>
-            <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.25)' }}>/</span>
-            <span className="font-mono" style={{
-              fontSize: '0.74rem',
+        {/* Left minimal links */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+          <button
+            onClick={() => setActiveTab('about')}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              fontSize: '0.78rem',
               fontWeight: 600,
-              color: 'var(--ghost-cyan)',
-              letterSpacing: '0.06em'
-            }}>
-              AMAZON MCP 2025-11-25
-            </span>
-          </div>
+              color: activeTab === 'about' ? 'var(--text-ink)' : 'var(--text-muted)',
+              cursor: 'pointer',
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+              fontFamily: 'var(--font-sans)'
+            }}
+          >
+            ABOUT
+          </button>
+          <button
+            onClick={() => setActiveTab('alexa')}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              color: 'var(--text-muted)',
+              cursor: 'pointer',
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+              fontFamily: 'var(--font-sans)'
+            }}
+          >
+            MCP SPEC
+          </button>
+          <button
+            onClick={() => setActiveTab('livingroom')}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              color: 'var(--text-muted)',
+              cursor: 'pointer',
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+              fontFamily: 'var(--font-sans)'
+            }}
+          >
+            HARDWARE
+          </button>
         </div>
 
-        {/* Navigation Tabs */}
-        <nav style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 6,
-          flexWrap: 'wrap'
-        }}>
-          {navItems.map((item) => {
-            const isActive = activeTab === item.id;
-            let activeStyle = {
-              background: 'rgba(255, 255, 255, 0.08)',
-              color: '#ffffff',
-              borderColor: 'rgba(255, 255, 255, 0.25)',
-              boxShadow: '0 0 12px rgba(255, 255, 255, 0.08)'
-            };
-
-            if (isActive && item.highlight === 'cyan') {
-              activeStyle = {
-                background: 'rgba(0, 141, 238, 0.15)',
-                color: '#9ef0ff',
-                borderColor: 'rgba(0, 141, 238, 0.45)',
-                boxShadow: '0 0 16px rgba(0, 141, 238, 0.25)'
-              };
-            } else if (isActive && item.highlight === 'ember') {
-              activeStyle = {
-                background: 'rgba(255, 83, 0, 0.15)',
-                color: '#ffaa33',
-                borderColor: 'rgba(255, 83, 0, 0.45)',
-                boxShadow: '0 0 16px rgba(255, 83, 0, 0.25)'
-              };
-            }
-
-            return (
-              <button
-                key={item.id}
-                onClick={() => setActiveTab(item.id)}
-                style={{
-                  background: isActive ? activeStyle.background : 'transparent',
-                  color: isActive ? activeStyle.color : 'var(--text-muted)',
-                  border: isActive ? `1px solid ${activeStyle.borderColor}` : '1px solid transparent',
-                  padding: '6px 12px',
-                  borderRadius: 4,
-                  fontSize: '0.72rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  letterSpacing: '0.06em',
-                  transition: 'all 0.18s ease',
-                  boxShadow: isActive ? activeStyle.boxShadow : 'none'
-                }}
-                className="font-mono"
-              >
-                {item.label}
-              </button>
-            );
-          })}
-        </nav>
-
-        {/* Live Listening & Protocol Telemetry */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{
+        {/* Center Lowercase Wordmark */}
+        <div
+          onClick={() => setActiveTab('about')}
+          style={{
+            cursor: 'pointer',
+            fontSize: '1.45rem',
+            fontWeight: 800,
+            letterSpacing: '-0.03em',
+            color: 'var(--text-ink)',
+            fontFamily: 'var(--font-heading)',
             display: 'flex',
             alignItems: 'center',
-            gap: 8,
-            background: 'rgba(4, 8, 14, 0.95)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            padding: '5px 12px',
-            borderRadius: 20,
-            fontSize: '0.7rem'
+            gap: 4
+          }}
+        >
+          <span>fides</span>
+        </div>
+
+        {/* Right Action */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <button
+            onClick={() => setActiveTab('playground')}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              fontSize: '0.76rem',
+              fontWeight: 700,
+              color: 'var(--ghost-orange)',
+              cursor: 'pointer',
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              fontFamily: 'var(--font-heading)'
+            }}
+          >
+            DISPATCH PURCHASE
+          </button>
+
+          <button
+            onClick={() => setActiveTab('audit')}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+              color: 'var(--text-ink)',
+              display: 'flex',
+              alignItems: 'center'
+            }}
+            title="View Tamper-Evident Audit Ledger"
+          >
+            <ShoppingBag size={18} />
+          </button>
+        </div>
+      </div>
+
+      {/* Subnav: Retro Engineering Tabs */}
+      <div style={{ background: '#f2f2ee', borderBottom: '1px solid #dcdcd4', padding: '6px 0' }}>
+        <div className="wispr-container" style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: 8
+        }}>
+          <nav style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            flexWrap: 'wrap'
           }}>
-            <span style={{ position: 'relative', display: 'flex', width: 7, height: 7 }}>
+            {navItems.map((item) => {
+              const isActive = activeTab === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id)}
+                  style={{
+                    background: isActive ? 'var(--ghost-blue)' : 'transparent',
+                    color: isActive ? '#ffffff' : 'var(--text-muted)',
+                    border: isActive ? '1px solid var(--ghost-blue)' : '1px solid transparent',
+                    padding: '5px 12px',
+                    borderRadius: 2,
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    letterSpacing: '0.05em',
+                    transition: 'all 0.15s ease'
+                  }}
+                  className="font-mono"
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* Telemetry Indicator */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ position: 'relative', display: 'flex', width: 6, height: 6 }}>
               <span className="listening-pulse" style={{
                 position: 'absolute',
                 display: 'inline-flex',
                 height: '100%',
                 width: '100%',
                 borderRadius: '50%',
-                backgroundColor: 'var(--ghost-cyan)',
+                backgroundColor: 'var(--ghost-blue)',
                 opacity: 0.8
               }}></span>
               <span style={{
                 position: 'relative',
                 display: 'inline-flex',
                 borderRadius: '50%',
-                height: 7,
-                width: 7,
-                backgroundColor: 'var(--ghost-cyan)'
+                height: 6,
+                width: 6,
+                backgroundColor: 'var(--ghost-blue)'
               }}></span>
             </span>
-            <span className="font-mono" style={{ fontWeight: 600, color: 'var(--ghost-ice-blue)', letterSpacing: '0.04em' }}>
-              MCP HTTP // LIVE
+            <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--ghost-blue)' }}>
+              ALEXA+ MCP // ON-DEVICE VERIFIED
             </span>
           </div>
         </div>

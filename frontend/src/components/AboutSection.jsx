@@ -1,326 +1,523 @@
-import React from 'react';
-import { ShieldCheck, Cpu, Lock, ArrowRight, AlertTriangle, CheckCircle2, Play, Sparkles, Terminal, Radio, Tv, Layers } from 'lucide-react';
+import React, { useState } from 'react';
+import {
+  ShieldCheck,
+  Cpu,
+  Lock,
+  ArrowRight,
+  AlertTriangle,
+  CheckCircle2,
+  Play,
+  Sparkles,
+  Radio,
+  Tv,
+  Bell,
+  Layers,
+  ShoppingBag,
+  ExternalLink,
+  Wifi,
+  Eye,
+  Sliders
+} from 'lucide-react';
 
 export default function AboutSection({ onExplorePlayground, onRunScenario }) {
+  const [activeCategory, setActiveCategory] = useState('HOME');
+
   return (
     <section id="about" style={{
-      paddingTop: '36px',
-      paddingBottom: '48px',
+      paddingTop: '24px',
+      paddingBottom: '56px',
       display: 'flex',
       flexDirection: 'column',
       gap: 36
     }}>
-      {/* Ghost Hero Section with Ambient Aura Glow */}
-      <div style={{ position: 'relative' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-          <span className="font-mono" style={{
-            fontSize: '0.72rem',
-            color: 'var(--ghost-cyan)',
-            fontWeight: 700,
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase'
-          }}>
-            01 // SOVEREIGN TRUST INFRASTRUCTURE
-          </span>
-          <span style={{ height: 1, width: 40, background: 'linear-gradient(90deg, var(--ghost-cyan), transparent)' }}></span>
-          <span className="badge-mono" style={{
-            fontSize: '0.68rem',
-            color: 'var(--ghost-ice-blue)',
-            borderColor: 'rgba(214, 234, 255, 0.2)'
-          }}>
-            ALEXA+ MCP // RING RADAR // FIRE TV // NEMOTRON
-          </span>
-        </div>
-
-        <h1 style={{
-          fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)',
-          fontWeight: 800,
-          lineHeight: 1.05,
-          letterSpacing: '-0.03em',
-          color: '#FFFFFF',
-          marginBottom: 20,
-          fontFamily: 'var(--font-heading)'
-        }}>
-          Build it, prompt it, execute it.<br />
-          <span style={{
-            background: 'linear-gradient(90deg, #9ef0ff 0%, #008dee 40%, #ff5300 80%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            display: 'inline-block'
-          }}>
-            Just don't let the LLM sign the cheque.
-          </span>
-        </h1>
-
-        <p style={{
-          fontSize: '1.05rem',
-          lineHeight: 1.65,
-          color: 'var(--text-muted)',
-          maxWidth: 840,
-          marginBottom: 28
-        }}>
-          <strong>Fides</strong> provides trust infrastructure for ambient and agentic commerce. It safely bridges conversational AI (<strong>Alexa+</strong> and <strong>NVIDIA Nemotron</strong>) with real-world payments by strictly enforcing a unidirectional trust boundary: AI models extract intent, while deterministic cryptographic engines authorize funds, verify <strong>Ring</strong> in-home physical presence, and push 10-foot approvals to <strong>Fire TV</strong>.
-        </p>
-
-        {/* Quick Action CTAs */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
-          <button
-            onClick={onExplorePlayground}
-            className="btn-ghost-primary"
-            style={{ padding: '12px 24px', fontSize: '0.85rem' }}
-          >
-            <Sparkles size={16} />
-            <span>Launch Alexa+ MCP Console</span>
-            <ArrowRight size={15} />
-          </button>
-
-          <button
-            onClick={() => {
-              if (onRunScenario) onRunScenario(1);
-            }}
-            className="btn-ghost-outline"
-            style={{ padding: '12px 22px', fontSize: '0.82rem' }}
-          >
-            <Play size={14} color="var(--ghost-cyan)" />
-            <span>Run Benchmark Scenario #1</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Visual 3-Step Execution Pipeline with Ghost Glass styling */}
-      <div className="ghost-card" style={{ padding: '26px 28px' }}>
-        {/* Subtle decorative top hairline aura */}
+      {/* 1. GHOST CORE HERO MONOLITH STAGE (Exact Match to Screenshot 1) */}
+      <div style={{
+        background: '#090b0e',
+        borderRadius: 4,
+        overflow: 'hidden',
+        position: 'relative',
+        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)',
+        border: '1px solid #d4d4cb'
+      }}>
+        {/* Massive Spaced Display Letters Behind Monolith */}
         <div style={{
           position: 'absolute',
-          top: 0,
+          top: 32,
           left: 0,
           right: 0,
-          height: 2,
-          background: 'linear-gradient(90deg, #9ef0ff 0%, #008dee 35%, #ff5300 70%, transparent 100%)'
-        }} />
-
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 10 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-cyan)', fontWeight: 700, letterSpacing: '0.08em' }}>
-              PIPELINE TELEMETRY //
-            </span>
-            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.02em' }}>
-              The 3-Step Sovereign Authorization Pipeline
-            </h3>
-          </div>
-          <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', letterSpacing: '0.06em' }}>
-            UNIDIRECTIONAL AIR-GAPPED BOUNDARY
-          </span>
+          display: 'flex',
+          justifyContent: 'space-around',
+          padding: '0 40px',
+          fontFamily: 'var(--font-heading)',
+          fontSize: 'clamp(3.5rem, 9vw, 8rem)',
+          fontWeight: 300,
+          color: 'rgba(255, 255, 255, 0.85)',
+          letterSpacing: '0.15em',
+          pointerEvents: 'none',
+          zIndex: 1
+        }}>
+          <span>F</span>
+          <span>I</span>
+          <span>D</span>
+          <span>E</span>
+          <span>S</span>
         </div>
 
+        {/* Hero Hardware Monolith Visual */}
+        <div style={{
+          position: 'relative',
+          zIndex: 2,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingTop: 40,
+          paddingBottom: 20
+        }}>
+          <div style={{
+            maxWidth: 620,
+            width: '100%',
+            position: 'relative'
+          }}>
+            <img
+              src="/fides_core_monolith.jpg"
+              alt="Fides Core Gateway Monolith"
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+                borderRadius: 4,
+                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)'
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Lower Banner Strip in Warm Retro Sand (Like Screenshot 1) */}
+        <div style={{
+          background: '#ebebe6',
+          borderTop: '1px solid #dcdcd5',
+          padding: '24px 28px',
+          position: 'relative',
+          zIndex: 3,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: 20
+        }}>
+          <div>
+            <h1 style={{
+              fontSize: 'clamp(1.6rem, 3.2vw, 2.4rem)',
+              fontWeight: 700,
+              letterSpacing: '-0.02em',
+              color: 'var(--text-ink)',
+              fontFamily: 'var(--font-heading)',
+              marginBottom: 12
+            }}>
+              The personal AI commerce gateway
+            </h1>
+
+            {/* Wireframe Blue Feature Tags */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              <span className="ghost-wire-pill">
+                <span>⊘</span>
+                <span>ZERO WALLET LEAK</span>
+              </span>
+              <span className="ghost-wire-pill">
+                <span>✢</span>
+                <span>ENTIRELY ON-DEVICE</span>
+              </span>
+              <span className="ghost-wire-pill">
+                <span>∞</span>
+                <span>CONTINUOUS CONTEXT</span>
+              </span>
+              <span className="ghost-wire-pill">
+                <span>⟲</span>
+                <span>RING 3D RADAR</span>
+              </span>
+            </div>
+          </div>
+
+          {/* Right Action Block */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <span className="badge-ghost-orange">
+                Spec 2025-11-25 Ready
+              </span>
+              <span className="font-mono" style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-ink)' }}>
+                100% SAFE
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', gap: 10 }}>
+              <button
+                onClick={onExplorePlayground}
+                className="btn-ghost-primary"
+                style={{ padding: '12px 24px', fontSize: '0.85rem' }}
+              >
+                <span>OPEN ALEXA+ MCP CONSOLE</span>
+                <ArrowRight size={15} />
+              </button>
+
+              <button
+                onClick={() => {
+                  if (onRunScenario) onRunScenario(1);
+                }}
+                className="btn-ghost-outline"
+                style={{ padding: '12px 20px', fontSize: '0.8rem' }}
+              >
+                <Play size={14} color="var(--ghost-blue)" />
+                <span>RUN BENCHMARK #1</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. DIORAMA LIVING ROOM SHOWCASE (Exact Match to Screenshot 2 & 3) */}
+      <div style={{
+        background: '#ebebe6',
+        border: '1px solid var(--border-color)',
+        borderRadius: 4,
+        padding: '28px',
+        position: 'relative'
+      }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: 16,
-          alignItems: 'stretch'
+          gridTemplateColumns: '1.2fr 1fr',
+          gap: 28,
+          alignItems: 'center'
         }}>
-          {/* Step 1 */}
-          <div className="ghost-inset" style={{ padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--ghost-cyan)', letterSpacing: '0.06em' }}>
-                STEP 01
-              </span>
-              <span className="badge-mono" style={{ color: 'var(--ghost-crimson)', borderColor: 'rgba(255, 51, 85, 0.3)' }}>
-                UNTRUSTED INPUT
-              </span>
-            </div>
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
-              Voice Prompt or Dialogue
-            </h4>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-              "Alexa, buy two packs of organic milk under ₹700." Input may contain colloquial phrasing, price injections, or rogue merchant instructions.
-            </p>
+          {/* Left: Floating Diorama Box with Blue Sky & Clouds */}
+          <div style={{
+            borderRadius: 4,
+            overflow: 'hidden',
+            border: '2px solid #ffffff',
+            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.08)',
+            position: 'relative'
+          }}>
+            <img
+              src="/fides_diorama_room.jpg"
+              alt="Connected Living Room Diorama"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
           </div>
 
-          {/* Step 2 */}
-          <div className="ghost-inset" style={{ padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--ghost-electric-blue)', letterSpacing: '0.06em' }}>
-                STEP 02
-              </span>
-              <span className="badge-mono" style={{ color: 'var(--ghost-cyan)', borderColor: 'rgba(0, 141, 238, 0.3)' }}>
-                INTENT REASONING
-              </span>
+          {/* Right: Copy & Context Telemetry */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', fontWeight: 700, letterSpacing: '0.08em' }}>
+                  AMBIENT PRESENCE // FIRE TV & RING
+                </span>
+              </div>
+              <h2 style={{
+                fontSize: '1.75rem',
+                fontWeight: 800,
+                lineHeight: 1.2,
+                color: 'var(--text-ink)',
+                fontFamily: 'var(--font-heading)',
+                marginBottom: 10
+              }}>
+                Intelligence stays yours on Fides.
+              </h2>
+              <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                Everything you do with Fides is run with deterministic boundary controls on-device and in-home. No model ever touches your credit card, and your AI spending rules are owned entirely by you.
+              </p>
             </div>
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
-              NVIDIA Nemotron 3.5 & Bedrock
-            </h4>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-              Extracts candidate items and counts into structured JSON proposals via Nebius Token Factory. <em>Has zero access to wallets, cards, or price overrides.</em>
-            </p>
-          </div>
 
-          {/* Step 3 */}
-          <div className="ghost-inset" style={{
-            padding: '20px 18px',
+            {/* Context Pills (Matching Screenshot 3) */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <div style={{
+                background: '#ffffff',
+                border: '1px solid var(--border-hairline)',
+                padding: '10px 14px',
+                borderRadius: 2,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+                fontSize: '0.8rem',
+                color: 'var(--text-ink)'
+              }}>
+                <Bell size={15} color="var(--ghost-blue)" />
+                <span>Ring 3D radar verifies buyer presence inside the home boundary.</span>
+              </div>
+
+              <div style={{
+                background: '#ffffff',
+                border: '1px solid var(--border-hairline)',
+                padding: '10px 14px',
+                borderRadius: 2,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+                fontSize: '0.8rem',
+                color: 'var(--text-ink)'
+              }}>
+                <Radio size={15} color="var(--ghost-orange)" />
+                <span>Alexa+ intent resolved via AWS Bedrock & NVIDIA Nemotron.</span>
+              </div>
+
+              <div style={{
+                background: '#ffffff',
+                border: '1px solid var(--border-hairline)',
+                padding: '10px 14px',
+                borderRadius: 2,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+                fontSize: '0.8rem',
+                color: 'var(--text-ink)'
+              }}>
+                <Tv size={15} color="var(--accent-emerald)" />
+                <span>10-foot interactive card pushes to Fire TV for human step-up review.</span>
+              </div>
+            </div>
+
+            {/* Bottom Wireframe Tags */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 6 }}>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                <span className="ghost-wire-pill">
+                  <span>◫</span>
+                  <span>LOCAL INTELLIGENCE</span>
+                </span>
+                <span className="ghost-wire-pill">
+                  <span>📖</span>
+                  <span>CONTINUOUS CONTEXT</span>
+                </span>
+                <span className="ghost-wire-pill">
+                  <span>⁖</span>
+                  <span>PROACTIVE AGENT</span>
+                </span>
+              </div>
+
+              {/* Square Blue Button from bottom right of screenshots */}
+              <button
+                onClick={onExplorePlayground}
+                style={{
+                  width: 38,
+                  height: 38,
+                  background: 'var(--ghost-blue)',
+                  border: 'none',
+                  borderRadius: 2,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#ffffff',
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(22, 104, 232, 0.3)'
+                }}
+                title="Open Simulator"
+              >
+                <ShoppingBag size={18} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. INTERACTIVE DEVICE MAP & ECOSYSTEM GRID (Exact Match to Screenshot 4 & 5) */}
+      <div style={{
+        background: '#e8e8e2',
+        border: '1px solid var(--border-color)',
+        borderRadius: 4,
+        padding: '32px 28px',
+        textAlign: 'center',
+        position: 'relative'
+      }}>
+        {/* Category Switcher Tabs */}
+        <div style={{
+          display: 'inline-flex',
+          background: '#dcdcd5',
+          padding: 3,
+          borderRadius: 2,
+          marginBottom: 32,
+          gap: 2
+        }}>
+          {['DIGITAL', 'HOME', 'PROTOCOL'].map((cat) => {
+            const isSelected = activeCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                style={{
+                  background: isSelected ? 'var(--ghost-blue)' : 'transparent',
+                  color: isSelected ? '#ffffff' : 'var(--text-muted)',
+                  border: 'none',
+                  padding: '5px 16px',
+                  borderRadius: 2,
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  fontFamily: 'var(--font-mono)',
+                  letterSpacing: '0.06em',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease'
+                }}
+              >
+                {isSelected && '■ '}
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Central Device Connection Nodes */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(5, 1fr)',
+          gap: 16,
+          alignItems: 'center',
+          maxWidth: 960,
+          margin: '0 auto 28px'
+        }}>
+          {/* Node 1: Ring Sensor */}
+          <div style={{
+            background: '#ffffff',
+            border: '1px solid var(--border-hairline)',
+            padding: '16px 12px',
+            borderRadius: 2,
             display: 'flex',
             flexDirection: 'column',
+            alignItems: 'center',
+            gap: 10
+          }}>
+            <Bell size={28} color="var(--ghost-blue)" />
+            <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+              RING PRO 2 (RADAR)
+            </span>
+            <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Physical Presence</span>
+          </div>
+
+          {/* Node 2: Alexa+ Voice */}
+          <div style={{
+            background: '#ffffff',
+            border: '1px solid var(--border-hairline)',
+            padding: '16px 12px',
+            borderRadius: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 10
+          }}>
+            <Radio size={28} color="var(--ghost-orange)" />
+            <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+              ALEXA+ (MCP)
+            </span>
+            <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Voice Protocol</span>
+          </div>
+
+          {/* Center Monolith Node: Fides Sovereign Core */}
+          <div style={{
+            background: '#111317',
+            border: '2px solid var(--ghost-blue)',
+            padding: '20px 14px',
+            borderRadius: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             gap: 10,
-            borderColor: 'rgba(0, 245, 155, 0.25)',
-            background: 'rgba(0, 245, 155, 0.03)'
+            color: '#ffffff',
+            boxShadow: '0 8px 24px rgba(22, 104, 232, 0.15)'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--ghost-emerald)', letterSpacing: '0.06em' }}>
-                STEP 03
-              </span>
-              <span className="badge-mono" style={{ color: 'var(--ghost-emerald)', borderColor: 'rgba(0, 245, 155, 0.35)' }}>
-                AUTHORITATIVE GATE
-              </span>
-            </div>
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
-              Fides Deterministic Engine
-            </h4>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-              Validates Ed25519 signatures, verifies in-home radar presence via Ring, calculates catalogue totals, and writes SHA-256 hash-chained audit blocks.
-            </p>
+            <ShieldCheck size={32} color="#ffffff" />
+            <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--ghost-blue)' }}>
+              FIDES CORE
+            </span>
+            <span style={{ fontSize: '0.65rem', color: '#888e98' }}>Air-Gapped Gateway</span>
+          </div>
+
+          {/* Node 4: Fire TV */}
+          <div style={{
+            background: '#ffffff',
+            border: '1px solid var(--border-hairline)',
+            padding: '16px 12px',
+            borderRadius: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 10
+          }}>
+            <Tv size={28} color="var(--accent-amber)" />
+            <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+              FIRE TV (VEGA OS)
+            </span>
+            <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>10-Foot Display</span>
+          </div>
+
+          {/* Node 5: Nebius / Nemotron */}
+          <div style={{
+            background: '#ffffff',
+            border: '1px solid var(--border-hairline)',
+            padding: '16px 12px',
+            borderRadius: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 10
+          }}>
+            <Cpu size={28} color="var(--accent-emerald)" />
+            <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+              NVIDIA NEMOTRON
+            </span>
+            <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Nebius Token Factory</span>
           </div>
         </div>
+
+        <p style={{
+          fontSize: '0.95rem',
+          fontWeight: 600,
+          color: 'var(--text-ink)',
+          fontFamily: 'var(--font-heading)',
+          margin: 0
+        }}>
+          Connect to the devices in the world around you.
+        </p>
       </div>
 
-      {/* 4 Pillars: Hardware & Protocol Integration */}
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-          <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-ember-orange)', fontWeight: 700, letterSpacing: '0.08em' }}>
-            ECOSYSTEM //
-          </span>
-          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.02em' }}>
-            Amazon & Nebius Hackathon Architecture
-          </h3>
+      {/* 4. SECURITY MATRIX CONTRAST (Light Retro Cards) */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: 16
+      }}>
+        <div style={{
+          background: '#ffffff',
+          border: '1px solid var(--border-color)',
+          borderRadius: 4,
+          padding: '22px 24px'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+            <AlertTriangle size={18} color="var(--accent-rose)" />
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+              Direct Agent Vulnerability
+            </h4>
+          </div>
+          <ul style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.6, paddingLeft: 18, margin: 0 }}>
+            <li>LLM holds raw financial authority and payment API keys.</li>
+            <li>Adversarial prompts convince the model that prices are ₹0 or approved.</li>
+            <li>Network replays duplicate orders without nonces.</li>
+            <li>Zero physical presence proof: remote voice spoofing drains limits.</li>
+          </ul>
         </div>
 
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: 16
+          background: '#ffffff',
+          border: '1px solid var(--ghost-blue)',
+          borderRadius: 4,
+          padding: '22px 24px'
         }}>
-          {/* Card 1: Alexa+ MCP */}
-          <div className="ghost-card" style={{ padding: '22px 20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-              <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--ghost-cyan)', fontWeight: 700, letterSpacing: '0.06em' }}>
-                01 // ALEXA+ MCP (2025-11-25)
-              </span>
-              <Radio size={18} color="var(--ghost-cyan)" />
-            </div>
-            <h4 style={{ fontSize: '0.98rem', fontWeight: 700, marginBottom: 8, color: '#ffffff' }}>
-              Streamable HTTP MCP Server
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+            <CheckCircle2 size={18} color="var(--ghost-blue)" />
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+              Fides Air-Gapped Trust
             </h4>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.55 }}>
-              Implements self-hosted MCP endpoints at <code>/mcp</code> and <code>/mcp/events</code> exposing 4 sovereign tools for buyer intent, presence checks, and living room escalation.
-            </p>
           </div>
-
-          {/* Card 2: Ring IoT Radar */}
-          <div className="ghost-card" style={{ padding: '22px 20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-              <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--ghost-electric-blue)', fontWeight: 700, letterSpacing: '0.06em' }}>
-                02 // RING IOT PRESENCE
-              </span>
-              <ShieldCheck size={18} color="var(--ghost-electric-blue)" />
-            </div>
-            <h4 style={{ fontSize: '0.98rem', fontWeight: 700, marginBottom: 8, color: '#ffffff' }}>
-              Physical Radar Proof
-            </h4>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.55 }}>
-              Leverages Ring 3D radar motion, Z-Wave RSSI, and doorbell biometric authentication to issue tamper-evident presence tokens before high-value checkouts.
-            </p>
-          </div>
-
-          {/* Card 3: Fire TV */}
-          <div className="ghost-card" style={{ padding: '22px 20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-              <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--ghost-ember-orange)', fontWeight: 700, letterSpacing: '0.06em' }}>
-                03 // FIRE TV 10-FOOT DISPLAY
-              </span>
-              <Tv size={18} color="var(--ghost-ember-orange)" />
-            </div>
-            <h4 style={{ fontSize: '0.98rem', fontWeight: 700, marginBottom: 8, color: '#ffffff' }}>
-              Living Room Companion
-            </h4>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.55 }}>
-              When a transaction requires human step-up review, Fides pushes a 10-foot interactive card directly to Fire TV (Vega / Fire OS) for immediate remote approval.
-            </p>
-          </div>
-
-          {/* Card 4: Nebius & Bedrock */}
-          <div className="ghost-card" style={{ padding: '22px 20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-              <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--ghost-emerald)', fontWeight: 700, letterSpacing: '0.06em' }}>
-                04 // NEBIUS × BEDROCK
-              </span>
-              <Cpu size={18} color="var(--ghost-emerald)" />
-            </div>
-            <h4 style={{ fontSize: '0.98rem', fontWeight: 700, marginBottom: 8, color: '#ffffff' }}>
-              Hybrid LLM Reasoning
-            </h4>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.55 }}>
-              NVIDIA Nemotron 3.5 Lightning served on Nebius Token Factory delivers rapid SKU interpretation, while AWS Bedrock provides enterprise reliability for Alexa+ dialogue.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Comparison: Ghost Style Glass Contrast */}
-      <div className="ghost-card" style={{ padding: '26px 28px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
-          <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-cyan)', fontWeight: 700, letterSpacing: '0.08em' }}>
-            SECURITY COMPARISON //
-          </span>
-          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>
-            Why Fides Architecture Eliminates Financial Jailbreaks
-          </h3>
-        </div>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: 16
-        }}>
-          {/* Unprotected */}
-          <div style={{
-            background: 'rgba(255, 51, 85, 0.05)',
-            border: '1px solid rgba(255, 51, 85, 0.25)',
-            borderRadius: 6,
-            padding: '18px 20px'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-              <AlertTriangle size={16} color="var(--ghost-crimson)" />
-              <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--ghost-crimson)' }}>
-                Direct LLM Execution (Vulnerable)
-              </span>
-            </div>
-            <ul style={{ fontSize: '0.78rem', color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6, paddingLeft: 18, margin: 0 }}>
-              <li>LLM holds raw API credit card keys or bank authorization tokens.</li>
-              <li>Prompt injection can persuade the model that price is ₹0 or ₹999,999.</li>
-              <li>Zero physical presence proof: remote voice spoofing can drain accounts.</li>
-              <li>Replay attacks execute duplicate transactions without detection.</li>
-            </ul>
-          </div>
-
-          {/* Fides Guarded */}
-          <div style={{
-            background: 'rgba(0, 245, 155, 0.05)',
-            border: '1px solid rgba(0, 245, 155, 0.25)',
-            borderRadius: 6,
-            padding: '18px 20px'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-              <CheckCircle2 size={16} color="var(--ghost-emerald)" />
-              <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--ghost-emerald)' }}>
-                Fides Ambient Trust Gateway (Secure)
-              </span>
-            </div>
-            <ul style={{ fontSize: '0.78rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: 1.6, paddingLeft: 18, margin: 0 }}>
-              <li>LLM only outputs candidate SKU strings — zero financial authority.</li>
-              <li>Server fetches verified catalogue prices and checks signed mandates.</li>
-              <li>Ring radar presence required for purchases exceeding auto-caps.</li>
-              <li>Every action is cryptographically signed and hash-chained with SHA-256.</li>
-            </ul>
-          </div>
+          <ul style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.6, paddingLeft: 18, margin: 0 }}>
+            <li>LLM only outputs candidate SKU strings — zero financial authority.</li>
+            <li>Server verifies official catalogue prices and signed mandates.</li>
+            <li>Ring 3D radar proof required before high-value checkouts.</li>
+            <li>Every decision is cryptographically signed and hash-chained with SHA-256.</li>
+          </ul>
         </div>
       </div>
     </section>
