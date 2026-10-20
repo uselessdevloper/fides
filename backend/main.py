@@ -2,16 +2,19 @@ import os
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.api import purchases, approvals, audit, demo
+from backend.api import purchases, approvals, audit, demo, alexa, ring, firetv
 from backend.services.nebius_client import nebius_client
 from backend.services.audit_ledger import audit_ledger
+from backend.services.aws_bedrock import bedrock_client
+from backend.services.ring_service import ring_service
+from backend.api.firetv import firetv_state
 
 load_dotenv()
 
 app = FastAPI(
-    title="Fides — Trust Infrastructure for Agentic Commerce",
-    description="Security gateway separating AI intent interpretation (NVIDIA Nemotron via Nebius Token Factory) from deterministic financial authorization.",
-    version="1.0.0"
+    title="Fides — Ambient Commerce for Alexa+, Ring & Fire TV",
+    description="Security gateway separating AI intent reasoning (Alexa+ via MCP & AWS Bedrock) from deterministic payment authorization.",
+    version="2.0.0"
 )
 
 # CORS configuration
@@ -32,6 +35,9 @@ app.add_middleware(
 )
 
 # Register routers
+app.include_router(alexa.router)
+app.include_router(ring.router)
+app.include_router(firetv.router)
 app.include_router(purchases.router)
 app.include_router(approvals.router)
 app.include_router(audit.router)
@@ -40,20 +46,42 @@ app.include_router(demo.router)
 @app.get("/api/health", tags=["Health"])
 def health_check():
     """
-    Service health check returning Nebius Token Factory connection info,
-    active NVIDIA model, and audit ledger integrity status.
+    Service health check returning Alexa+ MCP, AWS Bedrock, Ring IoT,
+    and audit ledger integrity status.
     """
     chain_valid, chain_msg = audit_ledger.verify_chain()
-    has_api_key = bool(nebius_client.api_key and not nebius_client.api_key.startswith("your_"))
+    has_nebius_key = bool(nebius_client.api_key and not nebius_client.api_key.startswith("your_"))
     
     return {
         "status": "HEALTHY",
-        "service": "Fides Agentic Commerce Gateway",
+        "service": "Fides Ambient Commerce Gateway",
+        "hackathon": "Amazon Developer Hackathon (Fire TV, Alexa+, Ring & Bee)",
+        "alexa_mcp": {
+            "spec_version": "2025-11-25",
+            "endpoint": "/mcp",
+            "transport": "Streamable HTTP & SSE (/mcp/events)",
+            "tools_count": 4
+        },
+        "aws_bedrock": {
+            "region": bedrock_client.region_name,
+            "model_id": bedrock_client.model_id,
+            "configured": bedrock_client.is_configured(),
+            "runtime_mode": "Live AWS Bedrock (boto3)" if bedrock_client.is_configured() else "AWS Bedrock AgentCore (Emulated)"
+        },
+        "ring_iot": {
+            "status": "ONLINE",
+            "device": "Ring Video Doorbell Pro 2",
+            "presence_mode": "RADAR_VERIFIED"
+        },
+        "fire_tv": {
+            "status": "ACTIVE_10_FOOT_MODE",
+            "target": "Living Room Fire TV (Vega / Fire OS)"
+        },
         "nebius_integration": {
             "model": nebius_client.model,
             "base_url": nebius_client.base_url,
-            "api_key_configured": has_api_key,
-            "runtime_mode": "Live Nebius Token Factory" if has_api_key else "Simulated Nemotron Runtime / Fallback"
+            "api_key_configured": has_nebius_key,
+            "runtime_mode": "Live Nebius Token Factory" if has_nebius_key else "Simulated Nemotron Runtime / Fallback"
         },
         "audit_ledger": {
             "total_blocks": len(audit_ledger.get_all_blocks()),

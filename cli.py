@@ -236,9 +236,59 @@ def cmd_verify_ledger():
     else:
         print(f"{RED}{BOLD}✗ TAMPER DETECTED:{RESET} {msg}")
 
+def cmd_alexa(prompt: str):
+    """Execute voice instruction via self-hosted Alexa+ MCP Server (Spec 2025-11-25)."""
+    print_banner()
+    from backend.mcp.alexa_mcp_server import mcp_server, MCP_SPEC_VERSION
+    print(f"{CYAN}ALEXA+ STREAMABLE HTTP MCP INTERFACE (Spec {MCP_SPEC_VERSION}){RESET}")
+    print(f"Voice Input: \"{BOLD}{prompt}{RESET}\"\n")
+    
+    # 1. Ring Presence Tool Call
+    print(f"1. Calling MCP Tool: {BOLD}ring_verify_presence{RESET}...")
+    t1 = mcp_server.handle_json_rpc({
+        "jsonrpc": "2.0", "id": "cli_1", "method": "tools/call",
+        "params": {"name": "ring_verify_presence", "arguments": {"user_id": "USER_ALEXA_HOME"}}
+    })
+    res1 = json.loads(t1["result"]["content"][0]["text"])
+    print(f"   ✓ Presence Token: {GREEN}{res1['token_id']}{RESET} (Method: {res1['verification_method']})")
+
+    # 2. Fides Evaluate Purchase Tool Call
+    print(f"\n2. Calling MCP Tool: {BOLD}fides_evaluate_purchase{RESET}...")
+    t2 = mcp_server.handle_json_rpc({
+        "jsonrpc": "2.0", "id": "cli_2", "method": "tools/call",
+        "params": {"name": "fides_evaluate_purchase", "arguments": {"request_text": prompt, "spending_cap": 700.0}}
+    })
+    res2 = json.loads(t2["result"]["content"][0]["text"])
+    dec = res2.get("decision", "DENY")
+    col = GREEN if dec == "APPROVE" else YELLOW if dec == "STEP_UP" else RED
+    print(f"   Outcome: {col}{BOLD}[{dec}]{RESET}")
+    print(f"   Calculated Total: ₹{res2.get('calculated_total', 0.0):.2f} / Cap: ₹{res2.get('spending_cap', 0.0):.2f}")
+    print(f"   Reason:  {res2.get('reason')}")
+    print(f"   SHA-256: {res2.get('audit_hash')}")
+
+def cmd_ring():
+    """Check Ring Video Doorbell status and radar presence telemetry."""
+    print_banner()
+    from backend.services.ring_service import ring_service
+    status = ring_service.get_status()
+    print(f"Device:   {BOLD}{status['device_model']}{RESET}")
+    print(f"Location: {status['location']}")
+    print(f"Status:   {GREEN}{status['status']}{RESET}")
+    print(f"Battery:  {status['battery_level']}%")
+    print(f"Signal:   {status['wifi_signal']}")
+    print(f"Radar:    {status['presence_mode']}")
+    print(f"Events:   {len(ring_service.get_recent_events())} logged")
+
 def main():
     parser = argparse.ArgumentParser(description="Fides CLI — Trust Infrastructure for Agentic Commerce")
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
+    
+    # alexa
+    p_alexa = subparsers.add_parser("alexa", help="Send voice command via Alexa+ MCP Server (Spec 2025-11-25)")
+    p_alexa.add_argument("prompt", help="Voice instruction for Alexa+")
+    
+    # ring
+    subparsers.add_parser("ring", help="Check Ring Doorbell & radar presence telemetry")
     
     # set-key
     p_key = subparsers.add_parser("set-key", help="Save Nebius Token Factory API key to .env")
@@ -265,7 +315,11 @@ def main():
     
     args = parser.parse_args()
     
-    if args.command == "set-key":
+    if args.command == "alexa":
+        cmd_alexa(args.prompt)
+    elif args.command == "ring":
+        cmd_ring()
+    elif args.command == "set-key":
         cmd_set_key(args.api_key)
     elif args.command == "test-connection":
         cmd_test_connection()

@@ -41,8 +41,8 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
               FIDES
             </span>
             <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>×</span>
-            <span className="font-mono" style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--accent-coral)' }}>
-              NEMOTRON 3.5
+            <span className="font-mono" style={{ fontSize: '0.8rem', fontWeight: 600, color: '#00A8E8' }}>
+              ALEXA+ // RING
             </span>
           </div>
         </div>
@@ -51,7 +51,8 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
         <nav style={{
           display: 'flex',
           alignItems: 'center',
-          gap: 4
+          gap: 4,
+          flexWrap: 'wrap'
         }}>
           <button
             onClick={() => setActiveTab('about')}
@@ -59,9 +60,9 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
               background: activeTab === 'about' ? 'var(--bg-subtle)' : 'transparent',
               color: activeTab === 'about' ? 'var(--text-main)' : 'var(--text-muted)',
               border: activeTab === 'about' ? '1px solid var(--border-color)' : '1px solid transparent',
-              padding: '6px 12px',
+              padding: '6px 10px',
               borderRadius: 6,
-              fontSize: '0.78rem',
+              fontSize: '0.74rem',
               fontWeight: 600,
               cursor: 'pointer',
               letterSpacing: '0.04em',
@@ -73,14 +74,52 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
           </button>
 
           <button
+            onClick={() => setActiveTab('alexa')}
+            style={{
+              background: activeTab === 'alexa' ? '#E0F2FE' : 'transparent',
+              color: activeTab === 'alexa' ? '#0369A1' : 'var(--text-muted)',
+              border: activeTab === 'alexa' ? '1px solid #7DD3FC' : '1px solid transparent',
+              padding: '6px 10px',
+              borderRadius: 6,
+              fontSize: '0.74rem',
+              fontWeight: 700,
+              cursor: 'pointer',
+              letterSpacing: '0.04em',
+              transition: 'all 0.15s ease'
+            }}
+            className="font-mono"
+          >
+            02 / ALEXA+ MCP
+          </button>
+
+          <button
+            onClick={() => setActiveTab('livingroom')}
+            style={{
+              background: activeTab === 'livingroom' ? '#FEF3C7' : 'transparent',
+              color: activeTab === 'livingroom' ? '#B45309' : 'var(--text-muted)',
+              border: activeTab === 'livingroom' ? '1px solid #FCD34D' : '1px solid transparent',
+              padding: '6px 10px',
+              borderRadius: 6,
+              fontSize: '0.74rem',
+              fontWeight: 700,
+              cursor: 'pointer',
+              letterSpacing: '0.04em',
+              transition: 'all 0.15s ease'
+            }}
+            className="font-mono"
+          >
+            03 / LIVING ROOM (TV & RING)
+          </button>
+
+          <button
             onClick={() => setActiveTab('playground')}
             style={{
               background: activeTab === 'playground' ? 'var(--bg-subtle)' : 'transparent',
               color: activeTab === 'playground' ? 'var(--text-main)' : 'var(--text-muted)',
               border: activeTab === 'playground' ? '1px solid var(--border-color)' : '1px solid transparent',
-              padding: '6px 12px',
+              padding: '6px 10px',
               borderRadius: 6,
-              fontSize: '0.78rem',
+              fontSize: '0.74rem',
               fontWeight: 600,
               cursor: 'pointer',
               letterSpacing: '0.04em',
@@ -88,7 +127,7 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
             }}
             className="font-mono"
           >
-            02 / PLAYGROUND
+            04 / PLAYGROUND
           </button>
 
           <button
@@ -97,9 +136,9 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
               background: activeTab === 'inspector' ? 'var(--bg-subtle)' : 'transparent',
               color: activeTab === 'inspector' ? 'var(--text-main)' : 'var(--text-muted)',
               border: activeTab === 'inspector' ? '1px solid var(--border-color)' : '1px solid transparent',
-              padding: '6px 12px',
+              padding: '6px 10px',
               borderRadius: 6,
-              fontSize: '0.78rem',
+              fontSize: '0.74rem',
               fontWeight: 600,
               cursor: 'pointer',
               letterSpacing: '0.04em',
@@ -107,7 +146,7 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
             }}
             className="font-mono"
           >
-            03 / INSPECTOR
+            05 / INSPECTOR
           </button>
 
           <button
@@ -116,9 +155,9 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
               background: activeTab === 'audit' ? 'var(--bg-subtle)' : 'transparent',
               color: activeTab === 'audit' ? 'var(--text-main)' : 'var(--text-muted)',
               border: activeTab === 'audit' ? '1px solid var(--border-color)' : '1px solid transparent',
-              padding: '6px 12px',
+              padding: '6px 10px',
               borderRadius: 6,
-              fontSize: '0.78rem',
+              fontSize: '0.74rem',
               fontWeight: 600,
               cursor: 'pointer',
               letterSpacing: '0.04em',
@@ -126,7 +165,7 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
             }}
             className="font-mono"
           >
-            04 / AUDIT LEDGER
+            06 / AUDIT
           </button>
         </nav>
 
@@ -149,7 +188,7 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
                 height: '100%',
                 width: '100%',
                 borderRadius: '50%',
-                backgroundColor: 'var(--accent-coral)',
+                backgroundColor: '#00A8E8',
                 opacity: 0.75
               }}></span>
               <span style={{
@@ -158,11 +197,11 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
                 borderRadius: '50%',
                 height: 7,
                 width: 7,
-                backgroundColor: 'var(--accent-coral)'
+                backgroundColor: '#00A8E8'
               }}></span>
             </span>
             <span className="font-mono" style={{ fontWeight: 600, color: 'var(--text-main)' }}>
-              LISTENING // NEBIUS RUNTIME
+              MCP SPEC 2025-11-25 // READY
             </span>
           </div>
         </div>

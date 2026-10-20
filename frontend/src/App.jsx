@@ -5,6 +5,8 @@ import ScenarioBar from './components/ScenarioBar';
 import PurchasePlayground from './components/PurchasePlayground';
 import DecisionInspector from './components/DecisionInspector';
 import AuditViewer from './components/AuditViewer';
+import AlexaSimulator from './components/AlexaSimulator';
+import LivingRoomDashboard from './components/LivingRoomDashboard';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('about');
@@ -255,9 +257,24 @@ export default function App() {
         {/* Tab Content */}
         {activeTab === 'about' && (
           <AboutSection
-            onExplorePlayground={() => setActiveTab('playground')}
+            onExplorePlayground={() => setActiveTab('alexa')}
             onRunScenario={(scenarioId) => handleRunScenario(scenarioId)}
           />
+        )}
+
+        {activeTab === 'alexa' && (
+          <AlexaSimulator
+            onSimulateSuccess={(data) => {
+              fetchAuditBlocks();
+              fetchPendingApprovals();
+              verifyAuditLedger();
+              showToast(`Alexa+ Decision: ${data.decision}`, data.decision === 'APPROVE' ? 'success' : 'warn');
+            }}
+          />
+        )}
+
+        {activeTab === 'livingroom' && (
+          <LivingRoomDashboard />
         )}
 
         {activeTab === 'playground' && (
