@@ -1,4 +1,5 @@
-# Fides: Ambient Commerce for Fire TV, Alexa+, Ring & Bee
+# Fides: Trust Infrastructure for Agentic Commerce
+### Connected Across Fire TV, Alexa+, Ring & Bee Wearable AI — Amazon Developer Hackathon 2026
 
 [![Amazon Developer Hackathon](https://img.shields.io/badge/Hackathon-Amazon_Developer_2026-FF9900?logo=amazon&logoColor=white)](https://amazonappdev2026.devpost.com/)
 [![Track: Alexa+](https://img.shields.io/badge/Track-Alexa%2B_MCP_(Spec_2025--11--25)-00A8E8)](https://amazonappdev2026.devpost.com/)
@@ -11,21 +12,47 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Ledger: SHA--256](https://img.shields.io/badge/Audit-SHA--256_Hash_Chain-orange)](https://en.wikipedia.org/wiki/Hash_chain)
 
-> **Fides** is a trust infrastructure and ambient commerce gateway connecting **Fire TV**, **Alexa+**, **Ring**, and **Bee Wearable AI** through a self-hosted **Model Context Protocol (MCP)** server (Spec 2025-11-25) and **AWS Bedrock**.
->
-> While **Alexa+** and **Bee Wearable** capture natural voice intent, Fides authoritatively verifies **Ring 3D radar physical presence**, enforces **Ed25519 spending mandates**, blocks replay attacks, triggers **Bee on-wrist double-pulse haptics**, and routes high-value step-up confirmations to the **Fire TV** living room display.
+> **Our Belief:** Identity tells you who is asking. Authorization tells you what they are allowed to do. **Fides answers the question: Should this specific order go through?** And keeps a full record of how and why the decision was made.
 >
 > 📋 **See [SUBMISSION.md](SUBMISSION.md) for the complete Devpost submission package, product feedback on all tools, friction logs (eligible for 10% bonus), and DevRel collaborator invite instructions.**
 
 ---
 
-## 1. The Core Problem in Ambient Smart Home Commerce
+## 1. Problem
 
-When families use voice assistants to say *"Alexa, order groceries from Whole Foods"* or *"Alexa, buy electronics"*, ambient smart home purchasing faces critical challenges:
+AI agents can now place orders using real money. Companies have started to show how agents can prove they have authorization, but one big question always stays: **when an order arrives at a merchant, should the merchant trust it?**
+
+Verifying that an agent is who it says it is and that it has permission does not mean the transaction is safe. Merchants still face risks like **injection attacks, replay attacks, unauthorized spending, and strange or suspicious behavior from AI agents**. These issues force merchants to decide whether to **APPROVE**, **STEP UP** (send for review), or **DENY** the order entirely.
+
+In ambient smart home and agentic environments (Fire TV, Alexa+, Ring, Bee):
 1. **Accidental & Unauthorized Triggers:** Children, background TV audio, or malicious guests can trigger real financial transactions.
 2. **Absence of Physical Presence Verification:** Voice assistants cannot verify whether the authorized account holder is physically inside the home.
 3. **LLM Financial Authority Vulnerabilities:** Letting an AI model authoritatively approve charges or set prices introduces prompt injection and hallucination risks.
 4. **Lack of Living Room Oversight:** Ambient voice purchases happen invisibly without visual confirmation for family members.
+
+---
+
+## 2. Solution
+
+**Fides is a trust and authorization gateway built for the world of AI-driven commerce.** It sits between AI buyer agents and merchants, acting as a policy-driven gatekeeper. Fides evaluates every order in real time and makes a clear decision: **APPROVE**, **STEP UP** (ask for human approval), or **DENY** — each with a deterministic reason and a full audit trail.
+
+* **Identity, Evidence & Risk Assessment:** Fides checks the agent’s identity, verifies authorization evidence (Ed25519 cryptographic spending mandates), and assesses transaction risk.
+* **Policy Engine, Not a Language Model:** It uses a **deterministic policy engine, NOT a language model**, to make decisions. Every outcome is recorded in a **tamper-evident SHA-256 hash-chained audit ledger**. This ensures that while an AI model may suggest a purchase, it **cannot independently move money**.
+* **Interoperable with Visa's Trusted Agent Protocol (VTAP):** Fides is designed to work alongside agent identity and authorization systems like Visa’s Trusted Agent Protocol. Integration with Visa protocols would depend on specifications and developer access.
+* **Amazon Developer Ecosystem Synthesis:**
+  * **Alexa+ (Spec 2025-11-25):** Self-hosted Model Context Protocol (MCP) server exposing 6 tools on Streamable HTTP/SSE for natural intent interpretation.
+  * **Ring 3D Radar:** Verifies physical in-home presence and emits signed `RNG_PRESENCE` tokens before high-value checkout.
+  * **Bee Wearable AI:** On-wrist ambient audio capture plus double-pulse LRA haptic alerts for physical confirmation.
+  * **Fire TV (Vega OS / Fire OS):** 10-foot television companion card for supervisor D-pad approval on `STEP UP` decisions.
+  * **AWS Bedrock:** Amazon Nova Lite & Claude 3.5 Sonnet for intent extraction, strictly isolated from payment execution.
+
+---
+
+## 3. Impact
+
+Fides serves **e-commerce merchants, payment service providers (PSPs), issuers, AI-agent platforms, consumers, and fraud and risk teams**.
+
+Its purpose is to make agent-initiated payments **safer, more transparent, and fully traceable** — all while keeping the convenience of ambient and autonomous shopping.
 
 ### The Fides Architecture Principle
 ```

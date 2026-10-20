@@ -225,11 +225,22 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
               color: 'var(--text-ink)',
               margin: '6px 0'
             }}>
-              Fides: Sovereign Trust & Ambient Commerce Gateway
+              Fides: Trust Infrastructure for Agentic Commerce
             </h1>
-            <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', maxWidth: 780, lineHeight: 1.5 }}>
-              Connecting <strong>Fire TV</strong>, <strong>Alexa+</strong>, <strong>Ring</strong>, <strong>Bee Wearable AI</strong>, and <strong>AWS Bedrock</strong> into an authoritative, air-gapped security boundary for autonomous voice purchases.
+            <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', maxWidth: 780, lineHeight: 1.5, margin: '4px 0 10px 0' }}>
+              Connecting <strong>Fire TV</strong>, <strong>Alexa+</strong>, <strong>Ring</strong>, <strong>Bee Wearable AI</strong>, and <strong>AWS Bedrock</strong> into an authoritative, air-gapped security boundary.
             </p>
+            <div style={{
+              background: '#faf9f6',
+              borderLeft: '3px solid var(--nuvei-cyan)',
+              padding: '8px 14px',
+              borderRadius: '0 4px 4px 0',
+              fontSize: '0.82rem',
+              fontStyle: 'italic',
+              color: 'var(--text-ink)'
+            }}>
+              “Identity tells you who is asking. Authorization tells you what they are allowed to do. <strong>Fides answers: Should this specific order go through?</strong> And keeps a full record of how and why the decision was made.”
+            </div>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
