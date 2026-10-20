@@ -204,18 +204,18 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
       <div style={{
         background: '#ffffff',
         border: '1px solid var(--border-color)',
-        borderRadius: 4,
+        borderRadius: 8,
         padding: '24px 28px',
         position: 'relative'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
               <span className="badge-ghost-orange">
-                AMAZON DEVELOPER HACKATHON 2026
+                Amazon Developer Hackathon 2026
               </span>
               <span className="badge-ghost-blue">
-                OFFICIAL SUBMISSION BRIEF
+                Official Submission Brief
               </span>
             </div>
             <h1 style={{
@@ -227,17 +227,18 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
             }}>
               Fides: Trust Infrastructure for Agentic Commerce
             </h1>
-            <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', maxWidth: 780, lineHeight: 1.5, margin: '4px 0 10px 0' }}>
+            <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', maxWidth: 780, lineHeight: 1.5, margin: '4px 0 12px 0' }}>
               Connecting <strong>Fire TV</strong>, <strong>Alexa+</strong>, <strong>Ring</strong>, <strong>Bee Wearable AI</strong>, and <strong>AWS Bedrock</strong> into an authoritative, air-gapped security boundary.
             </p>
             <div style={{
               background: '#faf9f6',
               borderLeft: '3px solid var(--nuvei-cyan)',
-              padding: '8px 14px',
-              borderRadius: '0 4px 4px 0',
-              fontSize: '0.82rem',
+              padding: '10px 16px',
+              borderRadius: '0 8px 8px 0',
+              fontSize: '0.84rem',
               fontStyle: 'italic',
-              color: 'var(--text-ink)'
+              color: 'var(--text-ink)',
+              lineHeight: 1.5
             }}>
               “Identity tells you who is asking. Authorization tells you what they are allowed to do. <strong>Fides answers: Should this specific order go through?</strong> And keeps a full record of how and why the decision was made.”
             </div>
@@ -249,10 +250,10 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
             </span>
             <div style={{ display: 'flex', gap: 8 }}>
               <span className="ghost-wire-pill" style={{ color: 'var(--ghost-orange)', borderColor: 'var(--ghost-orange)' }}>
-                4 PRIMARY TRACKS
+                4 Primary Tracks
               </span>
               <span className="ghost-wire-pill" style={{ color: 'var(--accent-emerald)', borderColor: 'var(--accent-emerald)' }}>
-                2 MINI CHALLENGES
+                2 Mini Challenges
               </span>
             </div>
           </div>
@@ -261,31 +262,33 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
         {/* Navigation Tabs */}
         <div style={{
           display: 'flex',
-          gap: 6,
-          marginTop: 20,
+          gap: 8,
+          marginTop: 22,
           borderTop: '1px solid var(--border-hairline)',
-          paddingTop: 16
+          paddingTop: 16,
+          flexWrap: 'wrap'
         }}>
           {[
-            { id: 'tracks', label: '1. TRACK IMPLEMENTATIONS (4+2)' },
-            { id: 'feedback', label: '2. PRODUCT FEEDBACK (ALL TOOLS)' },
-            { id: 'friction', label: '3. FRICTION LOGS (+10% BONUS)' },
-            { id: 'collaborators', label: '4. DEVREL REVIEWERS' }
+            { id: 'tracks', label: 'Track Implementations (4+2)' },
+            { id: 'feedback', label: 'Product Feedback (All Tools)' },
+            { id: 'friction', label: 'Friction Logs (+10% Bonus)' },
+            { id: 'collaborators', label: 'DevRel Reviewers' }
           ].map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               style={{
-                background: activeTab === tab.id ? 'var(--ghost-blue)' : '#f3f3ee',
-                color: activeTab === tab.id ? '#ffffff' : 'var(--text-ink)',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: 2,
-                fontSize: '0.74rem',
-                fontWeight: 700,
-                fontFamily: 'var(--font-mono)',
+                background: activeTab === tab.id ? 'var(--nuvei-cyan)' : '#ffffff',
+                color: activeTab === tab.id ? '#ffffff' : 'var(--nuvei-navy)',
+                border: activeTab === tab.id ? '1px solid var(--nuvei-cyan)' : '1px solid var(--border-color)',
+                padding: '8px 20px',
+                borderRadius: 9999,
+                fontSize: '0.82rem',
+                fontWeight: 600,
+                fontFamily: 'var(--font-sans)',
                 cursor: 'pointer',
-                transition: 'all 0.15s ease'
+                transition: 'all 0.18s ease',
+                boxShadow: activeTab === tab.id ? '0 2px 8px rgba(12, 152, 212, 0.28)' : 'none'
               }}
             >
               {tab.label}
@@ -305,19 +308,19 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                 style={{
                   background: '#ffffff',
                   border: '1px solid var(--border-color)',
-                  borderRadius: 4,
-                  padding: '20px 22px',
+                  borderRadius: 8,
+                  padding: '22px 24px',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 12
+                  gap: 14
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                     <div style={{
-                      width: 36,
-                      height: 36,
-                      borderRadius: 2,
+                      width: 40,
+                      height: 40,
+                      borderRadius: 8,
                       background: '#f4f4ef',
                       display: 'flex',
                       alignItems: 'center',
@@ -334,31 +337,31 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                       </span>
                     </div>
                   </div>
-                  <span className="badge-ghost-blue" style={{ fontSize: '0.62rem' }}>
+                  <span className="badge-ghost-blue" style={{ fontSize: '0.68rem', borderRadius: 9999 }}>
                     {t.badge}
                   </span>
                 </div>
 
-                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>
+                <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', lineHeight: 1.55, margin: 0 }}>
                   {t.desc}
                 </p>
 
                 <div style={{
                   background: '#f9f9f6',
-                  padding: '8px 12px',
-                  borderRadius: 2,
+                  padding: '10px 14px',
+                  borderRadius: 6,
                   border: '1px solid var(--border-hairline)'
                 }}>
                   <div className="font-mono" style={{ fontSize: '0.65rem', color: 'var(--text-muted)', marginBottom: 4 }}>
                     EXECUTABLE CALLING CODE:
                   </div>
-                  <div className="font-mono" style={{ fontSize: '0.74rem', color: 'var(--ghost-blue)', fontWeight: 600 }}>
+                  <div className="font-mono" style={{ fontSize: '0.76rem', color: 'var(--ghost-blue)', fontWeight: 600 }}>
                     {t.callingCode}
                   </div>
                 </div>
 
                 <div>
-                  <div className="font-mono" style={{ fontSize: '0.65rem', color: 'var(--text-muted)', marginBottom: 6 }}>
+                  <div className="font-mono" style={{ fontSize: '0.65rem', color: 'var(--text-muted)', marginBottom: 8 }}>
                     INTEGRATED ENTRY POINTS & TOOLS:
                   </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
@@ -367,10 +370,10 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                         key={tool}
                         className="font-mono"
                         style={{
-                          fontSize: '0.68rem',
+                          fontSize: '0.7rem',
                           background: '#f0f0ea',
-                          padding: '3px 8px',
-                          borderRadius: 2,
+                          padding: '4px 10px',
+                          borderRadius: 9999,
                           color: 'var(--text-ink)',
                           border: '1px solid #e2e2da'
                         }}
@@ -392,13 +395,13 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
           <div style={{
             background: '#ffffff',
             border: '1px solid var(--border-color)',
-            padding: '16px 20px',
-            borderRadius: 4
+            padding: '18px 22px',
+            borderRadius: 8
           }}>
             <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: '0 0 6px 0', color: 'var(--text-ink)' }}>
               Comprehensive Product Feedback for the Amazon Engineering Teams
             </h3>
-            <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', margin: 0 }}>
+            <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>
               Per submission requirements: Honest developer feedback on what we used it for, what worked well, what needs work, onboarding experience, and whether we would build with it again.
             </p>
           </div>
@@ -409,24 +412,24 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
               style={{
                 background: '#ffffff',
                 border: '1px solid var(--border-color)',
-                borderRadius: 4,
+                borderRadius: 8,
                 padding: '22px 24px',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 12
+                gap: 14
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-hairline)', paddingBottom: 10 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-hairline)', paddingBottom: 12 }}>
                 <h4 style={{ fontSize: '1.05rem', fontWeight: 800, margin: 0, color: 'var(--text-ink)' }}>
                   {item.tool}
                 </h4>
-                <span className="badge-ghost-emerald" style={{ fontSize: '0.68rem' }}>
+                <span className="badge-ghost-emerald" style={{ fontSize: '0.72rem', borderRadius: 9999 }}>
                   WOULD BUILD AGAIN: YES
                 </span>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 14 }}>
-                <div style={{ background: '#fcfcf9', padding: '12px 14px', borderRadius: 2, border: '1px solid #ebebe4' }}>
+                <div style={{ background: '#fcfcf9', padding: '14px 16px', borderRadius: 6, border: '1px solid #ebebe4' }}>
                   <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--ghost-blue)' }}>
                     WHAT WE USED IT FOR:
                   </span>
@@ -435,7 +438,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                   </p>
                 </div>
 
-                <div style={{ background: '#fcfcf9', padding: '12px 14px', borderRadius: 2, border: '1px solid #ebebe4' }}>
+                <div style={{ background: '#fcfcf9', padding: '14px 16px', borderRadius: 6, border: '1px solid #ebebe4' }}>
                   <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--accent-emerald)' }}>
                     WHAT WORKED WELL:
                   </span>
@@ -444,7 +447,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                   </p>
                 </div>
 
-                <div style={{ background: '#fcfcf9', padding: '12px 14px', borderRadius: 2, border: '1px solid #ebebe4' }}>
+                <div style={{ background: '#fcfcf9', padding: '14px 16px', borderRadius: 6, border: '1px solid #ebebe4' }}>
                   <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--ghost-orange)' }}>
                     WHAT NEEDS WORK:
                   </span>
@@ -453,7 +456,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                   </p>
                 </div>
 
-                <div style={{ background: '#fcfcf9', padding: '12px 14px', borderRadius: 2, border: '1px solid #ebebe4' }}>
+                <div style={{ background: '#fcfcf9', padding: '14px 16px', borderRadius: 6, border: '1px solid #ebebe4' }}>
                   <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-ink)' }}>
                     ONBOARDING EXPERIENCE:
                   </span>
@@ -473,8 +476,8 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
           <div style={{
             background: 'rgba(255, 85, 0, 0.05)',
             border: '1px solid var(--ghost-orange)',
-            padding: '16px 20px',
-            borderRadius: 4,
+            padding: '18px 22px',
+            borderRadius: 8,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -491,7 +494,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                 Each log documents the task attempted, exact steps taken, expected vs actual behavior, severity rating, working workaround implemented in Fides, and an actionable suggestion.
               </p>
             </div>
-            <span className="badge-ghost-orange" style={{ padding: '6px 14px', fontSize: '0.74rem' }}>
+            <span className="badge-ghost-orange" style={{ padding: '6px 14px', fontSize: '0.74rem', borderRadius: 9999 }}>
               3 LOGS SUBMITTED
             </span>
           </div>
@@ -502,7 +505,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
               style={{
                 background: '#ffffff',
                 border: '1px solid var(--border-color)',
-                borderRadius: 4,
+                borderRadius: 8,
                 padding: '22px 24px',
                 display: 'flex',
                 flexDirection: 'column',
@@ -514,8 +517,8 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                   <span className="font-mono" style={{
                     background: 'var(--text-ink)',
                     color: '#ffffff',
-                    padding: '2px 8px',
-                    borderRadius: 2,
+                    padding: '3px 9px',
+                    borderRadius: 9999,
                     fontSize: '0.72rem',
                     fontWeight: 800
                   }}>
@@ -543,7 +546,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                 </p>
               </div>
 
-              <div style={{ background: '#fcfcf9', padding: '10px 14px', borderRadius: 2, border: '1px solid #ebebe4' }}>
+              <div style={{ background: '#fcfcf9', padding: '12px 16px', borderRadius: 6, border: '1px solid #ebebe4' }}>
                 <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
                   STEPS TAKEN:
                 </span>
@@ -553,7 +556,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-                <div style={{ background: '#f5f5f0', padding: '10px 14px', borderRadius: 2 }}>
+                <div style={{ background: '#f5f5f0', padding: '12px 14px', borderRadius: 6 }}>
                   <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
                     EXPECTED BEHAVIOR:
                   </span>
@@ -561,7 +564,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                     {log.expected}
                   </p>
                 </div>
-                <div style={{ background: 'rgba(255, 85, 0, 0.04)', padding: '10px 14px', borderRadius: 2, border: '1px solid rgba(255, 85, 0, 0.15)' }}>
+                <div style={{ background: 'rgba(255, 85, 0, 0.04)', padding: '12px 14px', borderRadius: 6, border: '1px solid rgba(255, 85, 0, 0.15)' }}>
                   <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--ghost-orange)' }}>
                     ACTUAL BEHAVIOR:
                   </span>
@@ -575,7 +578,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                 background: '#eef3fb',
                 border: '1px solid #c9d8f3',
                 padding: '12px 16px',
-                borderRadius: 2
+                borderRadius: 6
               }}>
                 <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--ghost-blue)' }}>
                   ✓ WORKAROUND IMPLEMENTED IN CODE:
@@ -589,7 +592,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                 background: '#f4f4ef',
                 border: '1px solid #deded5',
                 padding: '12px 16px',
-                borderRadius: 2
+                borderRadius: 6
               }}>
                 <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-ink)' }}>
                   ACTIONABLE SUGGESTION FOR AMAZON TEAMS:
@@ -608,7 +611,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
         <div style={{
           background: '#ffffff',
           border: '1px solid var(--border-color)',
-          borderRadius: 4,
+          borderRadius: 8,
           padding: '24px 28px',
           display: 'flex',
           flexDirection: 'column',
@@ -634,8 +637,8 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                 style={{
                   background: '#f9f9f6',
                   border: '1px solid var(--border-hairline)',
-                  padding: '12px 16px',
-                  borderRadius: 2,
+                  padding: '14px 18px',
+                  borderRadius: 6,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between'
@@ -656,25 +659,27 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
                     background: copiedUser === c.username ? 'var(--accent-emerald)' : '#ffffff',
                     border: '1px solid var(--border-color)',
                     color: copiedUser === c.username ? '#ffffff' : 'var(--text-ink)',
-                    padding: '6px 10px',
-                    borderRadius: 2,
-                    fontSize: '0.7rem',
+                    padding: '6px 14px',
+                    borderRadius: 9999,
+                    fontSize: '0.74rem',
+                    fontWeight: 600,
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: 4
+                    gap: 6,
+                    transition: 'all 0.15s ease'
                   }}
                   title="Copy username"
                 >
                   {copiedUser === c.username ? (
                     <>
                       <Check size={12} />
-                      <span>COPIED</span>
+                      <span>Copied</span>
                     </>
                   ) : (
                     <>
                       <Copy size={12} />
-                      <span>COPY</span>
+                      <span>Copy</span>
                     </>
                   )}
                 </button>
@@ -685,7 +690,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
           <div style={{
             background: '#f5f5f0',
             padding: '14px 18px',
-            borderRadius: 2,
+            borderRadius: 6,
             border: '1px solid var(--border-hairline)',
             marginTop: 8
           }}>

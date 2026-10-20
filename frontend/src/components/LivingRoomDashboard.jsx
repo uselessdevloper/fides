@@ -211,9 +211,9 @@ export default function LivingRoomDashboard() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 20, alignItems: 'start' }}>
         
         {/* Card 1: Fire TV 10-Foot Living Room Display */}
-        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden' }}>
+        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden', borderRadius: 8 }}>
           <div style={{
-            borderRadius: 4,
+            borderRadius: 8,
             overflow: 'hidden',
             marginBottom: 14,
             height: 120,
@@ -226,8 +226,8 @@ export default function LivingRoomDashboard() {
               bottom: 8,
               left: 8,
               background: 'rgba(0,0,0,0.75)',
-              padding: '3px 8px',
-              borderRadius: 2,
+              padding: '4px 10px',
+              borderRadius: 9999,
               display: 'flex',
               alignItems: 'center',
               gap: 6
@@ -240,7 +240,7 @@ export default function LivingRoomDashboard() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Tv size={18} color="var(--ghost-orange)" />
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-ink)', margin: 0 }}>
                 Fire TV (Vega / Fire OS)
               </h3>
             </div>
@@ -248,9 +248,9 @@ export default function LivingRoomDashboard() {
               onClick={triggerDemoFireTVCard}
               disabled={isLoadingFiretv || Boolean(activeNotif)}
               className="btn-ghost-outline"
-              style={{ fontSize: '0.7rem', padding: '3px 8px' }}
+              style={{ fontSize: '0.74rem', padding: '6px 16px', borderRadius: 9999 }}
             >
-              <Play size={10} color="var(--ghost-blue)" />
+              <Play size={11} color="var(--nuvei-cyan)" />
               <span>Push TV Card</span>
             </button>
           </div>
@@ -259,7 +259,7 @@ export default function LivingRoomDashboard() {
           <div style={{
             background: '#0d131f',
             border: '4px solid #1e293b',
-            borderRadius: 4,
+            borderRadius: 8,
             padding: 16,
             minHeight: 250,
             display: 'flex',
@@ -281,7 +281,7 @@ export default function LivingRoomDashboard() {
               <div style={{
                 background: 'rgba(30, 41, 59, 0.95)',
                 border: '1px solid var(--ghost-orange)',
-                borderRadius: 4,
+                borderRadius: 6,
                 padding: '14px 16px',
                 margin: '14px 0'
               }}>
@@ -297,10 +297,10 @@ export default function LivingRoomDashboard() {
                   {activeNotif.summary}
                 </p>
                 <div style={{ display: 'flex', gap: 8 }}>
-                  <button onClick={() => resolveFireTVCard("APPROVE")} className="btn-approve" style={{ padding: '6px 12px', fontSize: '0.72rem' }}>
+                  <button onClick={() => resolveFireTVCard("APPROVE")} className="btn-approve" style={{ padding: '6px 14px', fontSize: '0.74rem', borderRadius: 9999 }}>
                     Approve
                   </button>
-                  <button onClick={() => resolveFireTVCard("DENY")} className="btn-reject" style={{ padding: '6px 12px', fontSize: '0.72rem' }}>
+                  <button onClick={() => resolveFireTVCard("DENY")} className="btn-reject" style={{ padding: '6px 14px', fontSize: '0.74rem', borderRadius: 9999 }}>
                     Deny
                   </button>
                 </div>
@@ -321,9 +321,9 @@ export default function LivingRoomDashboard() {
         </div>
 
         {/* Card 2: Ring Video Doorbell & Radar Access */}
-        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden' }}>
+        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden', borderRadius: 8 }}>
           <div style={{
-            borderRadius: 4,
+            borderRadius: 8,
             overflow: 'hidden',
             marginBottom: 14,
             height: 120,
@@ -336,8 +336,8 @@ export default function LivingRoomDashboard() {
               bottom: 8,
               left: 8,
               background: 'rgba(0,0,0,0.75)',
-              padding: '3px 8px',
-              borderRadius: 2,
+              padding: '4px 10px',
+              borderRadius: 9999,
               display: 'flex',
               alignItems: 'center',
               gap: 6
@@ -350,15 +350,15 @@ export default function LivingRoomDashboard() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Bell size={18} color="var(--ghost-blue)" />
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-ink)', margin: 0 }}>
                 Ring Doorbell Pro 2
               </h3>
             </div>
-            <span className="badge-approve" style={{ fontSize: '0.65rem' }}>ONLINE</span>
+            <span className="badge-approve" style={{ fontSize: '0.65rem', borderRadius: 9999 }}>ONLINE</span>
           </div>
 
           <div style={{
-            borderRadius: 4,
+            borderRadius: 8,
             overflow: 'hidden',
             border: '1px solid var(--border-color)',
             marginBottom: 12,
@@ -369,32 +369,32 @@ export default function LivingRoomDashboard() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 12 }}>
-            <div className="ghost-inset" style={{ padding: '6px 8px', display: 'flex', alignItems: 'center', gap: 6, background: '#f8f8f5' }}>
+            <div className="ghost-inset" style={{ padding: '8px 10px', display: 'flex', alignItems: 'center', gap: 6, background: '#f8f8f5', borderRadius: 6 }}>
               <Battery size={13} color="var(--accent-emerald)" />
-              <span style={{ fontSize: '0.7rem' }}>Battery: <strong>98%</strong></span>
+              <span style={{ fontSize: '0.72rem' }}>Battery: <strong>98%</strong></span>
             </div>
-            <div className="ghost-inset" style={{ padding: '6px 8px', display: 'flex', alignItems: 'center', gap: 6, background: '#f8f8f5' }}>
+            <div className="ghost-inset" style={{ padding: '8px 10px', display: 'flex', alignItems: 'center', gap: 6, background: '#f8f8f5', borderRadius: 6 }}>
               <Wifi size={13} color="var(--ghost-blue)" />
-              <span style={{ fontSize: '0.7rem' }}>Signal: <strong>-48 dBm</strong></span>
+              <span style={{ fontSize: '0.72rem' }}>Signal: <strong>-48 dBm</strong></span>
             </div>
           </div>
 
           <div style={{ display: 'flex', gap: 8 }}>
-            <button onClick={triggerRingMotion} disabled={isLoadingRing} className="btn-ghost-outline" style={{ flex: 1, justifyContent: 'center', fontSize: '0.72rem', padding: '6px' }}>
-              <Activity size={12} color="var(--ghost-blue)" />
-              <span>Motion</span>
+            <button onClick={triggerRingMotion} disabled={isLoadingRing} className="btn-ghost-outline" style={{ flex: 1, justifyContent: 'center', fontSize: '0.76rem', padding: '8px 14px', borderRadius: 9999 }}>
+              <Activity size={13} color="var(--nuvei-cyan)" />
+              <span>Simulate Motion</span>
             </button>
-            <button onClick={triggerRingChime} disabled={isLoadingRing} className="btn-ghost-outline" style={{ flex: 1, justifyContent: 'center', fontSize: '0.72rem', padding: '6px' }}>
-              <Bell size={12} color="var(--ghost-orange)" />
-              <span>Chime</span>
+            <button onClick={triggerRingChime} disabled={isLoadingRing} className="btn-ghost-outline" style={{ flex: 1, justifyContent: 'center', fontSize: '0.76rem', padding: '8px 14px', borderRadius: 9999 }}>
+              <Bell size={13} color="var(--ghost-orange)" />
+              <span>Doorbell Chime</span>
             </button>
           </div>
         </div>
 
         {/* Card 3: Bee Wearable AI Wristband */}
-        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden' }}>
+        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden', borderRadius: 8 }}>
           <div style={{
-            borderRadius: 4,
+            borderRadius: 8,
             overflow: 'hidden',
             marginBottom: 14,
             height: 120,
@@ -407,8 +407,8 @@ export default function LivingRoomDashboard() {
               bottom: 8,
               left: 8,
               background: 'rgba(0,0,0,0.75)',
-              padding: '3px 8px',
-              borderRadius: 2,
+              padding: '4px 10px',
+              borderRadius: 9999,
               display: 'flex',
               alignItems: 'center',
               gap: 6
@@ -420,8 +420,8 @@ export default function LivingRoomDashboard() {
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Watch size={18} color="var(--ghost-blue)" />
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+              <Watch size={18} color="var(--nuvei-cyan)" />
+              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)', margin: 0 }}>
                 Bee Wearable AI (Wrist)
               </h3>
             </div>
@@ -429,9 +429,9 @@ export default function LivingRoomDashboard() {
               onClick={triggerBeeHaptic}
               disabled={isLoadingBee || Boolean(activeBeePrompt)}
               className="btn-ghost-outline"
-              style={{ fontSize: '0.7rem', padding: '3px 8px' }}
+              style={{ fontSize: '0.74rem', padding: '6px 16px', borderRadius: 9999 }}
             >
-              <Zap size={10} color="var(--ghost-orange)" />
+              <Zap size={11} color="var(--ghost-orange)" />
               <span>Trigger Haptic</span>
             </button>
           </div>
@@ -448,11 +448,11 @@ export default function LivingRoomDashboard() {
             justifyContent: 'space-between',
             boxShadow: '0 8px 20px rgba(0, 0, 0, 0.2)',
             color: '#ffffff',
-            marginBottom: 12
+            marginBottom: 14
           }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.65rem', opacity: 0.8 }}>
-              <span className="font-mono" style={{ color: 'var(--ghost-blue)', fontWeight: 700 }}>bee wearable v1.2</span>
-              <span>BLE 94%</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', opacity: 0.85 }}>
+              <span className="font-mono" style={{ color: 'var(--nuvei-cyan)', fontWeight: 800 }}>BEE WEARABLE HUD</span>
+              <span className="font-mono" style={{ fontSize: '0.62rem' }}>BLE 94%</span>
             </div>
 
             {activeBeePrompt ? (
@@ -467,10 +467,10 @@ export default function LivingRoomDashboard() {
                   {activeBeePrompt.summary} (₹{activeBeePrompt.amount})
                 </p>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: 8 }}>
-                  <button onClick={() => resolveBeePrompt("APPROVE")} className="btn-approve" style={{ padding: '4px 10px', fontSize: '0.68rem' }}>
+                  <button onClick={() => resolveBeePrompt("APPROVE")} className="btn-approve" style={{ padding: '6px 14px', fontSize: '0.72rem', borderRadius: 9999 }}>
                     [Tap] Authorize
                   </button>
-                  <button onClick={() => resolveBeePrompt("DENY")} className="btn-reject" style={{ padding: '4px 10px', fontSize: '0.68rem' }}>
+                  <button onClick={() => resolveBeePrompt("DENY")} className="btn-reject" style={{ padding: '6px 14px', fontSize: '0.72rem', borderRadius: 9999 }}>
                     [Dbl-Tap] Dismiss
                   </button>
                 </div>
@@ -490,7 +490,7 @@ export default function LivingRoomDashboard() {
           </div>
 
           {/* Record Voice Memo via Bee */}
-          <form onSubmit={handleRecordBeeMemo} style={{ display: 'flex', gap: 6 }}>
+          <form onSubmit={handleRecordBeeMemo} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <input
               type="text"
               placeholder="Record intent via Bee mic..."
@@ -498,19 +498,21 @@ export default function LivingRoomDashboard() {
               onChange={(e) => setNewBeeMemo(e.target.value)}
               style={{
                 flex: 1,
-                fontSize: '0.75rem',
-                padding: '6px 8px',
+                fontSize: '0.78rem',
+                padding: '8px 14px',
                 border: '1px solid var(--border-color)',
-                borderRadius: 2
+                borderRadius: 9999,
+                outline: 'none',
+                background: '#ffffff'
               }}
             />
             <button
               type="submit"
               disabled={isLoadingBee || !newBeeMemo.trim()}
               className="btn-ghost-primary"
-              style={{ padding: '6px 10px', fontSize: '0.72rem' }}
+              style={{ width: 34, height: 34, borderRadius: 9999, padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
-              <Mic size={12} />
+              <Mic size={13} />
             </button>
           </form>
         </div>

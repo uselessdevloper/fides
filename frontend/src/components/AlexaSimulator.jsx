@@ -75,7 +75,7 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
             <div style={{
               width: 44,
               height: 44,
-              borderRadius: 2,
+              borderRadius: 8,
               background: 'var(--ghost-blue-bg)',
               border: '1px solid var(--ghost-blue)',
               display: 'flex',
@@ -93,7 +93,7 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
         {/* Left: Conversational Voice Prompt Bench */}
         <div className="ghost-card" style={{ padding: 26, background: '#ffffff', overflow: 'hidden' }}>
           <div style={{
-            borderRadius: 4,
+            borderRadius: 8,
             overflow: 'hidden',
             marginBottom: 16,
             height: 140,
@@ -106,8 +106,8 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
               bottom: 8,
               left: 8,
               background: 'rgba(0,0,0,0.75)',
-              padding: '3px 8px',
-              borderRadius: 2,
+              padding: '4px 10px',
+              borderRadius: 9999,
               display: 'flex',
               alignItems: 'center',
               gap: 6
@@ -147,22 +147,23 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
                   disabled={isLoading}
                   style={{
                     textAlign: 'left',
-                    background: isSelected ? 'var(--ghost-blue-bg)' : '#ffffff',
-                    border: isSelected ? '1px solid var(--ghost-blue)' : '1px solid var(--border-color)',
-                    borderRadius: 2,
-                    padding: '10px 14px',
-                    fontSize: '0.8rem',
-                    color: isSelected ? 'var(--ghost-blue)' : 'var(--text-ink)',
+                    background: isSelected ? 'rgba(12, 152, 212, 0.08)' : '#ffffff',
+                    border: isSelected ? '1.5px solid var(--nuvei-cyan)' : '1px solid var(--border-color)',
+                    borderRadius: 8,
+                    padding: '12px 14px',
+                    fontSize: '0.82rem',
+                    color: isSelected ? 'var(--nuvei-cyan)' : 'var(--text-ink)',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     gap: 8,
-                    transition: 'all 0.15s ease'
+                    transition: 'all 0.16s ease',
+                    boxShadow: isSelected ? '0 2px 8px rgba(12, 152, 212, 0.15)' : 'none'
                   }}
                 >
                   <span style={{ fontFamily: 'var(--font-sans)', fontWeight: isSelected ? 600 : 400 }}>"{p}"</span>
-                  <span className="font-mono" style={{ fontSize: '0.65rem', color: isSelected ? 'var(--ghost-blue)' : 'var(--text-dim)', fontWeight: 700, flexShrink: 0 }}>
+                  <span className="badge-mono" style={{ fontSize: '0.64rem', padding: '1px 8px', flexShrink: 0 }}>
                     Case #{idx + 1}
                   </span>
                 </button>
@@ -172,7 +173,7 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
 
           {/* Custom Prompt Box */}
           <div style={{ marginBottom: 16 }}>
-            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-ink)', marginBottom: 6 }}>
+            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-ink)', marginBottom: 6, fontFamily: 'var(--font-heading)' }}>
               Custom Voice Command Prompt
             </label>
             <textarea
@@ -184,13 +185,14 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
                 width: '100%',
                 background: '#ffffff',
                 border: '1px solid var(--border-color)',
-                borderRadius: 2,
+                borderRadius: 8,
                 padding: '12px 14px',
                 fontSize: '0.88rem',
                 fontFamily: 'var(--font-sans)',
                 color: 'var(--text-ink)',
                 resize: 'vertical',
-                outline: 'none'
+                outline: 'none',
+                lineHeight: 1.5
               }}
             />
           </div>
@@ -200,7 +202,7 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
               onClick={() => handleSimulate()}
               disabled={isLoading || !prompt.trim()}
               className="btn-ghost-primary"
-              style={{ flex: 1, justifyContent: 'center', padding: '12px 20px' }}
+              style={{ flex: 1, justifyContent: 'center', padding: '12px 20px', borderRadius: 9999 }}
             >
               {isLoading ? (
                 <>
@@ -222,8 +224,8 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
               marginTop: 20,
               background: '#f8fafc',
               border: '1px solid #dcdcd5',
-              borderLeft: '4px solid var(--ghost-blue)',
-              borderRadius: 2,
+              borderLeft: '4px solid var(--nuvei-cyan)',
+              borderRadius: 8,
               padding: '16px 18px'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>

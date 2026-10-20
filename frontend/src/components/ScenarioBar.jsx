@@ -71,12 +71,12 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
         gap: 12
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', fontWeight: 700, letterSpacing: '0.08em' }}>
-            02 // DETERMINISTIC BENCHMARK SUITE
+          <span className="badge-ghost-blue" style={{ fontSize: '0.72rem', padding: '4px 12px' }}>
+            Deterministic Benchmark Suite
           </span>
           <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>|</span>
           <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-ink)' }}>
-            6 Repeatable Hackathon Judge Scenarios
+            6 Repeatable Hackathon Evaluation Scenarios
           </span>
         </div>
         
@@ -85,22 +85,22 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
           onClick={onRunRaceTest}
           disabled={isLoading}
           className="btn-ghost-outline"
-          style={{ fontSize: '0.75rem' }}
+          style={{ fontSize: '0.76rem', padding: '7px 16px' }}
           title="Submits 10 simultaneous threads with the same nonce to demonstrate atomic lock replay protection"
         >
-          <RefreshCw size={13} className={isLoading ? "listening-pulse" : ""} color="var(--ghost-blue)" />
+          <RefreshCw size={13} className={isLoading ? "listening-pulse" : ""} color="var(--nuvei-cyan)" />
           <span>Run Concurrency Race Test (10 Threads)</span>
         </button>
       </div>
 
-      <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: 14 }}>
+      <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: 14, lineHeight: 1.5 }}>
         Click any scenario below to trigger an automated live evaluation and view the resulting cryptographic trace and decision.
       </p>
 
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-        gap: 10
+        gap: 12
       }}>
         {SCENARIOS.map((s) => {
           const isSelected = activeScenarioId === s.id;
@@ -111,35 +111,44 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
               disabled={isLoading}
               style={{
                 textAlign: 'left',
-                background: isSelected ? 'var(--ghost-blue-bg)' : '#f8f8f5',
-                border: isSelected ? '1px solid var(--ghost-blue)' : '1px solid var(--border-color)',
-                borderRadius: 2,
-                padding: '12px 14px',
+                background: isSelected ? 'rgba(12, 152, 212, 0.08)' : '#fbfaf8',
+                border: isSelected ? '1.5px solid var(--nuvei-cyan)' : '1px solid var(--border-color)',
+                borderRadius: 8,
+                padding: '14px 14px',
                 cursor: 'pointer',
-                transition: 'all 0.15s ease',
+                transition: 'all 0.18s ease',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 6
+                gap: 6,
+                boxShadow: isSelected ? '0 2px 10px rgba(12, 152, 212, 0.15)' : 'none'
               }}
               onMouseEnter={(e) => {
-                if (!isSelected) e.currentTarget.style.borderColor = '#b0b0a6';
+                if (!isSelected) {
+                  e.currentTarget.style.borderColor = 'var(--nuvei-cyan)';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+                }
               }}
               onMouseLeave={(e) => {
-                if (!isSelected) e.currentTarget.style.borderColor = 'var(--border-color)';
+                if (!isSelected) {
+                  e.currentTarget.style.borderColor = 'var(--border-color)';
+                  e.currentTarget.style.transform = 'none';
+                  e.currentTarget.style.boxShadow = 'none';
+                }
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span className="font-mono" style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--ghost-blue)' }}>
+                <span className="badge-mono" style={{ fontSize: '0.66rem', padding: '1px 8px' }}>
                   {s.num}
                 </span>
                 <span className={s.tagClass}>
                   {s.tag}
                 </span>
               </div>
-              <span style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+              <span style={{ fontSize: '0.84rem', fontWeight: 700, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)' }}>
                 {s.title}
               </span>
-              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.35, margin: 0 }}>
+              <p style={{ fontSize: '0.74rem', color: 'var(--text-muted)', lineHeight: 1.4, margin: 0 }}>
                 {s.desc}
               </p>
             </button>

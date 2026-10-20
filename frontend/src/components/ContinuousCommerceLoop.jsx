@@ -203,9 +203,9 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
     <div style={{
       background: '#ffffff',
       border: '1px solid var(--border-color)',
-      borderRadius: 4,
+      borderRadius: 8,
       overflow: 'hidden',
-      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)',
+      boxShadow: '0 8px 30px rgba(0, 0, 0, 0.05)',
       position: 'relative'
     }}>
       {/* Top Banner & Continuous Loop Bar */}
@@ -221,10 +221,10 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{
-            width: 32,
-            height: 32,
-            borderRadius: 2,
-            background: 'var(--ghost-blue)',
+            width: 36,
+            height: 36,
+            borderRadius: 8,
+            background: 'var(--nuvei-cyan)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -234,16 +234,16 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', fontWeight: 800, letterSpacing: '0.08em' }}>
+              <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--nuvei-cyan)', fontWeight: 800, letterSpacing: '0.08em' }}>
                 CONTINUOUS AMBIENT COMMERCE LOOP
               </span>
               <span style={{
                 background: isPlaying ? 'rgba(5, 150, 105, 0.2)' : 'rgba(255, 255, 255, 0.1)',
                 color: isPlaying ? '#34d399' : '#a0aec0',
                 border: `1px solid ${isPlaying ? '#059669' : '#4a5568'}`,
-                padding: '2px 8px',
-                borderRadius: 2,
-                fontSize: '0.65rem',
+                padding: '3px 10px',
+                borderRadius: 9999,
+                fontSize: '0.68rem',
                 fontWeight: 700,
                 fontFamily: 'var(--font-mono)'
               }}>
@@ -253,31 +253,32 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
                 CYCLE #{loopCount}
               </span>
             </div>
-            <h2 style={{ fontSize: '1.15rem', fontWeight: 800, margin: 0, color: '#ffffff', fontFamily: 'var(--font-heading)' }}>
+            <h2 style={{ fontSize: '1.15rem', fontWeight: 800, margin: '2px 0 0 0', color: '#ffffff', fontFamily: 'var(--font-heading)' }}>
               End-to-End Autonomous Purchasing Experience
             </h2>
           </div>
         </div>
 
         {/* Playback Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           {/* Scenario Selector */}
-          <div style={{ display: 'flex', background: '#1a1f2c', padding: 2, borderRadius: 2, gap: 2 }}>
+          <div style={{ display: 'flex', background: '#1a1f2c', padding: 4, borderRadius: 9999, gap: 4 }}>
             <button
               onClick={() => { setActiveScenario('nominal'); setCurrentStep(0); }}
               style={{
-                background: activeScenario === 'nominal' ? 'var(--ghost-blue)' : 'transparent',
+                background: activeScenario === 'nominal' ? 'var(--nuvei-cyan)' : 'transparent',
                 color: activeScenario === 'nominal' ? '#ffffff' : '#8892b0',
                 border: 'none',
-                padding: '5px 10px',
-                borderRadius: 2,
-                fontSize: '0.68rem',
-                fontWeight: 700,
-                fontFamily: 'var(--font-mono)',
-                cursor: 'pointer'
+                padding: '6px 14px',
+                borderRadius: 9999,
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                fontFamily: 'var(--font-sans)',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease'
               }}
             >
-              1. NOMINAL (₹150)
+              1. Nominal (₹150)
             </button>
             <button
               onClick={() => { setActiveScenario('cap_exceeded'); setCurrentStep(0); }}
@@ -285,15 +286,16 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
                 background: activeScenario === 'cap_exceeded' ? 'var(--accent-rose)' : 'transparent',
                 color: activeScenario === 'cap_exceeded' ? '#ffffff' : '#8892b0',
                 border: 'none',
-                padding: '5px 10px',
-                borderRadius: 2,
-                fontSize: '0.68rem',
-                fontWeight: 700,
-                fontFamily: 'var(--font-mono)',
-                cursor: 'pointer'
+                padding: '6px 14px',
+                borderRadius: 9999,
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                fontFamily: 'var(--font-sans)',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease'
               }}
             >
-              2. CAP LIMIT (₹2100)
+              2. Cap Limit (₹2100)
             </button>
             <button
               onClick={() => { setActiveScenario('injection'); setCurrentStep(0); }}
@@ -301,15 +303,16 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
                 background: activeScenario === 'injection' ? 'var(--ghost-orange)' : 'transparent',
                 color: activeScenario === 'injection' ? '#ffffff' : '#8892b0',
                 border: 'none',
-                padding: '5px 10px',
-                borderRadius: 2,
-                fontSize: '0.68rem',
-                fontWeight: 700,
-                fontFamily: 'var(--font-mono)',
-                cursor: 'pointer'
+                padding: '6px 14px',
+                borderRadius: 9999,
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                fontFamily: 'var(--font-sans)',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease'
               }}
             >
-              3. INJECTION DEFENSE
+              3. Injection Defense
             </button>
           </div>
 
@@ -317,23 +320,24 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             style={{
-              background: isPlaying ? 'var(--ghost-orange)' : 'var(--ghost-blue)',
+              background: isPlaying ? 'var(--ghost-orange)' : 'var(--nuvei-cyan)',
               color: '#ffffff',
               border: 'none',
-              padding: '7px 16px',
-              borderRadius: 2,
-              fontSize: '0.74rem',
-              fontWeight: 700,
-              fontFamily: 'var(--font-mono)',
+              padding: '8px 20px',
+              borderRadius: 9999,
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              fontFamily: 'var(--font-sans)',
               display: 'flex',
               alignItems: 'center',
-              gap: 6,
+              gap: 8,
               cursor: 'pointer',
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
+              boxShadow: isPlaying ? '0 4px 14px rgba(255, 85, 0, 0.3)' : '0 4px 14px rgba(12, 152, 212, 0.35)',
+              transition: 'all 0.18s ease'
             }}
           >
             {isPlaying ? <Pause size={14} /> : <Play size={14} />}
-            <span>{isPlaying ? 'PAUSE LOOP' : 'AUTO-PLAY LOOP'}</span>
+            <span>{isPlaying ? 'Pause Loop' : 'Auto-Play Loop'}</span>
           </button>
 
           {/* Reset / Step Controls */}
@@ -343,11 +347,12 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
               background: '#1a1f2c',
               color: '#ffffff',
               border: '1px solid #2d3748',
-              padding: '7px 10px',
-              borderRadius: 2,
+              padding: '8px 12px',
+              borderRadius: 9999,
               cursor: 'pointer',
               display: 'flex',
-              alignItems: 'center'
+              alignItems: 'center',
+              transition: 'all 0.15s ease'
             }}
             title="Reset Loop to Step 1"
           >
@@ -429,7 +434,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
         {/* Left: High-Definition Device & Spatial Reality Image */}
         <div style={{
           position: 'relative',
-          borderRadius: 4,
+          borderRadius: 8,
           overflow: 'hidden',
           border: '1px solid var(--border-color)',
           boxShadow: '0 8px 30px rgba(0, 0, 0, 0.08)'
@@ -451,18 +456,18 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
             position: 'absolute',
             top: 14,
             left: 14,
-            background: 'rgba(9, 11, 14, 0.85)',
+            background: 'rgba(9, 11, 14, 0.88)',
             backdropFilter: 'blur(8px)',
             color: '#ffffff',
-            padding: '5px 12px',
-            borderRadius: 2,
+            padding: '6px 14px',
+            borderRadius: 9999,
             display: 'flex',
             alignItems: 'center',
             gap: 8,
-            border: '1px solid rgba(255, 255, 255, 0.15)'
+            border: '1px solid rgba(255, 255, 255, 0.2)'
           }}>
-            <StepIcon size={14} color="var(--ghost-blue)" />
-            <span className="font-mono" style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.06em' }}>
+            <StepIcon size={14} color="var(--nuvei-cyan)" />
+            <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.06em' }}>
               {currentStepData.device.toUpperCase()}
             </span>
           </div>
@@ -472,11 +477,11 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
             position: 'absolute',
             bottom: 14,
             right: 14,
-            background: 'var(--ghost-blue)',
+            background: 'var(--nuvei-cyan)',
             color: '#ffffff',
-            padding: '4px 10px',
-            borderRadius: 2,
-            fontSize: '0.68rem',
+            padding: '5px 12px',
+            borderRadius: 9999,
+            fontSize: '0.7rem',
             fontWeight: 800,
             fontFamily: 'var(--font-mono)'
           }}>
@@ -488,7 +493,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
         <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-              <span className="badge-ghost-blue" style={{ fontSize: '0.68rem' }}>
+              <span className="badge-ghost-blue" style={{ fontSize: '0.68rem', borderRadius: 9999 }}>
                 {currentStepData.badge}
               </span>
               <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
@@ -516,7 +521,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
           <div style={{
             background: '#f9f9f6',
             border: '1px solid var(--border-hairline)',
-            borderRadius: 3,
+            borderRadius: 6,
             padding: '16px 18px',
             display: 'flex',
             flexDirection: 'column',
@@ -533,7 +538,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
               {Object.entries(currentStepData.liveTelemetry).map(([key, val]) => (
-                <div key={key} style={{ background: '#ffffff', padding: '8px 12px', borderRadius: 2, border: '1px solid #ebebe4' }}>
+                <div key={key} style={{ background: '#ffffff', padding: '10px 14px', borderRadius: 6, border: '1px solid #ebebe4' }}>
                   <div className="font-mono" style={{ fontSize: '0.62rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
                     {key.replace(/([A-Z])/g, ' $1')}
                   </div>
@@ -546,21 +551,21 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
           </div>
 
           {/* Stepper Navigation Buttons */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 6 }}>
-            <div style={{ display: 'flex', gap: 8 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 6, flexWrap: 'wrap', gap: 12 }}>
+            <div style={{ display: 'flex', gap: 10 }}>
               <button
                 onClick={handlePrev}
                 className="btn-ghost-outline"
-                style={{ padding: '9px 16px', fontSize: '0.75rem' }}
+                style={{ padding: '9px 18px', fontSize: '0.78rem', borderRadius: 9999 }}
               >
-                ← PREVIOUS STEP
+                ← Previous Step
               </button>
               <button
                 onClick={handleNext}
                 className="btn-ghost-primary"
-                style={{ padding: '9px 20px', fontSize: '0.78rem' }}
+                style={{ padding: '9px 22px', fontSize: '0.78rem', borderRadius: 9999 }}
               >
-                <span>{currentStep === 5 ? 'RESTART LOOP (CYCLE +1)' : 'NEXT STEP'}</span>
+                <span>{currentStep === 5 ? 'Restart Loop (Cycle +1)' : 'Next Step'}</span>
                 <ChevronRight size={14} />
               </button>
             </div>
@@ -570,17 +575,17 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: 'var(--ghost-blue)',
-                fontSize: '0.76rem',
+                color: 'var(--nuvei-cyan)',
+                fontSize: '0.8rem',
                 fontWeight: 700,
-                fontFamily: 'var(--font-mono)',
+                fontFamily: 'var(--font-sans)',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: 4
+                gap: 6
               }}
             >
-              <span>INSPECT CODE IN PLAYGROUND</span>
+              <span>Launch in Simulator</span>
               <ArrowRight size={13} />
             </button>
           </div>

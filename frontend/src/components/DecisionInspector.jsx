@@ -269,7 +269,7 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
               style={{
                 background: c.passed ? '#f0fdf4' : '#fef2f2',
                 border: c.passed ? '1px solid #bbf7d0' : '1px solid #fecaca',
-                borderRadius: 2,
+                borderRadius: 8,
                 padding: '12px 14px',
                 display: 'flex',
                 alignItems: 'flex-start',
@@ -282,10 +282,10 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
                 <XCircle size={17} color="var(--accent-rose)" style={{ flexShrink: 0, marginTop: 2 }} />
               )}
               <div>
-                <span style={{ fontSize: '0.82rem', fontWeight: 700, color: c.passed ? '#065f46' : '#991b1b' }}>
+                <span style={{ fontSize: '0.82rem', fontWeight: 700, color: c.passed ? '#065f46' : '#991b1b', fontFamily: 'var(--font-heading)' }}>
                   {c.name}
                 </span>
-                <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.35, marginTop: 2, margin: 0 }}>
+                <p style={{ fontSize: '0.74rem', color: 'var(--text-muted)', lineHeight: 1.4, marginTop: 2, margin: 0 }}>
                   {c.detail}
                 </p>
               </div>
@@ -318,7 +318,7 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
           <div style={{
             height: 8,
             background: '#e8e8e2',
-            borderRadius: 2,
+            borderRadius: 9999,
             overflow: 'hidden',
             marginBottom: 10,
             border: '1px solid var(--border-color)'
@@ -332,7 +332,7 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
                   : risk_score >= 0.3
                     ? 'var(--accent-amber)'
                     : 'var(--accent-emerald)',
-                borderRadius: 2,
+                borderRadius: 9999,
                 transition: 'width 0.4s ease'
               }}
             />
@@ -346,7 +346,9 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', letterSpacing: '0.04em' }}>TELEMETRY FACTORS:</span>
+            <span style={{ fontSize: '0.68rem', color: 'var(--text-dim)', fontWeight: 600, letterSpacing: '0.04em', fontFamily: 'var(--font-heading)' }}>
+              Telemetry Factors:
+            </span>
             {risk_factors?.map((rf, idx) => (
               <span key={idx} style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                 • {rf}
@@ -359,25 +361,25 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
         <div className="ghost-card" style={{ padding: 22, background: '#ffffff' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Layers size={18} color="var(--ghost-blue)" />
-              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+              <Layers size={18} color="var(--nuvei-cyan)" />
+              <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)', margin: 0 }}>
                 Cryptographic Audit Proof
               </h3>
             </div>
             <button
               onClick={onGoToAudit}
               className="btn-ghost-outline"
-              style={{ padding: '4px 10px', fontSize: '0.72rem' }}
+              style={{ padding: '5px 14px', fontSize: '0.74rem', borderRadius: 9999 }}
             >
               <span>View In Ledger</span>
-              <ExternalLink size={12} color="var(--ghost-blue)" />
+              <ExternalLink size={12} color="var(--nuvei-cyan)" />
             </button>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: '0.78rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ color: 'var(--text-dim)' }}>Block Index:</span>
-              <span className="font-mono" style={{ color: 'var(--ghost-blue)', fontWeight: 700 }}>#{audit_block_index}</span>
+              <span className="font-mono" style={{ color: 'var(--nuvei-cyan)', fontWeight: 700 }}>#{audit_block_index}</span>
             </div>
 
             <div>
@@ -389,7 +391,7 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
                 background: '#f8f8f5',
                 border: '1px solid var(--border-color)',
                 padding: '6px 8px',
-                borderRadius: 2,
+                borderRadius: 6,
                 fontSize: '0.68rem',
                 color: 'var(--text-ink)',
                 wordBreak: 'break-all'

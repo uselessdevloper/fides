@@ -104,8 +104,8 @@ body {
 .wispr-card, .ghost-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
@@ -113,13 +113,13 @@ body {
 .wispr-card:hover, .ghost-card:hover {
   background: var(--bg-card-hover);
   border-color: #bebeb4;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
 }
 
 .wispr-inset, .ghost-inset {
   background: var(--bg-inset);
   border: 1px solid var(--border-color);
-  border-radius: 2px;
+  border-radius: 6px;
 }
 
 /* ======================================================== */
@@ -379,35 +379,35 @@ body {
 }
 
 .badge-mono {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  padding: 3px 8px;
-  border-radius: 2px;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--nuvei-pill);
   border: 1px solid var(--border-color);
-  background: #ffffff;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  background: #f7f6f2;
+  color: var(--text-ink);
+  letter-spacing: -0.01em;
 }
 
 .font-mono {
   font-family: var(--font-mono);
 }
 
-/* Clean retro inputs */
+/* Clean modern Nuvei inputs */
 input, textarea, select {
   background: #ffffff;
   border: 1px solid var(--border-color);
   color: var(--text-ink);
-  border-radius: 2px;
+  border-radius: 8px;
   font-family: var(--font-sans);
   transition: all 0.15s ease;
 }
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: var(--ghost-blue);
-  box-shadow: 0 0 0 2px rgba(22, 104, 232, 0.2);
+  border-color: var(--nuvei-cyan);
+  box-shadow: 0 0 0 3px rgba(12, 152, 212, 0.14);
 }
 
 /* Pulse animation */

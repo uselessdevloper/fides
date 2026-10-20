@@ -234,7 +234,7 @@ export default function App() {
         healthInfo={healthInfo}
       />
 
-      {/* Toast notification in clean Ghost retro style */}
+      {/* Toast notification in clean Nuvei card style */}
       {toastMessage && (
         <div style={{
           position: 'fixed',
@@ -242,18 +242,18 @@ export default function App() {
           right: 24,
           background: '#ffffff',
           color: 'var(--text-ink)',
-          padding: '12px 18px',
-          borderRadius: 2,
-          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
+          padding: '14px 22px',
+          borderRadius: 8,
+          boxShadow: '0 12px 32px rgba(11, 14, 30, 0.14)',
           zIndex: 1000,
-          fontSize: '0.85rem',
+          fontSize: '0.86rem',
           fontWeight: 600,
           border: `1px solid ${
             toastMessage.type === 'error'
               ? 'var(--accent-rose)'
               : toastMessage.type === 'warn'
                 ? 'var(--accent-amber)'
-                : 'var(--ghost-blue)'
+                : 'var(--nuvei-cyan)'
           }`,
           borderLeftWidth: 4
         }}>

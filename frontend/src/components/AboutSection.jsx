@@ -35,10 +35,10 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
       {/* 1. GHOST CORE PANORAMIC ECOSYSTEM HERO */}
       <div style={{
         background: '#ffffff',
-        borderRadius: 4,
+        borderRadius: 8,
         overflow: 'hidden',
         border: '1px solid var(--border-color)',
-        boxShadow: '0 6px 24px rgba(0, 0, 0, 0.06)'
+        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.06)'
       }}>
         {/* Top Technical Metadata Header */}
         <div style={{
@@ -106,16 +106,16 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             zIndex: 10
           }}>
             <div style={{
-              background: 'rgba(9, 11, 14, 0.82)',
+              background: 'rgba(9, 11, 14, 0.85)',
               backdropFilter: 'blur(8px)',
               border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: 2,
-              padding: '5px 12px',
+              borderRadius: 9999,
+              padding: '6px 14px',
               display: 'flex',
               alignItems: 'center',
               gap: 6,
               color: '#ffffff',
-              fontSize: '0.7rem',
+              fontSize: '0.72rem',
               fontFamily: 'var(--font-mono)'
             }}>
               <Bell size={12} color="var(--ghost-blue)" />
@@ -123,16 +123,16 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             </div>
 
             <div style={{
-              background: 'rgba(9, 11, 14, 0.82)',
+              background: 'rgba(9, 11, 14, 0.85)',
               backdropFilter: 'blur(8px)',
               border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: 2,
-              padding: '5px 12px',
+              borderRadius: 9999,
+              padding: '6px 14px',
               display: 'flex',
               alignItems: 'center',
               gap: 6,
               color: '#ffffff',
-              fontSize: '0.7rem',
+              fontSize: '0.72rem',
               fontFamily: 'var(--font-mono)'
             }}>
               <ShieldCheck size={12} color="var(--ghost-blue)" />
@@ -140,16 +140,16 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             </div>
 
             <div style={{
-              background: 'rgba(9, 11, 14, 0.82)',
+              background: 'rgba(9, 11, 14, 0.85)',
               backdropFilter: 'blur(8px)',
               border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: 2,
-              padding: '5px 12px',
+              borderRadius: 9999,
+              padding: '6px 14px',
               display: 'flex',
               alignItems: 'center',
               gap: 6,
               color: '#ffffff',
-              fontSize: '0.7rem',
+              fontSize: '0.72rem',
               fontFamily: 'var(--font-mono)'
             }}>
               <Watch size={12} color="var(--accent-purple)" />
@@ -157,16 +157,16 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             </div>
 
             <div style={{
-              background: 'rgba(9, 11, 14, 0.82)',
+              background: 'rgba(9, 11, 14, 0.85)',
               backdropFilter: 'blur(8px)',
               border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: 2,
-              padding: '5px 12px',
+              borderRadius: 9999,
+              padding: '6px 14px',
               display: 'flex',
               alignItems: 'center',
               gap: 6,
               color: '#ffffff',
-              fontSize: '0.7rem',
+              fontSize: '0.72rem',
               fontFamily: 'var(--font-mono)'
             }}>
               <Radio size={12} color="var(--ghost-orange)" />
@@ -174,16 +174,16 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             </div>
 
             <div style={{
-              background: 'rgba(9, 11, 14, 0.82)',
+              background: 'rgba(9, 11, 14, 0.85)',
               backdropFilter: 'blur(8px)',
               border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: 2,
-              padding: '5px 12px',
+              borderRadius: 9999,
+              padding: '6px 14px',
               display: 'flex',
               alignItems: 'center',
               gap: 6,
               color: '#ffffff',
-              fontSize: '0.7rem',
+              fontSize: '0.72rem',
               fontFamily: 'var(--font-mono)'
             }}>
               <Tv size={12} color="var(--accent-amber)" />
@@ -460,12 +460,12 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
         onRunScenario={onRunScenario}
       />
 
-      {/* 3. DIORAMA LIVING ROOM SHOWCASE (Exact Match to Screenshot 2 & 3) */}
+      {/* 3. DIORAMA LIVING ROOM SHOWCASE */}
       <div style={{
         background: '#ebebe6',
         border: '1px solid var(--border-color)',
-        borderRadius: 4,
-        padding: '28px',
+        borderRadius: 8,
+        padding: '30px',
         position: 'relative'
       }}>
         <div style={{
@@ -476,10 +476,10 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
         }}>
           {/* Left: Floating Diorama Box with Blue Sky & Clouds */}
           <div style={{
-            borderRadius: 4,
+            borderRadius: 8,
             overflow: 'hidden',
             border: '2px solid #ffffff',
-            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.08)',
+            boxShadow: '0 12px 36px rgba(0, 0, 0, 0.09)',
             position: 'relative'
           }}>
             <img
@@ -512,101 +512,104 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
               </p>
             </div>
 
-            {/* Context Pills (Matching Screenshot 3) */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {/* Context Pills */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <div style={{
                 background: '#ffffff',
                 border: '1px solid var(--border-hairline)',
-                padding: '10px 14px',
-                borderRadius: 2,
+                padding: '11px 16px',
+                borderRadius: 6,
                 display: 'flex',
                 alignItems: 'center',
-                gap: 10,
-                fontSize: '0.8rem',
+                gap: 12,
+                fontSize: '0.82rem',
                 color: 'var(--text-ink)'
               }}>
-                <Bell size={15} color="var(--ghost-blue)" />
+                <Bell size={16} color="var(--ghost-blue)" />
                 <span>Ring 3D radar verifies buyer presence inside the home boundary.</span>
               </div>
 
               <div style={{
                 background: '#ffffff',
                 border: '1px solid var(--border-hairline)',
-                padding: '10px 14px',
-                borderRadius: 2,
+                padding: '11px 16px',
+                borderRadius: 6,
                 display: 'flex',
                 alignItems: 'center',
-                gap: 10,
-                fontSize: '0.8rem',
+                gap: 12,
+                fontSize: '0.82rem',
                 color: 'var(--text-ink)'
               }}>
-                <Radio size={15} color="var(--ghost-orange)" />
+                <Radio size={16} color="var(--ghost-orange)" />
                 <span>Alexa+ intent resolved via AWS Bedrock & NVIDIA Nemotron.</span>
               </div>
 
               <div style={{
                 background: '#ffffff',
                 border: '1px solid var(--border-hairline)',
-                padding: '10px 14px',
-                borderRadius: 2,
+                padding: '11px 16px',
+                borderRadius: 6,
                 display: 'flex',
                 alignItems: 'center',
-                gap: 10,
-                fontSize: '0.8rem',
+                gap: 12,
+                fontSize: '0.82rem',
                 color: 'var(--text-ink)'
               }}>
-                <Tv size={15} color="var(--accent-emerald)" />
+                <Tv size={16} color="var(--accent-emerald)" />
                 <span>10-foot interactive card pushes to Fire TV for human step-up review.</span>
               </div>
             </div>
 
             {/* Bottom Wireframe Tags */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 6 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 6, flexWrap: 'wrap', gap: 12 }}>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 <span className="ghost-wire-pill">
                   <span>◫</span>
-                  <span>LOCAL INTELLIGENCE</span>
+                  <span>Local Intelligence</span>
                 </span>
                 <span className="ghost-wire-pill">
                   <span>📖</span>
-                  <span>CONTINUOUS CONTEXT</span>
+                  <span>Continuous Context</span>
                 </span>
                 <span className="ghost-wire-pill">
                   <span>⁖</span>
-                  <span>PROACTIVE AGENT</span>
+                  <span>Proactive Agent</span>
                 </span>
               </div>
 
-              {/* Square Blue Button from bottom right of screenshots */}
+              {/* Pill Button to Open Simulator */}
               <button
                 onClick={onExplorePlayground}
                 style={{
-                  width: 38,
-                  height: 38,
-                  background: 'var(--ghost-blue)',
+                  background: 'var(--nuvei-cyan)',
                   border: 'none',
-                  borderRadius: 2,
+                  borderRadius: 9999,
+                  padding: '9px 18px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
+                  gap: 8,
                   color: '#ffffff',
+                  fontSize: '0.82rem',
+                  fontWeight: 600,
                   cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(22, 104, 232, 0.3)'
+                  boxShadow: '0 4px 14px rgba(12, 152, 212, 0.3)',
+                  transition: 'all 0.18s ease'
                 }}
                 title="Open Simulator"
               >
-                <ShoppingBag size={18} />
+                <ShoppingBag size={15} />
+                <span>Open Simulator</span>
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 3. INTERACTIVE DEVICE MAP & ECOSYSTEM GRID (Exact Match to Screenshot 4 & 5) */}
+      {/* 3. INTERACTIVE DEVICE MAP & ECOSYSTEM GRID */}
       <div style={{
         background: '#e8e8e2',
         border: '1px solid var(--border-color)',
-        borderRadius: 4,
+        borderRadius: 8,
         padding: '32px 28px',
         textAlign: 'center',
         position: 'relative'
@@ -615,10 +618,10 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
         <div style={{
           display: 'inline-flex',
           background: '#dcdcd5',
-          padding: 3,
-          borderRadius: 2,
+          padding: 4,
+          borderRadius: 9999,
           marginBottom: 32,
-          gap: 2
+          gap: 4
         }}>
           {['DIGITAL', 'HOME', 'PROTOCOL'].map((cat) => {
             const isSelected = activeCategory === cat;
@@ -627,20 +630,19 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 style={{
-                  background: isSelected ? 'var(--ghost-blue)' : 'transparent',
+                  background: isSelected ? 'var(--nuvei-midnight)' : 'transparent',
                   color: isSelected ? '#ffffff' : 'var(--text-muted)',
                   border: 'none',
-                  padding: '5px 16px',
-                  borderRadius: 2,
-                  fontSize: '0.72rem',
+                  padding: '6px 20px',
+                  borderRadius: 9999,
+                  fontSize: '0.74rem',
                   fontWeight: 700,
-                  fontFamily: 'var(--font-mono)',
-                  letterSpacing: '0.06em',
+                  fontFamily: 'var(--font-sans)',
+                  letterSpacing: '0.04em',
                   cursor: 'pointer',
                   transition: 'all 0.15s ease'
                 }}
               >
-                {isSelected && '■ '}
                 {cat}
               </button>
             );
@@ -660,15 +662,15 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
           <div style={{
             background: '#ffffff',
             border: '1px solid var(--border-hairline)',
-            borderRadius: 4,
+            borderRadius: 8,
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+            boxShadow: '0 4px 12px rgba(0,0,0,0.04)'
           }}>
             <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
               <img src="/ring_doorbell_radar.jpg" alt="Ring Pro 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 2, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 9999, padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Bell size={11} color="var(--ghost-blue)" />
                 <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>RADAR</span>
               </div>
@@ -685,15 +687,15 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
           <div style={{
             background: '#ffffff',
             border: '1px solid var(--border-hairline)',
-            borderRadius: 4,
+            borderRadius: 8,
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+            boxShadow: '0 4px 12px rgba(0,0,0,0.04)'
           }}>
             <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
               <img src="/alexa_plus_device.jpg" alt="Alexa+ Terminal" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 2, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 9999, padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Radio size={11} color="var(--ghost-orange)" />
                 <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>MCP</span>
               </div>
@@ -709,23 +711,23 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
           {/* Center Monolith Node: Fides Sovereign Core */}
           <div style={{
             background: '#111317',
-            border: '2px solid var(--ghost-blue)',
-            borderRadius: 4,
+            border: '2px solid var(--nuvei-cyan)',
+            borderRadius: 8,
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
             color: '#ffffff',
-            boxShadow: '0 8px 24px rgba(22, 104, 232, 0.2)'
+            boxShadow: '0 8px 24px rgba(12, 152, 212, 0.25)'
           }}>
             <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
               <img src="/fides_core_monolith.jpg" alt="Fides Sovereign Core" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ position: 'absolute', top: 6, left: 6, background: 'var(--ghost-blue)', borderRadius: 2, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <div style={{ position: 'absolute', top: 6, left: 6, background: 'var(--nuvei-cyan)', borderRadius: 9999, padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <ShieldCheck size={11} color="#fff" />
                 <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff', fontWeight: 800 }}>CORE</span>
               </div>
             </div>
             <div style={{ padding: '10px 8px', textAlign: 'center', background: '#111317' }}>
-              <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--ghost-blue)', display: 'block' }}>
+              <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--nuvei-cyan)', display: 'block' }}>
                 FIDES CORE
               </span>
               <span style={{ fontSize: '0.62rem', color: '#888e98' }}>Air-Gapped Gateway</span>
@@ -736,15 +738,15 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
           <div style={{
             background: '#ffffff',
             border: '1px solid var(--border-hairline)',
-            borderRadius: 4,
+            borderRadius: 8,
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+            boxShadow: '0 4px 12px rgba(0,0,0,0.04)'
           }}>
             <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
               <img src="/firetv_living_room.jpg" alt="Fire TV Vega OS" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 2, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 9999, padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Tv size={11} color="var(--accent-amber)" />
                 <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>10-FOOT</span>
               </div>
@@ -761,15 +763,15 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
           <div style={{
             background: '#ffffff',
             border: '1px solid var(--border-hairline)',
-            borderRadius: 4,
+            borderRadius: 8,
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+            boxShadow: '0 4px 12px rgba(0,0,0,0.04)'
           }}>
             <div style={{ height: 80, overflow: 'hidden', position: 'relative' }}>
               <img src="/bee_wearable_wrist.jpg" alt="Bee Wearable AI" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 2, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.7)', borderRadius: 9999, padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Watch size={11} color="var(--accent-purple)" />
                 <span className="font-mono" style={{ fontSize: '0.6rem', color: '#fff' }}>HAPTIC</span>
               </div>
@@ -794,7 +796,7 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
         </p>
       </div>
 
-      {/* 4. SECURITY MATRIX CONTRAST (Light Retro Cards) */}
+      {/* 4. SECURITY MATRIX CONTRAST */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -803,16 +805,16 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
         <div style={{
           background: '#ffffff',
           border: '1px solid var(--border-color)',
-          borderRadius: 4,
-          padding: '22px 24px'
+          borderRadius: 8,
+          padding: '24px 26px'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
             <AlertTriangle size={18} color="var(--accent-rose)" />
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-ink)', margin: 0 }}>
               Direct Agent Vulnerability
             </h4>
           </div>
-          <ul style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.6, paddingLeft: 18, margin: 0 }}>
+          <ul style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.6, paddingLeft: 18, margin: 0 }}>
             <li>LLM holds raw financial authority and payment API keys.</li>
             <li>Adversarial prompts convince the model that prices are ₹0 or approved.</li>
             <li>Network replays duplicate orders without nonces.</li>
@@ -822,17 +824,17 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
 
         <div style={{
           background: '#ffffff',
-          border: '1px solid var(--ghost-blue)',
-          borderRadius: 4,
-          padding: '22px 24px'
+          border: '1px solid var(--nuvei-cyan)',
+          borderRadius: 8,
+          padding: '24px 26px'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <CheckCircle2 size={18} color="var(--ghost-blue)" />
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+            <CheckCircle2 size={18} color="var(--nuvei-cyan)" />
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-ink)', margin: 0 }}>
               Fides Air-Gapped Trust
             </h4>
           </div>
-          <ul style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.6, paddingLeft: 18, margin: 0 }}>
+          <ul style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.6, paddingLeft: 18, margin: 0 }}>
             <li>LLM only outputs candidate SKU strings — zero financial authority.</li>
             <li>Server verifies official catalogue prices and signed mandates.</li>
             <li>Ring 3D radar proof required before high-value checkouts.</li>
