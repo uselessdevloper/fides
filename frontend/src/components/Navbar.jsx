@@ -5,13 +5,13 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
   const [showBanner, setShowBanner] = useState(true);
 
   const navItems = [
-    { id: 'about', label: '01 / OVERVIEW' },
-    { id: 'alexa', label: '02 / ALEXA+ MCP' },
-    { id: 'livingroom', label: '03 / LIVING ROOM, RING & BEE' },
-    { id: 'playground', label: '04 / PLAYGROUND' },
-    { id: 'inspector', label: '05 / INSPECTOR' },
-    { id: 'audit', label: '06 / AUDIT' },
-    { id: 'hackathon', label: '07 / HACKATHON BRIEF' }
+    { id: 'about', label: 'Overview' },
+    { id: 'alexa', label: 'Alexa+ MCP' },
+    { id: 'livingroom', label: 'Living Room & Devices' },
+    { id: 'playground', label: 'Playground' },
+    { id: 'inspector', label: 'Inspector' },
+    { id: 'audit', label: 'Audit Ledger' },
+    { id: 'hackathon', label: 'Hackathon Brief' }
   ];
 
   return (
@@ -19,27 +19,26 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
       position: 'sticky',
       top: 0,
       zIndex: 100,
-      background: '#ebebe6',
-      borderBottom: '1px solid #d4d4cb'
+      background: '#faf9f7',
+      borderBottom: '1px solid #e2ded5'
     }}>
       {/* Ghost Core Safety Orange Announcement Banner */}
       {showBanner && (
         <div style={{
           background: 'var(--ghost-orange)',
           color: '#ffffff',
-          padding: '7px 20px',
+          padding: '6px 20px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative',
           fontSize: '0.74rem',
-          fontWeight: 700,
-          letterSpacing: '0.06em',
-          textTransform: 'uppercase',
+          fontWeight: 600,
+          letterSpacing: '0.01em',
           fontFamily: 'var(--font-heading)'
         }}>
           <span>
-            FIDES LAUNCHES AMBIENT TRUST CORE FOR FIRE TV, ALEXA+, RING & BEE WEARABLE AI — SPEC 2025-11-25 READY
+            Amazon Developer Hackathon — Fire TV, Alexa+, Ring & Bee Wearable Autonomous Commerce Gateway
           </span>
           <button
             onClick={() => setShowBanner(false)}
@@ -51,145 +50,118 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
               color: '#ffffff',
               cursor: 'pointer',
               display: 'flex',
-              alignItems: 'center'
+              alignItems: 'center',
+              padding: 4
             }}
+            title="Dismiss announcement"
           >
-            <X size={15} />
+            <X size={14} />
           </button>
         </div>
       )}
 
-      {/* Main Ghost Header */}
+      {/* Main Nuvei & Ghost Top Header */}
       <div className="wispr-container" style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: 60,
-        borderBottom: '1px solid #dfdfe7'
+        height: 56,
+        borderBottom: '1px solid #ebe8e1'
       }}>
-        {/* Left minimal links */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-          <button
-            onClick={() => setActiveTab('about')}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              fontSize: '0.78rem',
-              fontWeight: 600,
-              color: activeTab === 'about' ? 'var(--text-ink)' : 'var(--text-muted)',
-              cursor: 'pointer',
-              letterSpacing: '0.04em',
-              textTransform: 'uppercase',
-              fontFamily: 'var(--font-sans)'
-            }}
-          >
-            ABOUT
-          </button>
-          <button
-            onClick={() => setActiveTab('alexa')}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              fontSize: '0.78rem',
-              fontWeight: 600,
-              color: 'var(--text-muted)',
-              cursor: 'pointer',
-              letterSpacing: '0.04em',
-              textTransform: 'uppercase',
-              fontFamily: 'var(--font-sans)'
-            }}
-          >
-            MCP SPEC
-          </button>
-          <button
-            onClick={() => setActiveTab('livingroom')}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              fontSize: '0.78rem',
-              fontWeight: 600,
-              color: 'var(--text-muted)',
-              cursor: 'pointer',
-              letterSpacing: '0.04em',
-              textTransform: 'uppercase',
-              fontFamily: 'var(--font-sans)'
-            }}
-          >
-            HARDWARE
-          </button>
-        </div>
-
-        {/* Center Lowercase Wordmark */}
+        {/* Left: Brand Wordmark + Subtitle Badge */}
         <div
           onClick={() => setActiveTab('about')}
           style={{
             cursor: 'pointer',
-            fontSize: '1.45rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 12
+          }}
+        >
+          <span style={{
+            fontSize: '1.4rem',
             fontWeight: 800,
             letterSpacing: '-0.03em',
             color: 'var(--text-ink)',
-            fontFamily: 'var(--font-heading)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 4
-          }}
-        >
-          <span>fides</span>
+            fontFamily: 'var(--font-heading)'
+          }}>
+            fides
+          </span>
+          <span style={{
+            fontSize: '0.72rem',
+            fontWeight: 600,
+            color: 'var(--text-muted)',
+            padding: '2px 10px',
+            background: '#eeece6',
+            borderRadius: 9999,
+            border: '1px solid #ded9ce'
+          }}>
+            Autonomous Commerce Core
+          </span>
         </div>
 
-        {/* Right Action */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        {/* Right: Quick Action Pill & Audit Shortcut */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <button
             onClick={() => setActiveTab('playground')}
+            className="btn-ghost-primary"
             style={{
-              background: 'var(--ghost-orange)',
-              color: '#ffffff',
-              border: 'none',
-              fontSize: '0.78rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              letterSpacing: '-0.01em',
-              fontFamily: 'var(--font-heading)',
               padding: '7px 18px',
-              borderRadius: 9999,
-              boxShadow: '0 2px 8px rgba(255, 85, 0, 0.25)',
-              transition: 'all 0.18s ease'
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              gap: 6
             }}
           >
-            Dispatch Purchase
+            <ShoppingBag size={14} />
+            <span>Dispatch Purchase</span>
           </button>
 
           <button
             onClick={() => setActiveTab('audit')}
             style={{
-              background: 'transparent',
-              border: 'none',
+              background: '#ffffff',
+              border: '1px solid #dcd7ce',
+              borderRadius: 9999,
               cursor: 'pointer',
               color: 'var(--text-ink)',
-              display: 'flex',
-              alignItems: 'center'
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              padding: '6px 14px',
+              fontSize: '0.76rem',
+              fontWeight: 600,
+              transition: 'all 0.18s ease'
             }}
             title="View Tamper-Evident Audit Ledger"
           >
-            <ShoppingBag size={18} />
+            <Shield size={13} color="var(--nuvei-cyan)" />
+            <span>Audit</span>
           </button>
         </div>
       </div>
 
-      {/* Subnav: Retro Engineering Tabs */}
-      <div style={{ background: '#f2f2ee', borderBottom: '1px solid #dcdcd4', padding: '6px 0' }}>
+      {/* Subnav: Nuvei Title-Cased Pill Tabs with Guaranteed Single-Row Alignment */}
+      <div style={{
+        background: '#f3f1ec',
+        borderBottom: '1px solid #dedbd2',
+        padding: '7px 0'
+      }}>
         <div className="wispr-container" style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: 8
+          gap: 16
         }}>
+          {/* Scrollable, non-wrapping pill tabs */}
           <nav style={{
             display: 'flex',
             alignItems: 'center',
             gap: 6,
-            flexWrap: 'wrap'
+            overflowX: 'auto',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            whiteSpace: 'nowrap',
+            flex: 1
           }}>
             {navItems.map((item) => {
               const isActive = activeTab === item.id;
@@ -201,14 +173,28 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
                     background: isActive ? 'var(--nuvei-cyan)' : 'transparent',
                     color: isActive ? '#ffffff' : 'var(--text-muted)',
                     border: isActive ? '1px solid var(--nuvei-cyan)' : '1px solid transparent',
-                    padding: '6px 16px',
+                    padding: '6px 15px',
                     borderRadius: 9999,
-                    fontSize: '0.74rem',
-                    fontWeight: 600,
+                    fontSize: '0.8rem',
+                    fontWeight: isActive ? 600 : 500,
                     cursor: 'pointer',
                     letterSpacing: '-0.01em',
-                    transition: 'all 0.18s ease',
-                    boxShadow: isActive ? '0 2px 8px rgba(12, 152, 212, 0.3)' : 'none'
+                    fontFamily: 'var(--font-heading)',
+                    transition: 'all 0.16s ease',
+                    boxShadow: isActive ? '0 2px 8px rgba(12, 152, 212, 0.32)' : 'none',
+                    flexShrink: 0
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.background = '#e7e5de';
+                      e.currentTarget.style.color = 'var(--text-ink)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.color = 'var(--text-muted)';
+                    }
                   }}
                 >
                   {item.label}
@@ -217,29 +203,44 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
             })}
           </nav>
 
-          {/* Telemetry Indicator */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ position: 'relative', display: 'flex', width: 6, height: 6 }}>
+          {/* Telemetry Status Capsule: Always Anchored on Right, Never Broken or Wrapped */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 7,
+            flexShrink: 0,
+            background: 'rgba(12, 152, 212, 0.08)',
+            border: '1px solid rgba(12, 152, 212, 0.25)',
+            padding: '5px 12px',
+            borderRadius: 9999
+          }}>
+            <span style={{ position: 'relative', display: 'flex', width: 7, height: 7 }}>
               <span className="listening-pulse" style={{
                 position: 'absolute',
                 display: 'inline-flex',
                 height: '100%',
                 width: '100%',
                 borderRadius: '50%',
-                backgroundColor: 'var(--ghost-blue)',
-                opacity: 0.8
+                backgroundColor: 'var(--nuvei-cyan)',
+                opacity: 0.75
               }}></span>
               <span style={{
                 position: 'relative',
                 display: 'inline-flex',
                 borderRadius: '50%',
-                height: 6,
-                width: 6,
-                backgroundColor: 'var(--ghost-blue)'
+                height: 7,
+                width: 7,
+                backgroundColor: 'var(--nuvei-cyan)'
               }}></span>
             </span>
-            <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--ghost-blue)' }}>
-              ALEXA+ MCP // ON-DEVICE VERIFIED
+            <span style={{
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              color: 'var(--nuvei-cyan)',
+              fontFamily: 'var(--font-heading)',
+              letterSpacing: '0.02em'
+            }}>
+              Alexa+ MCP Verified
             </span>
           </div>
         </div>
