@@ -32,75 +32,171 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
       flexDirection: 'column',
       gap: 36
     }}>
-      {/* 1. GHOST CORE HERO MONOLITH STAGE (Exact Match to Screenshot 1) */}
+      {/* 1. GHOST CORE PANORAMIC ECOSYSTEM HERO */}
       <div style={{
-        background: '#090b0e',
+        background: '#ffffff',
         borderRadius: 4,
         overflow: 'hidden',
-        position: 'relative',
-        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)',
-        border: '1px solid #d4d4cb'
+        border: '1px solid var(--border-color)',
+        boxShadow: '0 6px 24px rgba(0, 0, 0, 0.06)'
       }}>
-        {/* Massive Spaced Display Letters Behind Monolith */}
+        {/* Top Technical Metadata Header */}
         <div style={{
-          position: 'absolute',
-          top: 32,
-          left: 0,
-          right: 0,
+          background: '#0e1117',
+          color: '#ffffff',
+          padding: '12px 24px',
           display: 'flex',
-          justifyContent: 'space-around',
-          padding: '0 40px',
-          fontFamily: 'var(--font-heading)',
-          fontSize: 'clamp(3.5rem, 9vw, 8rem)',
-          fontWeight: 300,
-          color: 'rgba(255, 255, 255, 0.85)',
-          letterSpacing: '0.15em',
-          pointerEvents: 'none',
-          zIndex: 1
-        }}>
-          <span>F</span>
-          <span>I</span>
-          <span>D</span>
-          <span>E</span>
-          <span>S</span>
-        </div>
-
-        {/* Hero Hardware Monolith Visual */}
-        <div style={{
-          position: 'relative',
-          zIndex: 2,
-          display: 'flex',
-          justifyContent: 'center',
           alignItems: 'center',
-          paddingTop: 40,
-          paddingBottom: 20
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: 12,
+          borderBottom: '1px solid #1e2633'
         }}>
-          <div style={{
-            maxWidth: 620,
-            width: '100%',
-            position: 'relative'
-          }}>
-            <img
-              src="/fides_core_monolith.jpg"
-              alt="Fides Core Gateway Monolith"
-              style={{
-                width: '100%',
-                height: 'auto',
-                display: 'block',
-                borderRadius: 4,
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)'
-              }}
-            />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', fontWeight: 800, letterSpacing: '0.08em' }}>
+              FIDES // SOVEREIGN AMBIENT GATEWAY
+            </span>
+            <span style={{ color: '#4a5568' }}>•</span>
+            <span style={{ fontSize: '0.7rem', color: '#a0aec0', fontFamily: 'var(--font-mono)' }}>
+              AMAZON ECOSYSTEM INTEGRATION
+            </span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
+              <span className="font-mono" style={{ fontSize: '0.68rem', color: '#10b981', fontWeight: 700 }}>
+                4 DEVICES CONNECTED
+              </span>
+            </div>
+            <span className="font-mono" style={{ fontSize: '0.68rem', color: '#8892b0' }}>
+              MCP SPEC 2025-11-25
+            </span>
           </div>
         </div>
 
-        {/* Lower Banner Strip in Warm Retro Sand (Like Screenshot 1) */}
+        {/* Panoramic Full-Width Visual Hardware Showcase */}
+        <div style={{
+          position: 'relative',
+          background: '#141820',
+          overflow: 'hidden',
+          aspectRatio: '16/9',
+          maxHeight: 520
+        }}>
+          <img
+            src="/fides_ecosystem_hero.jpg"
+            alt="Fides Connected Amazon Ecosystem: Ring, Gateway, Bee Wearable, Alexa+, and Fire TV"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block'
+            }}
+          />
+
+          {/* Interactive Spatial Hotspot Pills Overlaid on Devices */}
+          <div style={{
+            position: 'absolute',
+            bottom: 16,
+            left: 16,
+            right: 16,
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 8,
+            zIndex: 10
+          }}>
+            <div style={{
+              background: 'rgba(9, 11, 14, 0.82)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: 2,
+              padding: '5px 12px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              color: '#ffffff',
+              fontSize: '0.7rem',
+              fontFamily: 'var(--font-mono)'
+            }}>
+              <Bell size={12} color="var(--ghost-blue)" />
+              <span>RING 3D RADAR</span>
+            </div>
+
+            <div style={{
+              background: 'rgba(9, 11, 14, 0.82)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: 2,
+              padding: '5px 12px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              color: '#ffffff',
+              fontSize: '0.7rem',
+              fontFamily: 'var(--font-mono)'
+            }}>
+              <ShieldCheck size={12} color="var(--ghost-blue)" />
+              <span style={{ fontWeight: 800, color: 'var(--ghost-blue)' }}>FIDES GATEWAY</span>
+            </div>
+
+            <div style={{
+              background: 'rgba(9, 11, 14, 0.82)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: 2,
+              padding: '5px 12px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              color: '#ffffff',
+              fontSize: '0.7rem',
+              fontFamily: 'var(--font-mono)'
+            }}>
+              <Watch size={12} color="var(--accent-purple)" />
+              <span>BEE WEARABLE DOCK</span>
+            </div>
+
+            <div style={{
+              background: 'rgba(9, 11, 14, 0.82)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: 2,
+              padding: '5px 12px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              color: '#ffffff',
+              fontSize: '0.7rem',
+              fontFamily: 'var(--font-mono)'
+            }}>
+              <Radio size={12} color="var(--ghost-orange)" />
+              <span>ALEXA+ TERMINAL</span>
+            </div>
+
+            <div style={{
+              background: 'rgba(9, 11, 14, 0.82)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: 2,
+              padding: '5px 12px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              color: '#ffffff',
+              fontSize: '0.7rem',
+              fontFamily: 'var(--font-mono)'
+            }}>
+              <Tv size={12} color="var(--accent-amber)" />
+              <span>FIRE TV 10-FOOT</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Lower Banner Strip in Warm Retro Sand */}
         <div style={{
           background: '#ebebe6',
           borderTop: '1px solid #dcdcd5',
           padding: '24px 28px',
-          position: 'relative',
-          zIndex: 3,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -109,15 +205,19 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
         }}>
           <div>
             <h1 style={{
-              fontSize: 'clamp(1.6rem, 3.2vw, 2.4rem)',
-              fontWeight: 700,
+              fontSize: 'clamp(1.6rem, 3.2vw, 2.3rem)',
+              fontWeight: 800,
               letterSpacing: '-0.02em',
               color: 'var(--text-ink)',
               fontFamily: 'var(--font-heading)',
-              marginBottom: 12
+              marginBottom: 10,
+              lineHeight: 1.2
             }}>
               The personal AI commerce gateway
             </h1>
+            <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', maxWidth: 620, lineHeight: 1.5, marginBottom: 14 }}>
+              Connecting <strong>Fire TV</strong>, <strong>Alexa+</strong>, <strong>Ring</strong>, and <strong>Bee Wearable</strong> into an authoritative, air-gapped security boundary. Ambient voice agents interpret intent; Fides cryptographically authorizes checkout.
+            </p>
 
             {/* Wireframe Blue Feature Tags */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -137,25 +237,29 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
                 <span>⟲</span>
                 <span>RING 3D RADAR</span>
               </span>
+              <span className="ghost-wire-pill">
+                <span>⚡</span>
+                <span>BEE WRIST HAPTIC</span>
+              </span>
             </div>
           </div>
 
           {/* Right Action Block */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 10 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
               <span className="badge-ghost-orange">
                 Spec 2025-11-25 Ready
               </span>
-              <span className="font-mono" style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-ink)' }}>
+              <span className="font-mono" style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--text-ink)' }}>
                 100% SAFE
               </span>
             </div>
 
-            <div style={{ display: 'flex', gap: 10 }}>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
               <button
                 onClick={onExplorePlayground}
                 className="btn-ghost-primary"
-                style={{ padding: '12px 24px', fontSize: '0.85rem' }}
+                style={{ padding: '12px 22px', fontSize: '0.84rem' }}
               >
                 <span>OPEN ALEXA+ MCP CONSOLE</span>
                 <ArrowRight size={15} />
@@ -166,7 +270,7 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
                   if (onRunScenario) onRunScenario(1);
                 }}
                 className="btn-ghost-outline"
-                style={{ padding: '12px 20px', fontSize: '0.8rem' }}
+                style={{ padding: '12px 18px', fontSize: '0.8rem' }}
               >
                 <Play size={14} color="var(--ghost-blue)" />
                 <span>RUN BENCHMARK #1</span>
