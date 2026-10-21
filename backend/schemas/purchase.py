@@ -22,7 +22,7 @@ class LineItem(BaseModel):
         return cleaned
 
 class CandidatePurchaseIntent(BaseModel):
-    line_items: List[LineItem] = Field(..., min_length=1, max_length=20)
+    line_items: List[LineItem] = Field(default_factory=list, max_length=20)
     raw_reasoning: Optional[str] = Field(default=None, description="Model explanation if any, untrusted")
 
 class SpendingMandate(BaseModel):

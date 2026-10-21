@@ -258,6 +258,9 @@ def cmd_alexa(prompt: str):
         "jsonrpc": "2.0", "id": "cli_2", "method": "tools/call",
         "params": {"name": "fides_evaluate_purchase", "arguments": {"request_text": prompt, "spending_cap": 700.0}}
     })
+    if "error" in t2:
+        print(f"   {RED}Tool Error: {t2['error']['message']}{RESET}")
+        return
     res2 = json.loads(t2["result"]["content"][0]["text"])
     dec = res2.get("decision", "DENY")
     col = GREEN if dec == "APPROVE" else YELLOW if dec == "STEP_UP" else RED
