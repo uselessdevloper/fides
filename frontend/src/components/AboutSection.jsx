@@ -43,90 +43,255 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
         <div style={{
           background: '#ebebe6',
           borderTop: '1px solid #dcdcd5',
-          padding: '24px 28px',
+          padding: '28px 32px',
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
+          flexDirection: 'column',
           gap: 20
         }}>
-          <div>
-            <h1 style={{
-              fontSize: 'clamp(1.6rem, 3.2vw, 2.3rem)',
-              fontWeight: 800,
-              letterSpacing: '-0.02em',
-              color: 'var(--text-ink)',
-              fontFamily: 'var(--font-heading)',
-              marginBottom: 10,
-              lineHeight: 1.2
-            }}>
-              The personal AI commerce gateway
-            </h1>
-            <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', maxWidth: 620, lineHeight: 1.5, marginBottom: 14 }}>
-              Connecting <strong>Fire TV</strong>, <strong>Alexa+</strong>, <strong>Ring</strong>, and <strong>Bee Wearable</strong> into an authoritative, air-gapped security boundary. Ambient voice agents interpret intent; Fides cryptographically authorizes checkout.
-            </p>
+          {/* Top Row: Title, Description, and Badges */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            flexWrap: 'wrap',
+            gap: 16
+          }}>
+            <div style={{ maxWidth: 720 }}>
+              <h1 style={{
+                fontSize: 'clamp(1.75rem, 3vw, 2.3rem)',
+                fontWeight: 800,
+                letterSpacing: '-0.025em',
+                color: 'var(--text-ink)',
+                fontFamily: 'var(--font-heading)',
+                marginBottom: 10,
+                lineHeight: 1.2
+              }}>
+                The personal AI commerce gateway
+              </h1>
+              <p style={{
+                fontSize: '0.9rem',
+                color: 'var(--text-muted)',
+                lineHeight: 1.55,
+                margin: 0
+              }}>
+                Connecting <strong style={{ color: 'var(--text-ink)' }}>Fire TV</strong>, <strong style={{ color: 'var(--text-ink)' }}>Alexa+</strong>, <strong style={{ color: 'var(--text-ink)' }}>Ring</strong>, and <strong style={{ color: 'var(--text-ink)' }}>Bee Wearable</strong> into an authoritative, air-gapped security boundary. Ambient voice agents interpret intent; Fides cryptographically authorizes checkout.
+              </p>
+            </div>
 
-            {/* Wireframe Blue Feature Tags */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              <span className="ghost-wire-pill">
-                <span>⊘</span>
-                <span>Zero Wallet Leak</span>
+            {/* Verification & Spec Badge */}
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 10,
+              background: '#ffffff',
+              border: '1px solid #d5d0c5',
+              borderRadius: 9999,
+              padding: '5px 14px 5px 8px',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
+            }}>
+              <span style={{
+                background: 'rgba(5, 150, 105, 0.1)',
+                color: 'var(--accent-emerald)',
+                border: '1px solid rgba(5, 150, 105, 0.3)',
+                padding: '3px 10px',
+                borderRadius: 9999,
+                fontSize: '0.7rem',
+                fontWeight: 800,
+                fontFamily: 'var(--font-mono)',
+                letterSpacing: '0.04em',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6
+              }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-emerald)', display: 'inline-block' }} />
+                100% AIR-GAPPED SAFE
               </span>
-              <span className="ghost-wire-pill">
-                <span>✢</span>
-                <span>Entirely On-Device</span>
-              </span>
-              <span className="ghost-wire-pill">
-                <span>∞</span>
-                <span>Continuous Context</span>
-              </span>
-              <span className="ghost-wire-pill">
-                <span>⟲</span>
-                <span>Ring 3D Radar</span>
-              </span>
-              <span className="ghost-wire-pill">
-                <span>⚡</span>
-                <span>Bee Wrist Haptics</span>
-              </span>
-              <span className="ghost-wire-pill" style={{ borderColor: 'var(--nuvei-cyan)', color: 'var(--nuvei-cyan)', fontWeight: 700 }}>
-                <span>☁</span>
-                <span>10/10 AWS Technologies</span>
+              <span style={{
+                fontSize: '0.74rem',
+                fontWeight: 600,
+                color: 'var(--text-ink)',
+                fontFamily: 'var(--font-heading)'
+              }}>
+                Spec 2025-11-25 Ready
               </span>
             </div>
           </div>
 
-          {/* Right Action Block */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 10 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-              <span className="badge-ghost-orange">
-                Spec 2025-11-25 Ready
-              </span>
-              <span className="font-mono" style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--text-ink)' }}>
-                100% SAFE
-              </span>
-            </div>
+          {/* Middle Row: Capability Feature Pills */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              background: '#ffffff',
+              border: '1px solid #d5d0c5',
+              color: 'var(--text-ink)',
+              fontSize: '0.76rem',
+              fontWeight: 600,
+              fontFamily: 'var(--font-heading)',
+              padding: '6px 14px',
+              borderRadius: 9999,
+              boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+            }}>
+              <span style={{ color: 'var(--nuvei-cyan)', fontWeight: 700 }}>⊘</span>
+              <span>Zero Wallet Leak</span>
+            </span>
 
-            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-              <button
-                onClick={onExplorePlayground}
-                className="btn-ghost-primary"
-                style={{ padding: '12px 26px', fontSize: '0.88rem' }}
-              >
-                <span>Open Alexa+ MCP Console</span>
-                <ArrowRight size={15} />
-              </button>
+            <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              background: '#ffffff',
+              border: '1px solid #d5d0c5',
+              color: 'var(--text-ink)',
+              fontSize: '0.76rem',
+              fontWeight: 600,
+              fontFamily: 'var(--font-heading)',
+              padding: '6px 14px',
+              borderRadius: 9999,
+              boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+            }}>
+              <span style={{ color: 'var(--accent-emerald)', fontWeight: 700 }}>✢</span>
+              <span>Entirely On-Device</span>
+            </span>
 
-              <button
-                onClick={() => {
-                  if (onRunScenario) onRunScenario(1);
-                }}
-                className="btn-ghost-outline"
-                style={{ padding: '12px 22px', fontSize: '0.86rem' }}
-              >
-                <Play size={14} color="var(--nuvei-cyan)" />
-                <span>Run Benchmark #1</span>
-              </button>
-            </div>
+            <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              background: '#ffffff',
+              border: '1px solid #d5d0c5',
+              color: 'var(--text-ink)',
+              fontSize: '0.76rem',
+              fontWeight: 600,
+              fontFamily: 'var(--font-heading)',
+              padding: '6px 14px',
+              borderRadius: 9999,
+              boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+            }}>
+              <span style={{ color: 'var(--accent-purple)', fontWeight: 700 }}>∞</span>
+              <span>Continuous Context</span>
+            </span>
+
+            <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              background: '#ffffff',
+              border: '1px solid #d5d0c5',
+              color: 'var(--text-ink)',
+              fontSize: '0.76rem',
+              fontWeight: 600,
+              fontFamily: 'var(--font-heading)',
+              padding: '6px 14px',
+              borderRadius: 9999,
+              boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+            }}>
+              <span style={{ color: 'var(--nuvei-cyan)', fontWeight: 700 }}>⟲</span>
+              <span>Ring 3D Radar</span>
+            </span>
+
+            <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              background: '#ffffff',
+              border: '1px solid #d5d0c5',
+              color: 'var(--text-ink)',
+              fontSize: '0.76rem',
+              fontWeight: 600,
+              fontFamily: 'var(--font-heading)',
+              padding: '6px 14px',
+              borderRadius: 9999,
+              boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+            }}>
+              <span style={{ color: 'var(--ghost-orange)', fontWeight: 700 }}>⚡</span>
+              <span>Bee Wrist Haptics</span>
+            </span>
+
+            <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              background: 'rgba(12, 152, 212, 0.08)',
+              border: '1px solid rgba(12, 152, 212, 0.35)',
+              color: 'var(--nuvei-cyan)',
+              fontSize: '0.76rem',
+              fontWeight: 700,
+              fontFamily: 'var(--font-heading)',
+              padding: '6px 14px',
+              borderRadius: 9999
+            }}>
+              <span>☁</span>
+              <span>10/10 AWS Technologies</span>
+            </span>
+          </div>
+
+          {/* Bottom Row: Action Buttons */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 12,
+            flexWrap: 'wrap',
+            paddingTop: 4
+          }}>
+            <button
+              onClick={onExplorePlayground}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8,
+                background: 'var(--nuvei-cyan)',
+                color: '#ffffff',
+                border: 'none',
+                height: 44,
+                padding: '0 24px',
+                borderRadius: 9999,
+                fontSize: '0.88rem',
+                fontWeight: 700,
+                fontFamily: 'var(--font-heading)',
+                cursor: 'pointer',
+                boxShadow: '0 4px 14px rgba(12, 152, 212, 0.35)',
+                transition: 'all 0.2s ease',
+                whiteSpace: 'nowrap'
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1.5px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(12, 152, 212, 0.45)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 4px 14px rgba(12, 152, 212, 0.35)'; }}
+            >
+              <span>Open Alexa+ MCP Console</span>
+              <ArrowRight size={15} />
+            </button>
+
+            <button
+              onClick={() => {
+                if (onRunScenario) onRunScenario(1);
+              }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8,
+                background: '#ffffff',
+                color: 'var(--text-ink)',
+                border: '1.5px solid #d5d0c5',
+                height: 44,
+                padding: '0 22px',
+                borderRadius: 9999,
+                fontSize: '0.86rem',
+                fontWeight: 600,
+                fontFamily: 'var(--font-heading)',
+                cursor: 'pointer',
+                boxShadow: '0 2px 6px rgba(0, 0, 0, 0.04)',
+                transition: 'all 0.2s ease',
+                whiteSpace: 'nowrap'
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1.5px)'; e.currentTarget.style.borderColor = 'var(--text-ink)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.borderColor = '#d5d0c5'; e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.04)'; }}
+            >
+              <Play size={14} color="var(--nuvei-cyan)" fill="var(--nuvei-cyan)" />
+              <span>Run Benchmark #1</span>
+            </button>
           </div>
         </div>
 

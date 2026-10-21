@@ -365,13 +365,12 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(6, 1fr)',
-        background: '#f4f4ef',
+        background: '#f6f5f0',
         borderBottom: '1px solid var(--border-color)'
       }}>
         {steps.map((st, i) => {
           const isCurrent = currentStep === i;
           const isPassed = currentStep > i;
-          const Icon = st.deviceIcon;
           return (
             <button
               key={st.index}
@@ -380,39 +379,41 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
                 background: isCurrent ? '#ffffff' : isPassed ? '#ebebe5' : 'transparent',
                 border: 'none',
                 borderRight: i < 5 ? '1px solid var(--border-hairline)' : 'none',
-                borderBottom: isCurrent ? '3px solid var(--ghost-blue)' : '3px solid transparent',
-                padding: '12px 10px',
+                borderBottom: isCurrent ? '3px solid var(--nuvei-cyan)' : '3px solid transparent',
+                padding: '12px 12px',
                 textAlign: 'left',
                 cursor: 'pointer',
                 transition: 'all 0.15s ease',
                 display: 'flex',
                 alignItems: 'center',
-                gap: 8
+                gap: 9
               }}
             >
               <div style={{
                 width: 24,
                 height: 24,
-                borderRadius: 2,
-                background: isCurrent ? 'var(--ghost-blue)' : isPassed ? '#111317' : '#dcdcd5',
+                borderRadius: '50%',
+                background: isCurrent ? 'var(--nuvei-cyan)' : isPassed ? '#111317' : '#dcdcd5',
                 color: isCurrent || isPassed ? '#ffffff' : '#565c66',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '0.65rem',
                 fontWeight: 800,
-                fontFamily: 'var(--font-mono)'
+                fontFamily: 'var(--font-mono)',
+                flexShrink: 0
               }}>
                 {isPassed ? '✓' : `0${i + 1}`}
               </div>
               <div style={{ overflow: 'hidden' }}>
                 <div style={{
-                  fontSize: '0.68rem',
+                  fontSize: '0.72rem',
                   fontWeight: isCurrent ? 800 : 600,
-                  color: isCurrent ? 'var(--ghost-blue)' : 'var(--text-ink)',
+                  color: isCurrent ? 'var(--nuvei-cyan)' : isPassed ? 'var(--text-ink)' : 'var(--text-muted)',
                   whiteSpace: 'nowrap',
                   textOverflow: 'ellipsis',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  fontFamily: 'var(--font-heading)'
                 }}>
                   {st.device}
                 </div>
@@ -642,62 +643,164 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
             flexDirection: 'column',
             gap: 10
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span className="font-mono" style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--ghost-blue)' }}>
-                LIVE RUNTIME TELEMETRY //
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.7rem',
+                fontWeight: 800,
+                color: 'var(--nuvei-cyan)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6
+              }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--nuvei-cyan)' }} />
+                LIVE RUNTIME TELEMETRY
               </span>
-              <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+              <span style={{ fontSize: '0.68rem', fontWeight: 600, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
                 SCENARIO: {activeData.name.toUpperCase()}
               </span>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
-              {Object.entries(currentStepData.liveTelemetry).map(([key, val]) => (
-                <div key={key} style={{ background: '#ffffff', padding: '10px 14px', borderRadius: 6, border: '1px solid #ebebe4' }}>
-                  <div className="font-mono" style={{ fontSize: '0.62rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                    {key.replace(/([A-Z])/g, ' $1')}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: Object.keys(currentStepData.liveTelemetry).length === 3 ? '1fr 1fr' : 'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: 10
+            }}>
+              {Object.entries(currentStepData.liveTelemetry).map(([key, val], idx, arr) => {
+                const isLastOdd = arr.length % 2 !== 0 && idx === arr.length - 1;
+                return (
+                  <div
+                    key={key}
+                    style={{
+                      background: '#ffffff',
+                      padding: '10px 14px',
+                      borderRadius: 6,
+                      border: '1px solid #e8e6df',
+                      gridColumn: isLastOdd ? '1 / -1' : 'auto'
+                    }}
+                  >
+                    <div className="font-mono" style={{ fontSize: '0.64rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      {key.replace(/([A-Z])/g, ' $1')}
+                    </div>
+                    <div className="font-mono" style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-ink)', marginTop: 2 }}>
+                      {val}
+                    </div>
                   </div>
-                  <div className="font-mono" style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-ink)', marginTop: 2 }}>
-                    {val}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
           {/* Stepper Navigation Buttons */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 6, flexWrap: 'wrap', gap: 12 }}>
-            <div style={{ display: 'flex', gap: 10 }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingTop: 8,
+            flexWrap: 'wrap',
+            gap: 12
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <button
                 onClick={handlePrev}
-                className="btn-ghost-outline"
-                style={{ padding: '9px 18px', fontSize: '0.78rem', borderRadius: 9999 }}
+                disabled={currentStep === 0}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 6,
+                  height: 42,
+                  padding: '0 20px',
+                  borderRadius: 9999,
+                  fontSize: '0.82rem',
+                  fontWeight: 600,
+                  fontFamily: 'var(--font-heading)',
+                  background: '#ffffff',
+                  color: currentStep === 0 ? '#9ca3af' : 'var(--text-ink)',
+                  border: `1.5px solid ${currentStep === 0 ? '#e5e2dc' : '#d5d0c5'}`,
+                  cursor: currentStep === 0 ? 'not-allowed' : 'pointer',
+                  opacity: currentStep === 0 ? 0.6 : 1,
+                  boxShadow: currentStep === 0 ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.04)',
+                  transition: 'all 0.15s ease'
+                }}
+                onMouseEnter={(e) => {
+                  if (currentStep !== 0) {
+                    e.currentTarget.style.borderColor = 'var(--text-ink)';
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (currentStep !== 0) {
+                    e.currentTarget.style.borderColor = '#d5d0c5';
+                    e.currentTarget.style.transform = 'none';
+                  }
+                }}
               >
-                ← Previous Step
+                <span>← Previous Step</span>
               </button>
+
               <button
                 onClick={handleNext}
-                className="btn-ghost-primary"
-                style={{ padding: '9px 22px', fontSize: '0.78rem', borderRadius: 9999 }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 8,
+                  height: 42,
+                  padding: '0 24px',
+                  borderRadius: 9999,
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  fontFamily: 'var(--font-heading)',
+                  background: 'var(--nuvei-cyan)',
+                  color: '#ffffff',
+                  border: 'none',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 14px rgba(12, 152, 212, 0.3)',
+                  transition: 'all 0.15s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.boxShadow = '0 6px 18px rgba(12, 152, 212, 0.42)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'none';
+                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(12, 152, 212, 0.3)';
+                }}
               >
                 <span>{currentStep === 5 ? 'Restart Loop (Cycle +1)' : 'Next Step'}</span>
-                <ChevronRight size={14} />
+                <ChevronRight size={15} />
               </button>
             </div>
 
             <button
               onClick={onOpenPlayground}
               style={{
-                background: 'transparent',
-                border: 'none',
-                color: 'var(--nuvei-cyan)',
-                fontSize: '0.8rem',
-                fontWeight: 700,
-                fontFamily: 'var(--font-sans)',
-                cursor: 'pointer',
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                gap: 6
+                justifyContent: 'center',
+                gap: 6,
+                height: 42,
+                padding: '0 18px',
+                borderRadius: 9999,
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                fontFamily: 'var(--font-heading)',
+                background: 'rgba(12, 152, 212, 0.08)',
+                color: 'var(--nuvei-cyan)',
+                border: '1px solid rgba(12, 152, 212, 0.28)',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(12, 152, 212, 0.15)';
+                e.currentTarget.style.borderColor = 'var(--nuvei-cyan)';
+                e.currentTarget.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(12, 152, 212, 0.08)';
+                e.currentTarget.style.borderColor = 'rgba(12, 152, 212, 0.28)';
+                e.currentTarget.style.transform = 'none';
               }}
             >
               <span>Launch in Simulator</span>
