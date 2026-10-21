@@ -10,8 +10,7 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
     { id: 'livingroom', label: 'Living Room & Devices' },
     { id: 'playground', label: 'Playground' },
     { id: 'inspector', label: 'Inspector' },
-    { id: 'audit', label: 'Audit Ledger' },
-    { id: 'hackathon', label: 'Hackathon Brief' }
+    { id: 'audit', label: 'Audit Ledger' }
   ];
 
   return (

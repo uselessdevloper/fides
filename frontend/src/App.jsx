@@ -7,7 +7,6 @@ import DecisionInspector from './components/DecisionInspector';
 import AuditViewer from './components/AuditViewer';
 import AlexaSimulator from './components/AlexaSimulator';
 import LivingRoomDashboard from './components/LivingRoomDashboard';
-import HackathonSubmission from './components/HackathonSubmission';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('about');
@@ -318,13 +317,6 @@ export default function App() {
             onVerifyAudit={verifyAuditLedger}
             onResolveApproval={handleResolveApproval}
             isVerifying={isVerifying}
-          />
-        )}
-
-        {activeTab === 'hackathon' && (
-          <HackathonSubmission
-            healthInfo={healthInfo}
-            onRunScenario={handleRunScenario}
           />
         )}
       </main>
