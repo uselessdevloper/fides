@@ -99,49 +99,49 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {/* Top Banner: Decision Outcome */}
       <div
         className="ghost-card"
         style={{
-          padding: '24px 28px',
-          borderLeft: `5px solid ${isApproved ? 'var(--accent-emerald)' : isStepUp ? 'var(--accent-amber)' : 'var(--accent-rose)'}`,
+          padding: '12px 18px',
+          borderLeft: `4px solid ${isApproved ? 'var(--accent-emerald)' : isStepUp ? 'var(--accent-amber)' : 'var(--accent-rose)'}`,
           background: isApproved ? '#f0fdf4' : isStepUp ? '#fffbeb' : '#fef2f2'
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-              <span className={isApproved ? 'badge-approve' : isStepUp ? 'badge-step-up' : 'badge-deny'} style={{ fontSize: '0.82rem', padding: '4px 10px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
+              <span className={isApproved ? 'badge-approve' : isStepUp ? 'badge-step-up' : 'badge-deny'} style={{ fontSize: '0.74rem', padding: '2px 8px' }}>
                 {outcome}
               </span>
-              <span className="font-mono" style={{ fontSize: '0.74rem', color: 'var(--ghost-blue)' }}>
+              <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--ghost-blue)' }}>
                 TRACE: {trace_id}
               </span>
             </div>
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-ink)' }}>
+            <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-ink)', margin: 0 }}>
               {reason_code}
             </h2>
           </div>
 
           <div style={{ textAlign: 'right' }}>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', display: 'block' }}>
+            <span style={{ fontSize: '0.68rem', color: 'var(--text-dim)', display: 'block' }}>
               Server Calculated Total / Mandate Limit
             </span>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, justifyContent: 'flex-end' }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, justifyContent: 'flex-end' }}>
               <span className="font-mono" style={{
-                fontSize: '1.45rem',
+                fontSize: '1.25rem',
                 fontWeight: 800,
                 color: server_calculated_total > mandate_limit ? 'var(--accent-rose)' : 'var(--text-ink)'
               }}>
                 ₹{server_calculated_total?.toFixed(2)}
               </span>
-              <span className="font-mono" style={{ fontSize: '0.9rem', color: 'var(--text-dim)' }}>
+              <span className="font-mono" style={{ fontSize: '0.82rem', color: 'var(--text-dim)' }}>
                 / ₹{mandate_limit?.toFixed(2)}
               </span>
             </div>
             {human_approval_id && (
-              <span style={{ fontSize: '0.72rem', color: 'var(--accent-amber)', fontWeight: 700 }}>
+              <span style={{ fontSize: '0.68rem', color: 'var(--accent-amber)', fontWeight: 700 }}>
                 Escalated to Human Review: {human_approval_id}
               </span>
             )}
@@ -150,9 +150,9 @@ export default function DecisionInspector({ decision, onGoToAudit, onRunDemoScen
       </div>
 
       {/* Heart of Fides: Model Proposal VS Deterministic Policy Engine */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
         {/* Left: NVIDIA Nemotron Model Proposal */}
-        <div className="ghost-card" style={{ padding: 22, background: '#ffffff' }}>
+        <div className="ghost-card" style={{ padding: '14px 16px', background: '#ffffff' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Cpu size={18} color="var(--ghost-blue)" />

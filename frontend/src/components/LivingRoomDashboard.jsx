@@ -184,39 +184,39 @@ export default function LivingRoomDashboard() {
   const activeBeePrompt = beeStatus?.active_haptic_prompt;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {/* Top Header */}
-      <div className="ghost-card" style={{ padding: '24px 26px', background: '#ffffff' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
+      <div className="ghost-card" style={{ padding: '12px 18px', background: '#ffffff' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-              <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-orange)', fontWeight: 700, letterSpacing: '0.08em' }}>
-                AMAZON LIVING ROOM, FRONT DOOR & WEARABLE AI
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
+              <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--ghost-orange)', fontWeight: 700, letterSpacing: '0.06em' }}>
+                CONNECTED LIVING ROOM & SURFACES
               </span>
-              <span className="badge-ghost-orange">
-                Fire OS & Vega OS • Ring Pro 2 • Bee Wearable
+              <span className="badge-ghost-orange" style={{ fontSize: '0.66rem', padding: '2px 8px' }}>
+                Fire TV • Ring Pro 2 • Bee Wearable
               </span>
             </div>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-ink)', letterSpacing: '-0.01em' }}>
-              Connected Living Room, Physical Radar & Wearable Confirmation
+            <h2 style={{ fontSize: '1.12rem', fontWeight: 700, color: 'var(--text-ink)', letterSpacing: '-0.01em', margin: 0 }}>
+              Physical Radar & Connected Confirmation
             </h2>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', maxWidth: 840, marginTop: 4 }}>
-              Demonstrating all four primary connected device surfaces in concert: <strong>Alexa+</strong> receives voice intent, <strong>Ring</strong> verifies in-home physical presence via 3D radar, <strong>Fire TV</strong> renders 10-foot living room step-ups, and <strong>Bee</strong> provides haptic double-pulse wrist authorization.
+            <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', maxWidth: 840, marginTop: 2, margin: 0 }}>
+              Demonstrating all four primary connected device surfaces in concert: <strong>Alexa+</strong> receives voice intent, <strong>Ring</strong> verifies in-home radar presence, <strong>Fire TV</strong> renders 10-foot living room step-ups, and <strong>Bee</strong> provides haptic double-pulse wrist authorization.
             </p>
           </div>
         </div>
       </div>
 
       {/* 3-Column Ecosystem Grid: Fire TV vs Ring vs Bee Wearable */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 14, alignItems: 'start' }}>
         
         {/* Card 1: Fire TV 10-Foot Living Room Display */}
-        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden', borderRadius: 8 }}>
+        <div className="ghost-card" style={{ padding: '14px 16px', background: '#ffffff', overflow: 'hidden', borderRadius: 8 }}>
           <div style={{
             borderRadius: 8,
             overflow: 'hidden',
-            marginBottom: 14,
-            height: 120,
+            marginBottom: 10,
+            height: 85,
             border: '1px solid var(--border-hairline)',
             position: 'relative',
             background: '#ebebe6'
@@ -355,12 +355,12 @@ export default function LivingRoomDashboard() {
         </div>
 
         {/* Card 2: Ring Video Doorbell & Radar Access */}
-        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden', borderRadius: 8 }}>
+        <div className="ghost-card" style={{ padding: '14px 16px', background: '#ffffff', overflow: 'hidden', borderRadius: 8 }}>
           <div style={{
             borderRadius: 8,
             overflow: 'hidden',
-            marginBottom: 14,
-            height: 120,
+            marginBottom: 10,
+            height: 85,
             border: '1px solid var(--border-hairline)',
             position: 'relative',
             background: '#ebebe6'
@@ -407,7 +407,7 @@ export default function LivingRoomDashboard() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Bell size={18} color="var(--ghost-blue)" />
               <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-ink)', margin: 0 }}>
@@ -421,11 +421,12 @@ export default function LivingRoomDashboard() {
             borderRadius: 8,
             overflow: 'hidden',
             border: '1px solid var(--border-color)',
-            marginBottom: 12,
+            marginBottom: 10,
             background: '#000000',
-            aspectRatio: '16/9'
+            aspectRatio: '16/9',
+            maxHeight: 140
           }}>
-            <img src="/api/ring/snapshot" alt="Ring Feed" style={{ width: '100%', height: '100%', display: 'block' }} />
+            <img src="/api/ring/snapshot" alt="Ring Feed" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 12 }}>
@@ -452,12 +453,12 @@ export default function LivingRoomDashboard() {
         </div>
 
         {/* Card 3: Bee Wearable AI Wristband */}
-        <div className="ghost-card" style={{ padding: 22, background: '#ffffff', overflow: 'hidden', borderRadius: 8 }}>
+        <div className="ghost-card" style={{ padding: '14px 16px', background: '#ffffff', overflow: 'hidden', borderRadius: 8 }}>
           <div style={{
             borderRadius: 8,
             overflow: 'hidden',
-            marginBottom: 14,
-            height: 120,
+            marginBottom: 10,
+            height: 85,
             border: '1px solid var(--border-hairline)',
             position: 'relative',
             background: '#ebebe6'

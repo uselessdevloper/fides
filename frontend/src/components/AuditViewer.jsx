@@ -30,52 +30,49 @@ export default function AuditViewer({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {/* Top Banner: Cryptographic Integrity Status */}
-      <div className="ghost-card" style={{ padding: '22px 26px', background: '#ffffff' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div className="ghost-card" style={{ padding: '12px 18px', background: '#ffffff' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <div style={{
-              width: 42,
-              height: 42,
-              borderRadius: 8,
+              width: 34,
+              height: 34,
+              borderRadius: 6,
               background: '#ecfdf5',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               border: '1px solid #a7f3d0'
             }}>
-              <ShieldCheck size={22} color="var(--accent-emerald)" />
+              <ShieldCheck size={18} color="var(--accent-emerald)" />
             </div>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span className="badge-ghost-emerald" style={{ fontSize: '0.68rem', padding: '2px 10px' }}>
+                <span className="badge-ghost-emerald" style={{ fontSize: '0.64rem', padding: '1px 8px' }}>
                   Immutable Ledger
                 </span>
-                <span className="badge-approve">
+                <span className="badge-approve" style={{ fontSize: '0.64rem', padding: '1px 8px' }}>
                   {auditVerification?.is_valid ? "Cryptographically Verified" : "Verification Pending"}
                 </span>
               </div>
-              <h2 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-ink)', marginTop: 4, fontFamily: 'var(--font-heading)', margin: 0 }}>
+              <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-ink)', marginTop: 2, fontFamily: 'var(--font-heading)', margin: 0 }}>
                 SHA-256 Hash-Chained Audit Ledger
               </h2>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0, marginTop: 2 }}>
-                {auditVerification?.message || "Cryptographically linked blocks proving all agent purchase requests, model traces, and policy decisions."}
-              </p>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
               Total Blocks: <strong style={{ color: 'var(--nuvei-cyan)', fontFamily: 'var(--font-heading)' }}>{auditBlocks?.length || 0}</strong>
             </span>
             <button
               onClick={onVerifyAudit}
               disabled={isVerifying}
               className="btn-ghost-outline"
-              style={{ fontSize: '0.78rem', padding: '6px 16px', borderRadius: 9999 }}
+              style={{ fontSize: '0.74rem', padding: '5px 14px', borderRadius: 9999 }}
             >
-              <RefreshCw size={13} className={isVerifying ? "listening-pulse" : ""} color="var(--nuvei-cyan)" />
+              <RefreshCw size={12} className={isVerifying ? "listening-pulse" : ""} color="var(--nuvei-cyan)" />
               <span>Verify Mathematical Chain</span>
             </button>
           </div>
@@ -83,14 +80,14 @@ export default function AuditViewer({
       </div>
 
       {/* Human Supervisory Escalations Queue (STEP_UP reviews) */}
-      <div className="ghost-card" style={{ padding: 24, background: '#ffffff' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
+      <div className="ghost-card" style={{ padding: '12px 16px', background: '#ffffff' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, flexWrap: 'wrap', gap: 8 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <AlertTriangle size={18} color="var(--accent-amber)" />
-            <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)', margin: 0 }}>
+            <AlertTriangle size={16} color="var(--accent-amber)" />
+            <h3 style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)', margin: 0 }}>
               Protected Human Supervisory Escalation Queue
             </h3>
-            <span className="badge-step-up">
+            <span className="badge-step-up" style={{ fontSize: '0.65rem' }}>
               {pendingApprovals?.length || 0} Pending
             </span>
           </div>
@@ -196,15 +193,15 @@ export default function AuditViewer({
       </div>
 
       {/* Hash-Chained Audit Ledger Blocks List */}
-      <div className="ghost-card" style={{ padding: 24, background: '#ffffff' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-          <Hash size={18} color="var(--nuvei-cyan)" />
-          <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)', margin: 0 }}>
+      <div className="ghost-card" style={{ padding: '14px 16px', background: '#ffffff' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+          <Hash size={16} color="var(--nuvei-cyan)" />
+          <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)', margin: 0 }}>
             Verifiable Block Chain (Chronological)
           </h3>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: '42vh', overflowY: 'auto', paddingRight: 4 }}>
           {auditBlocks && auditBlocks.slice().reverse().map((block) => {
             const isGenesis = block.index === 0;
             const isApprove = block.decision === 'APPROVE' || block.decision === 'HUMAN_APPROVED';

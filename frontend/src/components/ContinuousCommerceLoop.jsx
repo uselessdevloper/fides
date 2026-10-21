@@ -425,10 +425,10 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
 
       {/* Main Interactive Stage for Current Step */}
       <div style={{
-        padding: '28px',
+        padding: '16px 22px',
         display: 'grid',
         gridTemplateColumns: '1.1fr 1fr',
-        gap: 28,
+        gap: 20,
         alignItems: 'center',
         background: '#ffffff'
       }}>
@@ -446,7 +446,7 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
             style={{
               width: '100%',
               height: 'auto',
-              maxHeight: 380,
+              maxHeight: 300,
               objectFit: 'cover',
               display: 'block'
             }}
@@ -606,29 +606,29 @@ export default function ContinuousCommerceLoop({ onOpenPlayground, onRunScenario
         </div>
 
         {/* Right: Step Context, Real-Time Telemetry & Next Action */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-              <span className="badge-ghost-blue" style={{ fontSize: '0.68rem', borderRadius: 9999 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+              <span className="badge-ghost-blue" style={{ fontSize: '0.66rem', borderRadius: 9999, padding: '3px 10px' }}>
                 {currentStepData.badge}
               </span>
-              <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+              <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
                 {currentStepData.subtitle}
               </span>
             </div>
 
             <h3 style={{
-              fontSize: '1.45rem',
+              fontSize: '1.25rem',
               fontWeight: 800,
               fontFamily: 'var(--font-heading)',
               color: 'var(--text-ink)',
-              margin: '0 0 10px 0',
-              lineHeight: 1.25
+              margin: '0 0 6px 0',
+              lineHeight: 1.2
             }}>
               {currentStepData.title}
             </h3>
 
-            <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.6, margin: 0 }}>
+            <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>
               {currentStepData.description}
             </p>
           </div>

@@ -39,16 +39,16 @@ export default function PurchasePlayground({
     : catalogue.filter(item => item.category === selectedCategoryFilter);
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 24, alignItems: 'start' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 14, alignItems: 'start' }}>
       {/* Left Column: Purchase Submission Form */}
-      <div className="ghost-card" style={{ padding: 26, background: '#ffffff' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span className="badge-ghost-blue" style={{ fontSize: '0.72rem', padding: '4px 12px' }}>
+      <div className="ghost-card" style={{ padding: '16px 18px', background: '#ffffff' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span className="badge-ghost-blue" style={{ fontSize: '0.68rem', padding: '2px 8px' }}>
               Intent Dispatcher
             </span>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>|</span>
-            <h2 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)', margin: 0 }}>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>|</span>
+            <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)', margin: 0 }}>
               Agent Purchase Playground
             </h2>
           </div>
@@ -59,27 +59,27 @@ export default function PurchasePlayground({
             gap: 6,
             background: 'rgba(12, 152, 212, 0.08)',
             border: '1px solid rgba(12, 152, 212, 0.25)',
-            padding: '5px 12px',
+            padding: '3px 10px',
             borderRadius: 9999,
-            fontSize: '0.72rem'
+            fontSize: '0.68rem'
           }}>
-            <Mic size={13} color="var(--nuvei-cyan)" />
+            <Mic size={12} color="var(--nuvei-cyan)" />
             <span style={{ color: 'var(--nuvei-cyan)', fontWeight: 600, fontFamily: 'var(--font-heading)' }}>Voice & Text</span>
           </div>
         </div>
 
-        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: 20, lineHeight: 1.5 }}>
+        <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: 12, lineHeight: 1.4 }}>
           Speak or type an instruction for the purchasing agent. NVIDIA Nemotron interprets candidate SKUs, while Fides authoritatively controls payment limits.
         </p>
 
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {/* Natural language request input */}
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-              <label style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+              <label style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)' }}>
                 Natural Language Buyer Prompt
               </label>
-              <span className="badge-deny" style={{ fontSize: '0.62rem', padding: '2px 8px' }}>
+              <span className="badge-deny" style={{ fontSize: '0.6rem', padding: '1px 6px' }}>
                 Untrusted Input
               </span>
             </div>
@@ -87,20 +87,20 @@ export default function PurchasePlayground({
             <textarea
               value={requestText}
               onChange={(e) => setRequestText(e.target.value)}
-              rows={3}
+              rows={2}
               placeholder="e.g. Order two packs of groceries from my approved merchant, keeping the total under ₹700."
               style={{
                 width: '100%',
                 background: '#ffffff',
                 border: '1px solid var(--border-color)',
-                borderRadius: 8,
-                padding: '12px 14px',
+                borderRadius: 6,
+                padding: '8px 10px',
                 color: 'var(--text-ink)',
-                fontSize: '0.9rem',
+                fontSize: '0.84rem',
                 fontFamily: 'var(--font-sans)',
-                resize: 'vertical',
+                resize: 'none',
                 outline: 'none',
-                lineHeight: 1.5
+                lineHeight: 1.4
               }}
             />
 
@@ -231,21 +231,21 @@ export default function PurchasePlayground({
       </div>
 
       {/* Right Column: Trusted Merchant Catalogue */}
-      <div className="ghost-card" style={{ padding: 26, background: '#ffffff' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
+      <div className="ghost-card" style={{ padding: '16px 18px', background: '#ffffff' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
-              <span className="badge-ghost-emerald" style={{ fontSize: '0.68rem', padding: '2px 10px' }}>
+              <span className="badge-ghost-emerald" style={{ fontSize: '0.66rem', padding: '1px 8px' }}>
                 Verified Pricing
               </span>
             </div>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)', margin: 0 }}>
+            <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-ink)', fontFamily: 'var(--font-heading)', margin: 0 }}>
               Trusted Merchant Catalogue
             </h3>
           </div>
 
           {/* Category Filter Pills */}
-          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
             {categories.map((cat) => {
               const isSelected = selectedCategoryFilter === cat;
               return (
@@ -258,8 +258,8 @@ export default function PurchasePlayground({
                     color: isSelected ? '#ffffff' : 'var(--text-muted)',
                     border: isSelected ? '1px solid var(--nuvei-cyan)' : '1px solid #ded9ce',
                     borderRadius: 9999,
-                    padding: '4px 12px',
-                    fontSize: '0.74rem',
+                    padding: '3px 10px',
+                    fontSize: '0.7rem',
                     fontWeight: 600,
                     cursor: 'pointer',
                     transition: 'all 0.16s ease',
@@ -277,8 +277,8 @@ export default function PurchasePlayground({
         <div style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 10,
-          maxHeight: 510,
+          gap: 8,
+          maxHeight: 330,
           overflowY: 'auto',
           paddingRight: 4
         }}>

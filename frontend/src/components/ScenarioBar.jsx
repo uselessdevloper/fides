@@ -61,21 +61,21 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
   };
 
   return (
-    <div className="ghost-card" style={{ padding: '20px 22px', marginBottom: 20, background: '#ffffff' }}>
+    <div className="ghost-card" style={{ padding: '10px 16px', marginBottom: 12, background: '#ffffff' }}>
       <div style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom: 8,
+        marginBottom: 6,
         flexWrap: 'wrap',
-        gap: 12
+        gap: 8
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span className="badge-ghost-blue" style={{ fontSize: '0.72rem', padding: '4px 12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span className="badge-ghost-blue" style={{ fontSize: '0.68rem', padding: '2px 8px' }}>
             Deterministic Benchmark Suite
           </span>
-          <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>|</span>
-          <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-ink)' }}>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-dim)' }}>|</span>
+          <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-ink)' }}>
             6 Repeatable Autonomous Commerce Evaluation Scenarios
           </span>
         </div>
@@ -85,22 +85,18 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
           onClick={onRunRaceTest}
           disabled={isLoading}
           className="btn-ghost-outline"
-          style={{ fontSize: '0.76rem', padding: '7px 16px' }}
+          style={{ fontSize: '0.72rem', padding: '4px 12px' }}
           title="Submits 10 simultaneous threads with the same nonce to demonstrate atomic lock replay protection"
         >
-          <RefreshCw size={13} className={isLoading ? "listening-pulse" : ""} color="var(--nuvei-cyan)" />
+          <RefreshCw size={12} className={isLoading ? "listening-pulse" : ""} color="var(--nuvei-cyan)" />
           <span>Run Concurrency Race Test (10 Threads)</span>
         </button>
       </div>
 
-      <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: 14, lineHeight: 1.5 }}>
-        Click any scenario below to trigger an automated live evaluation and view the resulting cryptographic trace and decision.
-      </p>
-
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-        gap: 12
+        gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+        gap: 8
       }}>
         {SCENARIOS.map((s) => {
           const isSelected = activeScenarioId === s.id;
@@ -113,14 +109,14 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
                 textAlign: 'left',
                 background: isSelected ? 'rgba(12, 152, 212, 0.08)' : '#fbfaf8',
                 border: isSelected ? '1.5px solid var(--nuvei-cyan)' : '1px solid var(--border-color)',
-                borderRadius: 8,
-                padding: '14px 14px',
+                borderRadius: 6,
+                padding: '8px 10px',
                 cursor: 'pointer',
                 transition: 'all 0.18s ease',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 6,
-                boxShadow: isSelected ? '0 2px 10px rgba(12, 152, 212, 0.15)' : 'none'
+                gap: 4,
+                boxShadow: isSelected ? '0 2px 8px rgba(12, 152, 212, 0.15)' : 'none'
               }}
               onMouseEnter={(e) => {
                 if (!isSelected) {

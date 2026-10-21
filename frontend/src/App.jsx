@@ -226,7 +226,7 @@ export default function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-canvas)' }}>
+    <div style={{ height: '100vh', maxHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-canvas)', overflow: 'hidden' }}>
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -241,11 +241,11 @@ export default function App() {
           right: 24,
           background: '#ffffff',
           color: 'var(--text-ink)',
-          padding: '14px 22px',
+          padding: '12px 20px',
           borderRadius: 8,
           boxShadow: '0 12px 32px rgba(11, 14, 30, 0.14)',
           zIndex: 1000,
-          fontSize: '0.86rem',
+          fontSize: '0.84rem',
           fontWeight: 600,
           border: `1px solid ${
             toastMessage.type === 'error'
@@ -260,7 +260,7 @@ export default function App() {
         </div>
       )}
 
-      <main className="wispr-container" style={{ paddingBottom: 64, flex: 1 }}>
+      <main className="wispr-container" style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: '14px 28px 16px', display: 'flex', flexDirection: 'column' }}>
         {/* Tab Content */}
         {activeTab === 'about' && (
           <AboutSection
@@ -285,7 +285,7 @@ export default function App() {
         )}
 
         {activeTab === 'playground' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             <ScenarioBar
               onRunScenario={handleRunScenario}
               onRunRaceTest={handleRunRaceTest}
@@ -321,13 +321,14 @@ export default function App() {
         )}
       </main>
 
-      {/* Ghost Core Retro Minimal Footer */}
+      {/* Ghost Core Retro Minimal Slim Footer */}
       <footer style={{
         borderTop: '1px solid #d4d4cb',
-        padding: '24px 0',
+        padding: '7px 0',
         background: '#e4e4df',
-        fontSize: '0.78rem',
-        color: 'var(--text-muted)'
+        fontSize: '0.74rem',
+        color: 'var(--text-muted)',
+        flexShrink: 0
       }}>
         <div className="wispr-container" style={{
           display: 'flex',
@@ -342,8 +343,8 @@ export default function App() {
             <span>Trust Infrastructure for Fire TV, Alexa+, Ring & Bee Wearable AI</span>
           </div>
 
-          <div className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', letterSpacing: '0.06em' }}>
-            ALEXA+ MCP (2025-11-25) × RING RADAR × FIRE TV × BEE WEARABLE × AWS BEDROCK
+          <div className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--ghost-blue)', letterSpacing: '0.04em' }}>
+            ALEXA+ MCP (2025-11-25) × RING RADAR × FIRE TV × BEE WEARABLE
           </div>
         </div>
       </footer>

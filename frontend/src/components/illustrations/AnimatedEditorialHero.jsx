@@ -125,12 +125,12 @@ export default function AnimatedEditorialHero({ onExploreDevices, onOpenSimulato
       <div style={{
         background: '#0e1117',
         color: '#ffffff',
-        padding: '14px 24px',
+        padding: '10px 20px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
-        gap: 12,
+        gap: 10,
         borderBottom: '1px solid #1e2633'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -184,7 +184,7 @@ export default function AnimatedEditorialHero({ onExploreDevices, onOpenSimulato
         background: '#f8eee2',
         width: '100%',
         aspectRatio: '16/9',
-        maxHeight: 520,
+        maxHeight: 320,
         overflow: 'hidden'
       }}>
         {/* Background Vector Artwork */}
