@@ -37,7 +37,7 @@ export default function Navbar({ activeTab, setActiveTab, healthInfo }) {
           fontFamily: 'var(--font-heading)'
         }}>
           <span>
-            Amazon Developer Hackathon — Fire TV, Alexa+, Ring & Bee Wearable Autonomous Commerce Gateway
+            Fides — Trust Infrastructure for Agentic Commerce · Real-Time Policy & Authorization Gateway for Autonomous AI Agents
           </span>
           <button
             onClick={() => setShowBanner(false)}

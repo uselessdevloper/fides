@@ -176,7 +176,7 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
           {/* Quick Presets */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 18 }}>
             <span className="font-mono" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', letterSpacing: '0.06em' }}>
-              PRELOADED HACKATHON CASES:
+              PRELOADED EVALUATION CASES:
             </span>
             {ALEXA_PRESET_PROMPTS.map((p, idx) => {
               const isSelected = activePresetIndex === idx;

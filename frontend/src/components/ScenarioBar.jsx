@@ -76,7 +76,7 @@ export default function ScenarioBar({ onRunScenario, onRunRaceTest, isLoading })
           </span>
           <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>|</span>
           <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-ink)' }}>
-            6 Repeatable Hackathon Evaluation Scenarios
+            6 Repeatable Autonomous Commerce Evaluation Scenarios
           </span>
         </div>
         

@@ -149,7 +149,7 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
             </span>
             <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>|</span>
             <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>
-              Amazon Developer Hackathon 2026 Integration
+              Ambient AI & Connected Devices Ecosystem Integration
             </span>
           </div>
 

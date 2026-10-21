@@ -201,7 +201,7 @@ export default function LivingRoomDashboard() {
               Connected Living Room, Physical Radar & Wearable Confirmation
             </h2>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', maxWidth: 840, marginTop: 4 }}>
-              Demonstrating all four primary Amazon Hackathon tracks in concert: <strong>Alexa+</strong> receives voice intent, <strong>Ring</strong> verifies in-home physical presence via 3D radar, <strong>Fire TV</strong> renders 10-foot living room step-ups, and <strong>Bee</strong> provides haptic double-pulse wrist authorization.
+              Demonstrating all four primary connected device surfaces in concert: <strong>Alexa+</strong> receives voice intent, <strong>Ring</strong> verifies in-home physical presence via 3D radar, <strong>Fire TV</strong> renders 10-foot living room step-ups, and <strong>Bee</strong> provides haptic double-pulse wrist authorization.
             </p>
           </div>
         </div>
