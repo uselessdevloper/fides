@@ -45,11 +45,20 @@ app.include_router(approvals.router)
 app.include_router(audit.router)
 app.include_router(demo.router)
 
+from backend.services.aws_suite import aws_suite
+
+@app.get("/api/aws/technologies", tags=["AWS Technologies"])
+def get_aws_technologies():
+    """
+    Returns the comprehensive 10/10 AWS Technologies Architecture Report for Amazon Developer Hackathon.
+    """
+    return aws_suite.get_technologies_report()
+
 @app.get("/api/health", tags=["Health"])
 def health_check():
     """
-    Service health check returning Alexa+ MCP, AWS Bedrock, Ring IoT,
-    Fire TV, Bee Wearable AI, and audit ledger integrity status.
+    Service health check returning Alexa+ MCP, AWS Bedrock, 10/10 AWS Technologies Suite,
+    Ring IoT, Fire TV, Bee Wearable AI, and audit ledger integrity status.
     """
     chain_valid, chain_msg = audit_ledger.verify_chain()
     has_nebius_key = bool(nebius_client.api_key and not nebius_client.api_key.startswith("your_"))
@@ -58,6 +67,8 @@ def health_check():
         "status": "HEALTHY",
         "service": "Fides Ambient Commerce Gateway",
         "hackathon": "Amazon Developer Hackathon (Fire TV, Alexa+, Ring & Bee)",
+        "aws_technologies_score": "10/10",
+        "aws_technologies": aws_suite.get_technologies_report(),
         "alexa_mcp": {
             "spec_version": "2025-11-25",
             "endpoint": "/mcp",

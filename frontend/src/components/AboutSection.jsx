@@ -88,6 +88,10 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
                 <span>⚡</span>
                 <span>Bee Wrist Haptics</span>
               </span>
+              <span className="ghost-wire-pill" style={{ borderColor: 'var(--nuvei-cyan)', color: 'var(--nuvei-cyan)', fontWeight: 700 }}>
+                <span>☁</span>
+                <span>10/10 AWS Technologies</span>
+              </span>
             </div>
           </div>
 

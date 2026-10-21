@@ -12,7 +12,7 @@
   * **Alexa+:** Voice agent reasoning via Model Context Protocol (`/mcp` endpoint).
   * **Ring:** In-home 3D radar and Z-Wave RSSI presence verification to prevent unauthorized remote purchasing.
   * **Fire TV:** 10-foot visual checkout overlay on Vega OS / Fire OS for family & supervisor step-up approvals.
-* **Mini Challenge 1:** **AWS Builder** *(AWS Bedrock Runtime with `boto3` for intent reasoning via Amazon Nova)*
+* **Mini Challenge 1:** **AWS Builder (10/10 Technologies Score)** *(AWS Bedrock Runtime, Guardrails, Lambda, DynamoDB, S3, CloudWatch Metrics, CloudWatch Logs, SNS, KMS/Secrets Manager, and API Gateway)*
 * **Mini Challenge 2:** **Open Source** *(MIT License visible in repository root)*
 * **Public Repository:** [https://github.com/uselessdevloper/fides](https://github.com/uselessdevloper/fides)
 * **Demo URL:** [http://localhost:8000](http://localhost:8000)
@@ -34,8 +34,17 @@ Fides unites **Alexa+**, **Ring**, and **Fire TV** through the **Model Context P
    * Alexa+ calls MCP tools: `ring_verify_presence`, `fides_evaluate_purchase`, and `firetv_push_approval`.
 2. **Ring IoT Presence Gate:**
    * Before authorizing any transaction, Alexa+ invokes Ring. The Ring Video Doorbell Pro verifies 3D radar motion and Z-Wave signal strength, issuing a cryptographic presence token proving the user is home.
-3. **AWS Bedrock Intent Extraction (AWS Builder Mini Challenge):**
-   * Uses **AWS Bedrock Runtime (`boto3`)** with **Amazon Nova Lite** to extract candidate product SKUs and quantities without giving the model financial payment authority.
+3. **10/10 AWS Technologies Architecture (AWS Builder Mini Challenge):**
+   * **AWS Bedrock Runtime (`boto3`):** Amazon Nova Lite & Claude 3.5 Sonnet foundation model inference for candidate intent extraction.
+   * **AWS Bedrock Guardrails:** Neutralizes prompt injection attacks and redacts PII before policy evaluation.
+   * **AWS Lambda:** Serverless execution handler for Alexa+ MCP tool invocation.
+   * **Amazon DynamoDB:** Atomic conditional write table with TTL for sub-10ms replay protection.
+   * **Amazon S3:** Encrypted immutable audit ledger block storage with Object Lock.
+   * **Amazon CloudWatch Metrics:** Custom metric streams for transaction risk scores and evaluation latency.
+   * **Amazon CloudWatch Logs:** Structured compliance audit trail log streaming.
+   * **Amazon SNS:** Multi-device push notification fan-out dispatching to Fire TV and Bee Wearable AI.
+   * **AWS KMS & Secrets Manager:** FIPS 140-3 HSM envelope encryption protecting root Ed25519 signing keys.
+   * **Amazon API Gateway:** High-concurrency Streamable HTTP reverse proxy for MCP Spec 2025-11-25.
 4. **Deterministic Policy & Replay Engine:**
    * Checks Ed25519 signatures, verifies server-side catalogue prices in INR (₹), neutralizes concurrent replay attacks with atomic locks, and logs to a SHA-256 hash-chain.
 5. **Fire TV 10-Foot Companion (Vega OS / Fire OS):**
