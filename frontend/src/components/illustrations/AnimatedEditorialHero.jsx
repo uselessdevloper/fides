@@ -19,9 +19,10 @@ const SCENES = [
   {
     id: 'ambient_alexa',
     title: 'Ambient Living Room & Alexa+ Intent',
-    subtitle: 'Streamable HTTP MCP Spec (2025-11-25) + Bedrock Intent Extraction',
+    subtitle: 'Streamable HTTP MCP Spec (2025-11-25) with Bedrock Intent Extraction',
     image: '/fides_vector_hero.jpg',
-    tag: 'ALEXA+ // VOICE GATEWAY',
+    tag: 'Alexa+ Voice Protocol',
+    tabLabel: 'Living Room & Alexa+',
     tagColor: 'var(--nuvei-cyan)',
     hotspots: [
       { id: 'speaker', label: 'Alexa+ MCP Terminal', x: '51%', y: '65%', icon: Radio, desc: 'Self-hosted streamable MCP server tools at /mcp' },
@@ -36,7 +37,8 @@ const SCENES = [
     title: 'Front Porch 3D Radar Boundary',
     subtitle: 'Ring Doorbell Pro 2 Aerial Radar Waves & Z-Wave RSSI Verification',
     image: '/fides_vector_radar.jpg',
-    tag: 'RING // 3D RADAR PROOF',
+    tag: 'Ring 3D Radar Perimeter',
+    tabLabel: 'Front Door & Radar',
     tagColor: 'var(--accent-emerald)',
     hotspots: [
       { id: 'radar', label: 'Ring 3D Radar Node', x: '57%', y: '58%', icon: Bell, desc: '3D Radar scans entry zone for in-home buyer motion' },
@@ -48,9 +50,10 @@ const SCENES = [
   {
     id: 'firetv_wearable',
     title: 'Living Room 10-Foot & Bee Wearable',
-    subtitle: 'Fire TV Vega OS Card Push + On-Wrist LRA Haptic Confirmation',
+    subtitle: 'Fire TV Vega OS Card Push with On-Wrist LRA Haptic Confirmation',
     image: '/fides_vector_livingroom.jpg',
-    tag: 'FIRE TV & BEE // DUAL-SCREEN',
+    tag: 'Fire TV & Wearable Dual-Screen',
+    tabLabel: 'TV & Wristband',
     tagColor: 'var(--ghost-orange)',
     hotspots: [
       { id: 'wrist', label: 'Bee Wearable Haptic HUD', x: '25%', y: '54%', icon: Watch, desc: 'LRA double-pulse alerts for approval tap' },
@@ -64,7 +67,8 @@ const SCENES = [
     title: 'Autonomous Commerce Infrastructure',
     subtitle: 'Air-Gapped Trust Engine Sitting Between Buyer Agents & Merchant Gateways',
     image: '/fides_vector_workers.png',
-    tag: 'FIDES // SOVEREIGN LEDGER',
+    tag: 'Sovereign Settlement Engine',
+    tabLabel: 'Settlement Engine',
     tagColor: 'var(--nuvei-midnight)',
     hotspots: [
       { id: 'hub', label: 'Fides Ambient Hub', x: '51%', y: '65%', icon: ShieldCheck, desc: 'Deterministic policy evaluation without LLM hallucination' },
@@ -134,19 +138,19 @@ export default function AnimatedEditorialHero({ onExploreDevices, onOpenSimulato
             width: 8,
             height: 8,
             borderRadius: '50%',
-            background: 'var(--nuvei-cyan)',
-            boxShadow: '0 0 10px var(--nuvei-cyan)'
+            background: '#10b981',
+            boxShadow: '0 0 8px #10b981'
           }} />
-          <span className="font-mono" style={{ fontSize: '0.74rem', color: 'var(--nuvei-cyan)', fontWeight: 800, letterSpacing: '0.08em' }}>
-            FIDES // ANIMATED COMMERCE GATEWAY
+          <span style={{ fontSize: '0.78rem', color: '#ffffff', fontWeight: 700, letterSpacing: '0.02em' }}>
+            Fides Trust Infrastructure
           </span>
           <span style={{ color: '#4a5568' }}>•</span>
-          <span className="font-mono" style={{ fontSize: '0.68rem', color: '#94a3b8' }}>
+          <span style={{ fontSize: '0.74rem', color: 'var(--nuvei-cyan)', fontWeight: 600 }}>
             {currentScene.tag}
           </span>
         </div>
 
-        {/* Scene Switcher Pills */}
+        {/* Architecture & Device Views */}
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
           {SCENES.map((scene, idx) => (
             <button
@@ -159,7 +163,7 @@ export default function AnimatedEditorialHero({ onExploreDevices, onOpenSimulato
                 background: activeSceneIndex === idx ? 'var(--nuvei-cyan)' : 'rgba(255, 255, 255, 0.08)',
                 color: activeSceneIndex === idx ? '#ffffff' : '#cbd5e1',
                 border: activeSceneIndex === idx ? '1px solid var(--nuvei-cyan)' : '1px solid rgba(255, 255, 255, 0.12)',
-                padding: '5px 14px',
+                padding: '6px 14px',
                 borderRadius: 9999,
                 fontSize: '0.72rem',
                 fontWeight: 600,
@@ -168,7 +172,7 @@ export default function AnimatedEditorialHero({ onExploreDevices, onOpenSimulato
                 transition: 'all 0.18s ease'
               }}
             >
-              Scene {idx + 1}: {scene.id.split('_')[0].toUpperCase()}
+              {scene.tabLabel}
             </button>
           ))}
         </div>
@@ -406,11 +410,11 @@ export default function AnimatedEditorialHero({ onExploreDevices, onOpenSimulato
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span className="font-mono" style={{ fontSize: '0.68rem', fontWeight: 800, color: '#4a3b32', letterSpacing: '0.06em' }}>
-              SHA-256 HASH-CHAINED BLOCKS //
+            <span style={{ fontSize: '0.74rem', fontWeight: 700, color: '#4a3b32', letterSpacing: '0.02em' }}>
+              SHA-256 Audit Trail
             </span>
             <span style={{ fontSize: '0.72rem', color: '#6b584b' }}>
-              Hover over each block to inspect policy authorization & hash status:
+              • Hover over each block to inspect policy authorization & hash status:
             </span>
           </div>
 
@@ -425,7 +429,7 @@ export default function AnimatedEditorialHero({ onExploreDevices, onOpenSimulato
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
               <div style={{ width: 10, height: 10, borderRadius: 2, background: '#991b1b', backgroundImage: 'repeating-linear-gradient(45deg, #7f1d1d, #7f1d1d 3px, #991b1b 3px, #991b1b 6px)' }} />
-              <span className="font-mono" style={{ fontSize: '0.64rem', color: '#4a3b32', fontWeight: 700 }}>DENY (STRIPED)</span>
+              <span className="font-mono" style={{ fontSize: '0.64rem', color: '#4a3b32', fontWeight: 700 }}>DENY</span>
             </div>
           </div>
         </div>

@@ -339,8 +339,8 @@ export default function AboutSection({ onExplorePlayground, onRunScenario }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', fontWeight: 700, letterSpacing: '0.08em' }}>
-                  AMBIENT PRESENCE // FIRE TV & RING
+                <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', fontWeight: 700, letterSpacing: '0.04em' }}>
+                  Ambient Presence • Fire TV & Ring Doorbell
                 </span>
               </div>
               <h2 style={{

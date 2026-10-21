@@ -345,7 +345,7 @@ export default function App() {
           gap: 12
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span className="font-mono" style={{ fontWeight: 800, color: 'var(--text-ink)', letterSpacing: '0.06em' }}>FIDES // CORE</span>
+            <span style={{ fontWeight: 800, color: 'var(--text-ink)', letterSpacing: '0.02em' }}>Fides Core</span>
             <span style={{ color: 'var(--text-dim)' }}>—</span>
             <span>Trust Infrastructure for Fire TV, Alexa+, Ring & Bee Wearable AI</span>
           </div>

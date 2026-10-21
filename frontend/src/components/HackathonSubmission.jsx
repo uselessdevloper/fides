@@ -246,7 +246,7 @@ export default function HackathonSubmission({ healthInfo, onRunScenario }) {
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
             <span className="font-mono" style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
-              HEALTH // {healthInfo?.status || 'ONLINE'}
+              System Health: {healthInfo?.status || 'Online'}
             </span>
             <div style={{ display: 'flex', gap: 8 }}>
               <span className="ghost-wire-pill" style={{ color: 'var(--ghost-orange)', borderColor: 'var(--ghost-orange)' }}>

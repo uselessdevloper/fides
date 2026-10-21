@@ -194,7 +194,7 @@ export default function LivingRoomDashboard() {
                 AMAZON LIVING ROOM, FRONT DOOR & WEARABLE AI
               </span>
               <span className="badge-ghost-orange">
-                FIRE OS + VEGA OS // RING PRO 2 // BEE WRISTBAND
+                Fire OS & Vega OS • Ring Pro 2 • Bee Wearable
               </span>
             </div>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-ink)', letterSpacing: '-0.01em' }}>
@@ -250,7 +250,7 @@ export default function LivingRoomDashboard() {
               gap: 6
             }}>
               <Tv size={12} color="var(--ghost-orange)" />
-              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>LIVING ROOM // VEGA OS</span>
+              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>Fire TV • Living Room 10-Foot</span>
             </div>
 
             {/* Status Ledger Indicator */}
@@ -386,7 +386,7 @@ export default function LivingRoomDashboard() {
               gap: 6
             }}>
               <Bell size={12} color="var(--ghost-blue)" />
-              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>FRONT DOOR // 3D RADAR</span>
+              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>Ring Video Doorbell Pro 2 • 3D Radar</span>
             </div>
 
             {/* Status Ledger Indicator */}
@@ -491,7 +491,7 @@ export default function LivingRoomDashboard() {
               gap: 6
             }}>
               <Watch size={12} color="var(--accent-purple)" />
-              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>ON-WRIST // LRA HAPTICS</span>
+              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>Bee Wearable AI • On-Wrist Haptics</span>
             </div>
 
             {/* Status Ledger Indicator */}

@@ -56,8 +56,8 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-              <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', fontWeight: 700, letterSpacing: '0.08em' }}>
-                ALEXA+ // STREAMABLE HTTP MCP (SPEC 2025-11-25)
+              <span className="font-mono" style={{ fontSize: '0.72rem', color: 'var(--ghost-blue)', fontWeight: 700, letterSpacing: '0.04em' }}>
+                Alexa+ Streamable HTTP MCP (Spec 2025-11-25)
               </span>
               <span className="badge-ghost-orange">
                 ENDPOINT: /mcp
@@ -136,7 +136,7 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
               gap: 6
             }}>
               <Volume2 size={12} color="var(--ghost-blue)" />
-              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>ALEXA+ // PREVIEW RUNTIME (STREAMABLE HTTP)</span>
+              <span className="font-mono" style={{ fontSize: '0.65rem', color: '#fff', fontWeight: 700 }}>Alexa+ Voice Terminal • Streamable HTTP</span>
             </div>
 
             {/* Mini ledger block indicator */}
@@ -297,7 +297,7 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
               </h3>
             </div>
             <span className="badge-mono" style={{ fontSize: '0.68rem', color: 'var(--ghost-blue)' }}>
-              JSON-RPC 2.0 // STREAM
+              JSON-RPC 2.0 Event Stream
             </span>
           </div>
 
@@ -310,7 +310,7 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
             <div className="ghost-inset" style={{ padding: '14px 16px', background: '#f8f8f5' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
                 <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--ghost-blue)' }}>
-                  01 // ring_verify_presence
+                  01 • ring_verify_presence
                 </span>
                 <span className="badge-approve" style={{ fontSize: '0.62rem' }}>
                   RADAR VERIFIED
@@ -330,7 +330,7 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
             <div className="ghost-inset" style={{ padding: '14px 16px', background: '#f8f8f5' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
                 <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--ghost-orange)' }}>
-                  02 // fides_evaluate_purchase
+                  02 • fides_evaluate_purchase
                 </span>
                 {alexaResult ? (
                   <span className={alexaResult.decision === 'APPROVE' ? 'badge-approve' : alexaResult.decision === 'STEP_UP' ? 'badge-step-up' : 'badge-deny'} style={{ fontSize: '0.62rem' }}>
@@ -354,7 +354,7 @@ export default function AlexaSimulator({ onSimulateSuccess }) {
             <div className="ghost-inset" style={{ padding: '14px 16px', background: '#f8f8f5' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
                 <span className="font-mono" style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--ghost-blue)' }}>
-                  03 // firetv_push_approval
+                  03 • firetv_push_approval
                 </span>
                 {alexaResult?.decision === 'STEP_UP' ? (
                   <span className="badge-step-up" style={{ fontSize: '0.62rem' }}>CARD PUSHED</span>
